@@ -1,0 +1,68 @@
+<svg viewBox="0 0 720 360" role="img" aria-labelledby="dcdr-title dcdr-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="dcdr-title">Two tiers of cross-datacenter disaster recovery</title>
+  <desc id="dcdr-desc">Two Postgres clusters in separate datacenters stream to each other. Tier one is a remote replica promoted by hand. Tier two adds an Open Cluster Management control plane above both sites, which detects the loss of a datacenter and promotes the survivor automatically, with leadership semantics that allow only one site to promote.</desc>
+
+  <defs>
+    <marker id="dr-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="d-accent"/>
+    </marker>
+    <marker id="dr-arrow-mute" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" opacity=".5"/>
+    </marker>
+  </defs>
+
+  <!-- control plane -->
+  <rect x="176" y="12" width="368" height="70" rx="10" class="d-box-accent"/>
+  <text x="360" y="40" class="d-text" text-anchor="middle" font-weight="600">DR control plane</text>
+  <text x="360" y="60" class="d-text-sm" text-anchor="middle">OCM addon-framework · one leader at a time</text>
+  <text x="360" y="75" class="d-text-sm" text-anchor="middle">watches both sites, promotes exactly one</text>
+
+  <!-- arrows down to sites -->
+  <path d="M 240 86 L 172 132" class="d-stroke-accent" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#dr-arrow)"/>
+  <path d="M 480 86 L 548 132" class="d-stroke-accent" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#dr-arrow)"/>
+
+  <!-- DC A -->
+  <rect x="16" y="140" width="288" height="150" rx="10" class="d-box"/>
+  <text x="34" y="166" class="d-text-sm">DATACENTER A</text>
+  <g>
+    <rect x="36" y="180" width="112" height="46" rx="7" class="d-box-accent"/>
+    <text x="92" y="200" class="d-text" text-anchor="middle" font-size="12" font-weight="600">primary</text>
+    <text x="92" y="216" class="d-text-sm" text-anchor="middle">writes</text>
+  </g>
+  <g>
+    <rect x="168" y="180" width="112" height="46" rx="7" class="d-box"/>
+    <text x="224" y="200" class="d-text" text-anchor="middle" font-size="12">local standby</text>
+    <text x="224" y="216" class="d-text-sm" text-anchor="middle">sync</text>
+  </g>
+  <text x="36" y="256" class="d-text-sm">synchronous_standby_names =</text>
+  <text x="36" y="272" class="d-text-sm">FIRST 2 (local, remote)</text>
+
+  <!-- DC B -->
+  <rect x="416" y="140" width="288" height="150" rx="10" class="d-box"/>
+  <text x="434" y="166" class="d-text-sm">DATACENTER B</text>
+  <g>
+    <rect x="436" y="180" width="112" height="46" rx="7" class="d-box"/>
+    <text x="492" y="200" class="d-text" text-anchor="middle" font-size="12">remote replica</text>
+    <text x="492" y="216" class="d-text-sm" text-anchor="middle">sync</text>
+  </g>
+  <g>
+    <rect x="568" y="180" width="112" height="46" rx="7" class="d-box"/>
+    <text x="624" y="200" class="d-text" text-anchor="middle" font-size="12">local standby</text>
+    <text x="624" y="216" class="d-text-sm" text-anchor="middle">async</text>
+  </g>
+  <text x="436" y="256" class="d-text-sm">durable at commit time —</text>
+  <text x="436" y="272" class="d-text-sm">not recovered after the fact</text>
+
+  <!-- replication between DCs -->
+  <path d="M 304 203 L 430 203" class="d-stroke-accent" stroke-width="2" marker-end="url(#dr-arrow)"/>
+  <text x="367" y="194" class="d-text-sm" text-anchor="middle">WAL</text>
+
+  <!-- two tiers legend -->
+  <line x1="0" y1="308" x2="720" y2="308" class="d-line" stroke-width="1"/>
+  <g transform="translate(0,326)">
+    <circle cx="8" cy="10" r="4" fill="currentColor" opacity=".5"/>
+    <text x="22" y="14" class="d-text" font-size="12">Tier 1 — remote replica, promoted by hand</text>
+    <circle cx="374" cy="10" r="4" class="d-accent"/>
+    <text x="388" y="14" class="d-text" font-size="12">Tier 2 — control plane promotes automatically</text>
+  </g>
+</svg>

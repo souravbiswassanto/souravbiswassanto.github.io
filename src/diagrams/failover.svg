@@ -1,0 +1,91 @@
+<svg viewBox="0 0 720 320" role="img" aria-labelledby="failover-title failover-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="failover-title">Raft-based PostgreSQL failover</title>
+  <desc id="failover-desc">Three Postgres pods form a Raft consensus group. Each standby continuously receives the primary's write-ahead-log position over gRPC. When the primary is lost, the standby holding the highest position is elected and promoted, completing in two to ten seconds.</desc>
+
+  <defs>
+    <marker id="fo-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="d-accent"/>
+    </marker>
+    <marker id="fo-arrow-mute" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" opacity=".45"/>
+    </marker>
+  </defs>
+
+  <!-- steady state label -->
+  <text x="0" y="14" class="d-text-sm">STEADY STATE</text>
+
+  <!-- primary -->
+  <g>
+    <rect x="24" y="36" width="170" height="86" rx="8" class="d-box-accent"/>
+    <text x="109" y="64" class="d-text" text-anchor="middle" font-weight="600">primary</text>
+    <text x="109" y="84" class="d-text-sm" text-anchor="middle">accepting writes</text>
+    <text x="109" y="103" class="d-text-sm" text-anchor="middle">LSN 0/3A18F220</text>
+  </g>
+
+  <!-- standbys -->
+  <g>
+    <rect x="286" y="16" width="170" height="60" rx="8" class="d-box"/>
+    <text x="371" y="40" class="d-text" text-anchor="middle">standby A</text>
+    <text x="371" y="59" class="d-text-sm" text-anchor="middle">LSN 0/3A18F220</text>
+  </g>
+  <g>
+    <rect x="286" y="96" width="170" height="60" rx="8" class="d-box"/>
+    <text x="371" y="120" class="d-text" text-anchor="middle">standby B</text>
+    <text x="371" y="139" class="d-text-sm" text-anchor="middle">LSN 0/3A18E9C0</text>
+  </g>
+
+  <!-- replication arrows -->
+  <path d="M 200 62 L 280 46" class="d-stroke-accent" stroke-width="1.5" marker-end="url(#fo-arrow)"/>
+  <path d="M 200 96 L 280 122" class="d-stroke-accent" stroke-width="1.5" marker-end="url(#fo-arrow)"/>
+  <text x="240" y="96" class="d-text-sm" text-anchor="middle">WAL</text>
+
+  <!-- raft ring -->
+  <g>
+    <path d="M 500 86 m -6 -46 a 46 46 0 1 1 -0.1 0" class="d-line" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+    <text x="500" y="82" class="d-text" text-anchor="middle" font-weight="600">Raft</text>
+    <text x="500" y="99" class="d-text-sm" text-anchor="middle">consensus</text>
+    <circle cx="500" cy="40" r="4" class="d-accent"/>
+    <circle cx="540" cy="106" r="4" class="d-accent"/>
+    <circle cx="460" cy="106" r="4" class="d-accent"/>
+  </g>
+  <path d="M 462 86 L 300 60" class="d-line" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
+  <path d="M 462 100 L 300 122" class="d-line" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
+
+  <text x="596" y="70" class="d-text-sm">LSN position</text>
+  <text x="596" y="86" class="d-text-sm">propagated</text>
+  <text x="596" y="102" class="d-text-sm">over gRPC</text>
+
+  <!-- divider -->
+  <line x1="0" y1="180" x2="720" y2="180" class="d-line" stroke-width="1"/>
+
+  <!-- failure sequence -->
+  <text x="0" y="208" class="d-text-sm">ON PRIMARY LOSS</text>
+
+  <g transform="translate(0,224)">
+    <!-- track -->
+    <line x1="24" y1="26" x2="620" y2="26" class="d-line" stroke-width="1.5"/>
+
+    <g>
+      <circle cx="24" cy="26" r="5" fill="currentColor" opacity=".45"/>
+      <text x="24" y="14" class="d-text-sm" text-anchor="start">t=0</text>
+      <text x="24" y="48" class="d-text" text-anchor="start" font-size="12">primary lost</text>
+    </g>
+    <g>
+      <circle cx="222" cy="26" r="5" class="d-accent"/>
+      <text x="222" y="48" class="d-text" text-anchor="middle" font-size="12">election</text>
+      <text x="222" y="64" class="d-text-sm" text-anchor="middle">highest LSN wins</text>
+    </g>
+    <g>
+      <circle cx="420" cy="26" r="5" class="d-accent"/>
+      <text x="420" y="48" class="d-text" text-anchor="middle" font-size="12">standby A promoted</text>
+      <text x="420" y="64" class="d-text-sm" text-anchor="middle">B re-attached via pg_rewind</text>
+    </g>
+    <g>
+      <circle cx="620" cy="26" r="5" class="d-accent"/>
+      <text x="620" y="48" class="d-text" text-anchor="end" font-size="12">writes resume</text>
+    </g>
+
+    <rect x="640" y="8" width="80" height="36" rx="6" class="d-box-accent"/>
+    <text x="680" y="31" class="d-accent" text-anchor="middle" font-family="ui-monospace, monospace" font-size="14" font-weight="700">2–10s</text>
+  </g>
+</svg>

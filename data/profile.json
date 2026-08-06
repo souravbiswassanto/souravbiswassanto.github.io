@@ -1,0 +1,1445 @@
+{
+  "_meta": {
+    "collected": "2026-08-06",
+    "sources": [
+      "cv/main.tex (v1 one-page, Aug 2026)",
+      "cv/versions/v2-extended-aug2026.tex",
+      "cv/versions/v0-original-sep2024.tex",
+      "cv/achievements.md (ledger, swept 2026-08-05)",
+      "3 legacy LaTeX CVs supplied in-chat (2021-2023 competitive-programming era)",
+      "GitHub API live queries via gh CLI (2026-08-06)",
+      "codeforces.com/api/user.info (2026-08-06)",
+      "github.com/souravbiswassanto/Problem-Solving-Stats README",
+      "local dirs: sourav/webinar/*, sourav/coredge.md, sourav/kubevault, sourav/large-scale-test"
+    ],
+    "hard_constraints": [
+      "REDACTED EMPLOYER: the second, part-time role (Apr-Sep 2025, remote) must NEVER be named on the portfolio - not the company name, not the job title. Its technical content and learnings MAY be used, but only unattributed, presented as independent side engineering work. Do not link the employer's website. Do not re-add it in any future pass.",
+      "TITLE: present as 'Senior Software Engineer, KubeDB Team Lead'. Never print 'Staff Software Engineer' (real title as of Apr 2026) - reads as title inflation at 3y4m and invites a screener to discount the whole profile. Signal it with 'promoted twice in three years' instead.",
+      "Do NOT describe the KubeDB/KubeOps/KubeVault repos as 'open source'. They are public on GitHub but not all are OSI-licensed. Say 'repositories in the KubeDB / KubeOps / KubeVault projects'.",
+      "Do NOT claim upstream open-source contributions. buraksezer/consistent#28 was CLOSED not merged; the merged consistent-hashing fixes were in gomodules/consistent (AppsCode's own fork). oracle/oracle-db-appdev-monitoring#451 was closed.",
+      "Legacy-CV projects deliberately dropped per user instruction: Jackpot (C++ console), Hangman (Java Swing), Object Finder (Java Swing), Boimela.com (PHP C2C site), BU subject-assign tool, 'The Reviver' final-year project. Outdated; do not resurrect.",
+      "PRIVATE REPOS - do not link: kubedb/postgres, kluster-manager/dr-controlplane, souravbiswassanto/skills. Verified private via the GitHub API on 2026-08-06; a visitor would hit a 404. Re-check before adding any repo link."
+    ]
+  },
+  "identity": {
+    "name": "Saurov Chandra Biswas",
+    "preferred_short": "Saurov",
+    "title": "Senior Software Engineer, KubeDB Team Lead",
+    "company": "Appscode Inc.",
+    "company_url": "https://appscode.com/",
+    "tagline": "Cloud-native distributed systems in Go - high availability, cross-datacenter DR, and Day-2 automation for stateful workloads.",
+    "tagline_status": "CHOSEN by Saurov, 2026-08-06.",
+    "summary": "Software Engineer with 3+ years building cloud-native distributed systems in Go, now leading a 12-engineer team. Specialize in Kubernetes operators for stateful workloads - high availability, cross-datacenter disaster recovery, and Day-2 automation at enterprise scale.",
+    "summary_status": "CHOSEN by Saurov, 2026-08-06 (the long version).",
+    "location": "Dhaka, Bangladesh",
+    "location_detail": "Uttara, Dhaka-1230, Bangladesh",
+    "hometown": "Barishal, Bangladesh",
+    "pronouns": "unspecified - use they/them in generated copy unless the user states otherwise",
+    "avatar_url": "https://avatars.githubusercontent.com/u/48715910?v=4",
+    "github_created": "2019-03-19",
+    "years_experience": "3+ (since Apr 2023)"
+  },
+  "contact": {
+    "email_personal": "sourav.cse4.bu@gmail.com",
+    "email_work": "saurov@appscode.com",
+    "phone": "+880 1841-978367",
+    "phone_publish": false,
+    "phone_note": "CONFIRMED current, but DO NOT PUBLISH - Saurov decided 2026-08-06 to keep the phone number off the public site. Recorded here for reference only. Email and LinkedIn are the public contact channels.",
+    "github": "https://github.com/souravbiswassanto",
+    "linkedin": "https://linkedin.com/in/sourav-biswas-santo",
+    "website": null,
+    "twitter": null
+  },
+  "github_metrics": {
+    "verified_on": "2026-08-06",
+    "method": "gh api search/issues + gh repo list",
+    "prs_authored_total": 733,
+    "prs_merged": 583,
+    "prs_open": 31,
+    "prs_reviewed_total": 542,
+    "distinct_authors_reviewed_for": 37,
+    "repos_touched": "100+",
+    "public_repos_own": 74,
+    "followers": 27,
+    "authored_by_year": {
+      "2023": 39,
+      "2024": 159,
+      "2025": 180,
+      "2026": 355
+    },
+    "reviewed_by_year": {
+      "2023": 5,
+      "2024": 91,
+      "2025": 88,
+      "2026": 358
+    },
+    "peak_month_authored": {
+      "month": "2026-06",
+      "count": 148,
+      "note": "AI/prompt-driven feature-parity sprint"
+    },
+    "peak_month_reviewed": {
+      "month": "2026-04",
+      "count": 94
+    },
+    "authored_by_org": {
+      "kubedb": 633,
+      "appscode": 20,
+      "kubeops": 18,
+      "stashed": 10,
+      "appscode-images": 9,
+      "appscodelabs": 9,
+      "kmodules": 8,
+      "gomodules": 4,
+      "kubevault": 3,
+      "kluster-manager": 3,
+      "kubestash": 1,
+      "oracle": 1
+    },
+    "top_repos_authored": [
+      {
+        "repo": "kubedb/postgres",
+        "prs": 98
+      },
+      {
+        "repo": "kubedb/installer",
+        "prs": 63
+      },
+      {
+        "repo": "kubedb/ops-manager",
+        "prs": 52
+      },
+      {
+        "repo": "kubedb/apimachinery",
+        "prs": 48
+      },
+      {
+        "repo": "kubedb/pg-coordinator",
+        "prs": 43
+      },
+      {
+        "repo": "kubedb/postgres-init-docker",
+        "prs": 29
+      },
+      {
+        "repo": "kubedb/prompt-library",
+        "prs": 19
+      },
+      {
+        "repo": "kubedb/postgres-restic-plugin",
+        "prs": 18
+      },
+      {
+        "repo": "kubedb/webhook-server",
+        "prs": 17
+      },
+      {
+        "repo": "kubedb/provisioner",
+        "prs": 17
+      },
+      {
+        "repo": "appscode/blog",
+        "prs": 17
+      },
+      {
+        "repo": "kubedb/docs",
+        "prs": 13
+      }
+    ],
+    "top_reviewees": [
+      {
+        "author": "ArnobKumarSaha",
+        "reviews": 65
+      },
+      {
+        "author": "Neaj-Morshad-101",
+        "reviews": 62
+      },
+      {
+        "author": "sheikh-arman",
+        "reviews": 49
+      },
+      {
+        "author": "ShuvoKumarMondal",
+        "reviews": 44
+      },
+      {
+        "author": "SajjadSadi074",
+        "reviews": 34
+      },
+      {
+        "author": "HiranmoyChowdhury",
+        "reviews": 26
+      },
+      {
+        "author": "takiaesha",
+        "reviews": 24
+      },
+      {
+        "author": "fr-sarker",
+        "reviews": 24
+      }
+    ],
+    "headline_stats_for_site": [
+      {
+        "value": "733",
+        "label": "pull requests authored",
+        "sub": "583 merged, across 100+ repos"
+      },
+      {
+        "value": "542",
+        "label": "pull requests reviewed",
+        "sub": "for 37 different engineers"
+      },
+      {
+        "value": "12",
+        "label": "engineers led",
+        "sub": "KubeDB team"
+      },
+      {
+        "value": "9",
+        "label": "product releases shipped",
+        "sub": "KubeDB, end to end"
+      },
+      {
+        "value": "2-10s",
+        "label": "database failover",
+        "sub": "Raft-based, was minutes of manual work"
+      },
+      {
+        "value": "2000+",
+        "label": "Postgres clusters",
+        "sub": "on one sharded control plane"
+      }
+    ]
+  },
+  "experience": [
+    {
+      "id": "appscode",
+      "company": "Appscode Inc.",
+      "company_url": "https://appscode.com/",
+      "location": "Dhaka, Bangladesh",
+      "start": "2023-04",
+      "end": null,
+      "display_title": "Senior Software Engineer, KubeDB Team Lead",
+      "progression": [
+        {
+          "when": "Apr 2023",
+          "what": "Joined as Software Engineer"
+        },
+        {
+          "when": "Apr 2025",
+          "what": "Promoted to Senior Software Engineer (2 yr)"
+        },
+        {
+          "when": "Apr 2026",
+          "what": "Increment + Staff Software Engineer title; CEO asked him to lead the KubeDB team (DO NOT PRINT the Staff title)"
+        },
+        {
+          "when": "Feb 2026 -",
+          "what": "De-facto lead of the KubeDB team, 12 engineers"
+        }
+      ],
+      "scope": [
+        "Leads a 12-engineer team: sprint/iteration management on GitHub Projects, code review, release sign-off, on-call rotation, onboarding docs.",
+        "Owns the software release lifecycle - features to stability to production rollout to public announcement.",
+        "Core owner of PostgreSQL on Kubernetes across ~10 repositories.",
+        "On-call for enterprise escalations across France, Sweden, USA, India, Vietnam, Bangladesh."
+      ],
+      "bullets": [
+        "Promoted twice in three years; leads a 12-engineer team and owns the release lifecycle - 9 KubeDB releases shipped.",
+        "Built PostgreSQL HA on Raft leader election with continuous LSN propagation over gRPC, cutting failover to 2-10 seconds.",
+        "Automated cross-datacenter database failover - outage detection and promotion now run unattended, replacing a recovery path that waited on someone noticing the outage before failing over by hand, often out of hours.",
+        "Built Read Replica: standbys stay attached at minimal CPU and memory, so a campaign peak is absorbed by scaling them with one OpsRequest in minutes instead of re-syncing a multi-terabyte dataset over hours or days.",
+        "Automated Day-2 ops - autoscaling, self-healing, upgrades, TLS/credential rotation, and PITR - replacing work that was previously manual and per-cluster.",
+        "Delivered the Oracle Kubernetes operator with a Data Guard coordinator for standby provisioning, replication, and switchover.",
+        "Built an internal AI prompt library (117 prompts), closing long-outstanding feature parity across 25+ database engines.",
+        "Proved resilience with Chaos Mesh - 16+ fault-injection experiments against HA Postgres clusters.",
+        "Sharded operator workloads with consistent hashing to run 2000+ Postgres clusters on one control plane."
+      ],
+      "removed_bullets": [
+        "REMOVED 2026-08-06 by Saurov: the GitHub Actions supply-chain hardening bullet. Kept only as a team-attributed case study, not as a personal achievement bullet.",
+        "REMOVED 2026-08-06 by Saurov: the 'on-call for Nokia, Orange Telecom, agritech' bullet."
+      ]
+    },
+    {
+      "id": "redacted-parttime",
+      "REDACTED": true,
+      "company": null,
+      "company_url": null,
+      "display_title": null,
+      "public_label": "Independent engineering — client confidential",
+      "start": "2025-04",
+      "end": "2025-09",
+      "publication_rule": "NEVER name the company or the job title on the portfolio. Surface the work only as unattributed side engineering / project entries. Do not link the employer site.",
+      "usable_content": [
+        "Built a Go microservice automating multi-tenant application deployments on GKE, replacing a manual per-tenant process.",
+        "Go + Gin service exposing REST APIs and Server-Sent Events for real-time deployment progress, driving Helm releases on GKE.",
+        "Tenant isolation per namespace with resource quotas and network policies for fair, secure resource sharing.",
+        "Multi-tenant observability with Prometheus and Grafana: per-tenant metric isolation enforced via kube-rbac-proxy and RBAC, with a query frontier that authorizes and namespace-scopes every query.",
+        "Istio service mesh for Ingress/Egress control, TLS termination, load balancing, and inter-service routing.",
+        "GitOps delivery pipeline on Helm + ArgoCD; Terraform modules provisioning GKE, IAM, VPC, and GCS."
+      ],
+      "supporting_public_repo": "https://github.com/souravbiswassanto/multi-tenant-monitoring"
+    }
+  ],
+  "flagship_projects": [
+    {
+      "id": "kubedb-postgres",
+      "name": "KubeDB PostgreSQL",
+      "role": "Core owner",
+      "period": "Jul 2023 - Present",
+      "org": "Appscode Inc.",
+      "links": [
+        {
+          "label": "Product",
+          "url": "https://kubedb.com/kubernetes/databases/run-and-manage-postgres-on-kubernetes/"
+        }
+      ],
+      "stack": [
+        "Go",
+        "Raft",
+        "gRPC",
+        "TLS",
+        "Kubernetes",
+        "PostgreSQL",
+        "Multi-Cluster"
+      ],
+      "related_writing": [
+        {
+          "title": "Automating PostgreSQL Operations In Kubernetes Using KubeDB",
+          "url": "https://appscode.com/blog/post/postgres-failover-and-disaster-recovery/",
+          "date": "2025-06-22",
+          "role": "author"
+        },
+        {
+          "title": "PostgreSQL WAL archiving on NFS",
+          "url": "https://appscode.com/blog/post/postgres-wal-nfs/",
+          "date": "2024-01",
+          "role": "author"
+        }
+      ],
+      "summary": "Production-grade Kubernetes operator for PostgreSQL: Raft-based HA and failover, streaming and synchronous replication, WAL archiving with PITR, and the full Day-2 operations surface.",
+      "highlights": [
+        "Raft leader election with continuous LSN propagation over gRPC - failover in 2-10 seconds.",
+        "Two cross-datacenter DR tiers: an OCM control plane for automatic promotion, plus a remote replica for manual DR.",
+        "Remote replica doubles as a live migration path off self-managed Postgres, cutting over with a 37-43 s write gap.",
+        "Synchronous replication API (SYNC_REPLICATION_MODE, NUM_SYNC_REPLICAS, SYNC_COMMIT_LEVEL) wired through init scripts for PG v9-v18.",
+        "Arbiter node support end-to-end: coordinator, provisioner, vertical scaling, volume expansion, odd-replica handling.",
+        "pg_rewind hardening: no-common-ancestor case, checkpoint-before-rewind, base-backup fallback, LSN zero-padding fix.",
+        "Split-brain fix plus automatic configuration tuning.",
+        "Postgres 13 -> 18 catalog support; blocked unsafe cross-baseOS and cross-distro upgrades.",
+        "Extensions shipped as first-class: pgvector, postgis, pgaudit, pg_repack, pg_cron - images, catalogs, e2e tests, docs.",
+        "Docker Hardened Images, data-directory permission hardening, IPC_LOCK/SYS_RESOURCE capabilities, run-as-nobody."
+      ]
+    },
+    {
+      "id": "petset",
+      "name": "KubeDB PetSet",
+      "role": "Contributor / distributed mode",
+      "period": "Jun 2025 - Present",
+      "org": "Appscode Inc.",
+      "links": [
+        {
+          "label": "Repo",
+          "url": "https://github.com/kubeops/petset"
+        }
+      ],
+      "stack": [
+        "Go",
+        "Kubernetes Custom Controller",
+        "OCM",
+        "Kubeslice",
+        "Multi-Cloud"
+      ],
+      "summary": "A fork of the native StatefulSet controller that orchestrates pods across geo-distributed, multi-cloud Kubernetes clusters.",
+      "highlights": [
+        "Distributed PetSet: creates and manages pods across multiple Kubernetes clusters via Open Cluster Management.",
+        "Gives pods stable identity and network IPs so pod-to-pod communication survives cluster boundaries.",
+        "cluster.local -> slice.local domain handling for Kubeslice; FindDomain abstraction.",
+        "Placement-policy validation and panic fixes."
+      ]
+    },
+    {
+      "id": "dc-dr",
+      "name": "Postgres DC-DR Control Plane",
+      "role": "Designer / implementer",
+      "period": "Jun 2026 - Present",
+      "org": "Appscode Inc.",
+      "links": [],
+      "stack": [
+        "Go",
+        "Open Cluster Management",
+        "addon-framework",
+        "Kubeslice",
+        "gRPC"
+      ],
+      "summary": "An OCM addon-framework control plane that detects the loss of an entire datacenter and hands the primary role to a surviving site without a human in the loop.",
+      "highlights": [
+        "Coordinates automated cross-datacenter promotion for Postgres clusters.",
+        "DR agent leadership semantics designed so exactly one datacenter can promote - no dual-primary state.",
+        "Replaces a recovery path whose slowest step was a human noticing the outage, usually out of hours.",
+        "Validated on Singapore <-> London clusters, including failback."
+      ]
+    },
+    {
+      "id": "shard-manager",
+      "name": "Operator Shard Manager",
+      "role": "Author",
+      "period": "Feb 2025 - Apr 2026",
+      "org": "Appscode Inc.",
+      "links": [
+        {
+          "label": "Repo",
+          "url": "https://github.com/kubeops/operator-shard-manager"
+        }
+      ],
+      "stack": [
+        "Go",
+        "Kubernetes",
+        "Consistent Hashing",
+        "Sharding"
+      ],
+      "related_writing": [
+        {
+          "title": "Operator Shard Manager",
+          "url": "https://appscode.com/blog/post/operator-shard-manager-v2025.3.14/",
+          "date": "2025-03",
+          "role": "author"
+        },
+        {
+          "title": "Webinar: Effortlessly provision KubeDB-managed databases at scale using KubeDB Operator Shard Manager",
+          "url": "https://youtu.be/Jd3uc7t69Ec",
+          "date": "2025-05-21",
+          "role": "presenter"
+        }
+      ],
+      "summary": "A consistent-hashing controller that distributes owned resources across operator replicas, so one control plane can reconcile thousands of database clusters in parallel.",
+      "highlights": [
+        "Hash ring with rebalancing on replica churn; handles deleted pods and StatefulSet membership changes.",
+        "Correctness fixes to the hashing library (gomodules/consistent): division bug, panic on a single member, uneven distribution.",
+        "Rolled out to provisioner, ops-manager, recommender, and Postgres OpsRequests; ShardConfig CRD/RBAC and multiple shard keys.",
+        "Enables 2000+ Postgres clusters on a single control plane."
+      ]
+    },
+    {
+      "id": "read-replica",
+      "name": "PostgreSQL Read Replica",
+      "role": "Designer / implementer",
+      "period": "Feb - Mar 2026",
+      "org": "Appscode Inc.",
+      "links": [],
+      "stack": [
+        "Go",
+        "PostgreSQL",
+        "pgpool",
+        "Kubernetes"
+      ],
+      "summary": "Decoupled replica count from replica size so an e-commerce customer with a multi-terabyte Postgres dataset could absorb campaign peaks in minutes instead of paying for peak capacity all year.",
+      "highlights": [
+        "Customer ran a multi-terabyte dataset and needed many more replicas at peak; adding one meant re-syncing the whole dataset - hours to days.",
+        "Design: keep replicas running permanently at minimal CPU/memory, streaming continuously, with pgpool balancing reads.",
+        "At campaign time one PostgresOpsRequest vertically scales the existing replicas - no data re-sync.",
+        "Hours-or-days becomes minutes, and peak capacity is no longer paid for 24/7."
+      ]
+    },
+    {
+      "id": "oracle-operator",
+      "name": "Oracle on Kubernetes",
+      "role": "Delivery lead",
+      "period": "May 2025 - Present",
+      "org": "Appscode Inc.",
+      "links": [],
+      "stack": [
+        "Go",
+        "Kubernetes",
+        "Oracle Data Guard"
+      ],
+      "related_writing": [
+        {
+          "title": "Webinar: Provision and Manage Oracle Database on Kubernetes using KubeDB",
+          "url": "https://youtu.be/sxhzDyoko7M",
+          "date": "2025-07-02",
+          "role": "presenter"
+        }
+      ],
+      "summary": "Brought Oracle into KubeDB: API and CRDs, operator, provisioner, webhooks, installer wiring, plus an oracle-coordinator implementing Data Guard.",
+      "highlights": [
+        "oracle-coordinator for Data Guard mode: standby provisioning, three-way replication, switchover.",
+        "Oracle API + CRDs across apimachinery and crd-manager; image registry and pull-secret handling.",
+        "oracle-exporter release CI; prebuilt-data-directory Oracle images to cut dev/test provisioning time."
+      ]
+    },
+    {
+      "id": "prompt-library",
+      "name": "KubeDB Prompt Library & AI-assisted feature parity",
+      "role": "Author (117 of 204 prompts)",
+      "period": "May 2026 - Present",
+      "org": "Appscode Inc.",
+      "links": [],
+      "stack": [
+        "AI agents",
+        "Go",
+        "Kubernetes"
+      ],
+      "summary": "Built an internal prompt library and a repeatable develop-test-fix-deploy loop, then used it to close long-outstanding feature gaps across the whole database fleet.",
+      "highlights": [
+        "117 of 204 prompt files across 17 domains: docs (29), gitops (22), recommendation (17), tests (14), ops (9), autoscaler (8), and more.",
+        "Per-repo AGENTS.md / CLAUDE.md context files so agents understand pod-role and architecture before touching code.",
+        "TLS renewBefore honored in cert ops - 22 engines. DoNotTerminate treated as Halt when webhook bypassed - 21 engines. Service preservation via resource-policy: keep - 12 engines. gofmt/toolchain sweep - 20 engines.",
+        "New engine onboarding end-to-end across 6-8 repos each: Aerospike, DocumentDB, Neo4j, HanaDB, ClickHouse, Cassandra.",
+        "Result: 148 PRs in June 2026, the majority merged at normal review quality."
+      ]
+    },
+    {
+      "id": "path-pulse",
+      "name": "Path-Pulse IoT Backend",
+      "role": "Author (personal)",
+      "period": "2026",
+      "org": null,
+      "links": [
+        {
+          "label": "Repo",
+          "url": "https://github.com/souravbiswassanto/path-pulse-iot-backend"
+        }
+      ],
+      "stack": [
+        "Go",
+        "gRPC",
+        "gRPC-Gateway",
+        "PostgreSQL",
+        "InfluxDB"
+      ],
+      "summary": "Backend for a fitness/IoT tracker: wearable and GPS devices stream location and pulse data; the service computes distance and pulse alerts and manages users, groups, and events.",
+      "highlights": [
+        "gRPC service fronted by a gRPC-Gateway exposing a REST/JSON API.",
+        "Relational data in Postgres, time-series in InfluxDB, in-memory cache in front of Postgres reads.",
+        "Vertical-slice layout per domain: handler -> service -> db, with protos generating the Go surface."
+      ]
+    },
+    {
+      "id": "go-pgtune",
+      "name": "go-pgtune",
+      "role": "Author (personal)",
+      "period": "2025",
+      "org": null,
+      "links": [
+        {
+          "label": "Repo",
+          "url": "https://github.com/souravbiswassanto/go-pgtune"
+        }
+      ],
+      "stack": [
+        "Go",
+        "PostgreSQL"
+      ],
+      "summary": "A Go port of pgtune - library plus HTTP API for generating PostgreSQL tuning configurations, output-compatible with pgtune.leopard.in.ua, with zero external dependencies in the core and built for use inside cloud-native controllers.",
+      "highlights": [
+        "Became the basis for KubeDB's automatic Postgres configuration tuning."
+      ]
+    },
+    {
+      "id": "side-multitenant",
+      "name": "Multi-tenant GKE platform work",
+      "role": "Engineer (independent, remote)",
+      "period": "Apr - Sep 2025",
+      "org": null,
+      "org_note": "REDACTED EMPLOYER - present with no company name and no job title.",
+      "links": [
+        {
+          "label": "Monitoring setup",
+          "url": "https://github.com/souravbiswassanto/multi-tenant-monitoring"
+        }
+      ],
+      "stack": [
+        "Go",
+        "Gin",
+        "SSE",
+        "GKE",
+        "Helm",
+        "ArgoCD",
+        "Terraform",
+        "Istio",
+        "Prometheus",
+        "Grafana"
+      ],
+      "summary": "Automated multi-tenant deployment and observability on GKE: a Go control-plane service, per-namespace tenant isolation, a GitOps delivery pipeline, and per-tenant metric isolation.",
+      "highlights": [
+        "Go + Gin microservice with REST APIs and Server-Sent Events driving real-time Helm deployments on GKE.",
+        "Tenant isolation per namespace with resource quotas and network policies.",
+        "Query frontier authorizing every Prometheus query and injecting a namespace label, enforced via kube-rbac-proxy and RBAC.",
+        "Istio for Ingress/Egress, TLS termination, load balancing and routing; Helm + ArgoCD GitOps; Terraform for GKE, IAM, VPC, GCS."
+      ]
+    },
+    {
+      "id": "misc-personal",
+      "name": "Smaller personal builds",
+      "role": "Author",
+      "period": "2024 - 2026",
+      "org": null,
+      "links": [
+        {
+          "label": "bit-torrent-client",
+          "url": "https://github.com/souravbiswassanto/bit-torrent-client"
+        },
+        {
+          "label": "concurrent-file-server",
+          "url": "https://github.com/souravbiswassanto/concurrent-file-server"
+        },
+        {
+          "label": "high-write-load-client",
+          "url": "https://github.com/souravbiswassanto/high-write-load-client"
+        },
+        {
+          "label": "web-scraper-colly",
+          "url": "https://github.com/souravbiswassanto/web-scraper-colly"
+        }
+      ],
+      "stack": [
+        "Go"
+      ],
+      "summary": "A BitTorrent client, a concurrent file server, a Postgres high-write-load generator, a Colly web scraper, and a repo of reusable agent skills and debugging playbooks."
+    }
+  ],
+  "case_studies": [
+    {
+      "id": "cs-zero-data-loss",
+      "title": "Zero data loss across datacenters - proved by destroying the primary",
+      "hook": "The test wasn't a failover drill. We deleted the primary with its PVCs and checked whether the other continent still had every byte.",
+      "body": [
+        "Cross-cluster synchronous replication between two KubeDB Postgres clusters, quorum configured as synchronous_standby_names = FIRST 2 (...) so that with a two-replica primary the sync set is always one local standby plus one cross-cluster standby - regardless of which pod currently holds the primary role.",
+        "Verification: destroyed the primary cluster with deletionPolicy: Delete, wiping its PVCs. The DR site's content fingerprint was identical, with no promotion performed - the data was durable at commit time, not recovered afterwards.",
+        "Found and documented a bootstrap deadlock: enabling synchronous replication before the DR replica is streaming blocks every commit, including KubeDB's own bootstrap writes, so the database never reaches Ready."
+      ],
+      "evidence": "kubedb/docs#1038 (+810 lines), validated live on two clusters before the guide was written",
+      "related_writing": [
+        {
+          "title": "Automating PostgreSQL Operations In Kubernetes Using KubeDB",
+          "url": "https://appscode.com/blog/post/postgres-failover-and-disaster-recovery/",
+          "date": "2025-06-22",
+          "role": "author"
+        }
+      ],
+      "tags": [
+        "PostgreSQL",
+        "Disaster Recovery",
+        "Distributed Systems"
+      ]
+    },
+    {
+      "id": "cs-read-replica",
+      "title": "The cost of always being ready for peak",
+      "title_note": "Quantifiers removed from the title per Saurov, 2026-08-06; customer figures genericized in the body for the same reason.",
+      "hook": "Their only way to survive a campaign was to pay for campaign capacity every day of the year.",
+      "body": [
+        "An e-commerce customer held a multi-terabyte PostgreSQL dataset. Load was modest most of the time but spiked hard during campaigns, when they needed many more read replicas.",
+        "Scaling out at that moment meant re-syncing the whole dataset from the primary, per replica - hours to days - so the only safe option was running every replica full-size, permanently.",
+        "The fix was to decouple replica count from replica size: keep the replicas running continuously at minimal CPU and memory, streaming, with pgpool load-balancing reads onto them so the primary is no longer permanently over-provisioned.",
+        "When a campaign starts, one PostgresOpsRequest vertically scales the existing replicas. No re-sync, because they were never behind. Hours or days becomes minutes."
+      ],
+      "evidence": "apimachinery, pg-coordinator, postgres repos, Feb-Mar 2026",
+      "related_writing": [],
+      "tags": [
+        "PostgreSQL",
+        "Cost Engineering",
+        "Scaling"
+      ]
+    },
+    {
+      "id": "cs-scale",
+      "title": "One control plane, 2000+ Postgres clusters",
+      "hook": "A single operator replica reconciling every database in the fleet is a bottleneck with a bad failure mode.",
+      "body": [
+        "Built a consistent-hashing shard manager that distributes owned resources across operator replicas, so reconciliation runs in parallel and the ring rebalances when replicas churn.",
+        "Fixed three correctness bugs in the hashing library along the way: a division bug, a panic on a single member, and uneven distribution.",
+        "Rolled out to provisioner, ops-manager, recommender and Postgres OpsRequests, with a ShardConfig CRD and support for multiple shard keys.",
+        "Backed by a large-scale test suite - 8 scripts, 3,557 lines - that bulk-provisions 50 to 1500+ Postgres clusters, benchmarks time-to-Ready, and fires batch OpsRequests across 6 operation types."
+      ],
+      "evidence": "kubeops/operator-shard-manager; local large-scale-test suite",
+      "related_writing": [
+        {
+          "title": "Operator Shard Manager",
+          "url": "https://appscode.com/blog/post/operator-shard-manager-v2025.3.14/",
+          "date": "2025-03",
+          "role": "author"
+        },
+        {
+          "title": "Webinar: Effortlessly provision KubeDB-managed databases at scale using KubeDB Operator Shard Manager",
+          "url": "https://youtu.be/Jd3uc7t69Ec",
+          "date": "2025-05-21",
+          "role": "presenter"
+        }
+      ],
+      "tags": [
+        "Distributed Systems",
+        "Scaling",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "cs-chaos",
+      "title": "Breaking PostgreSQL on purpose, 16 different ways",
+      "hook": "High availability is a claim until something kills your primary at 3 a.m. So we killed it ourselves, repeatedly.",
+      "body": [
+        "16+ Chaos Mesh experiments against an HA KubeDB Postgres cluster: pod kill, network faults and partitions, resource exhaustion.",
+        "Published as a public engineering deep-dive, which then seeded a team-wide chaos-testing series - reviewed the MySQL, MariaDB, Redis and InnoDB-cluster posts that followed."
+      ],
+      "evidence": "Published deep-dive, 16 Apr 2026",
+      "related_writing": [
+        {
+          "title": "Chaos Testing KubeDB PostgreSQL: Building Resilience with Chaos Mesh",
+          "url": "https://appscode.com/blog/post/chaos-testing-postgresql/",
+          "date": "2026-04-16",
+          "role": "author"
+        }
+      ],
+      "tags": [
+        "Reliability",
+        "Chaos Engineering",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "id": "cs-migration",
+      "title": "Migrating self-managed Postgres into Kubernetes with a 37-second write gap",
+      "hook": "The cutover budget for a production database is measured in seconds. We measured ours.",
+      "body": [
+        "Built and documented a migration path from self-managed PostgreSQL - bare StatefulSet, remote-datacenter VM, and hardened install - into KubeDB, using the remote-replica mechanism as the transport.",
+        "Measured write gap: 43 s for the bare flavour, 37 s for the hardened one, where the source superuser was never shared.",
+        "libc/collation mismatch on glibc-source to musl-image migrations: why REFRESH COLLATION VERSION fails, the datcollversion = NULL remedy, and a pre-cutover query that counts indexes needing REINDEX.",
+        "Verifiable write-stop procedure: freeze pg_current_wal_lsn() across two samples and catch up on pg_wal_lsn_diff(...) >= 0 rather than equality, because the source still emits checkpoint WAL after quiescing.",
+        "cert-manager CA-rotation trap: still-valid leaf Secrets get reused, so deleting the Certificate alone leaves 'tlsv1 alert unknown ca' - the Secrets must go too."
+      ],
+      "evidence": "kubedb/docs#1039 (+490 lines), both flavours run end-to-end",
+      "related_writing": [],
+      "tags": [
+        "PostgreSQL",
+        "Migration",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "cs-ai-parity",
+      "title": "Closing feature parity across 25+ database engines with an agent loop",
+      "hook": "Some gaps stay open for years not because they are hard, but because they are 22 near-identical changes.",
+      "body": [
+        "Authored 117 of 204 prompt files in an internal library spanning 17 domains, plus per-repo context files so agents understand pod roles and architecture before editing.",
+        "Built a repeatable live develop -> test -> fix -> deploy loop driven by those prompts.",
+        "Used it to fan out single changes across the fleet with verification: TLS renewBefore in cert ops (22 engines), DoNotTerminate treated as Halt (21), service preservation (12), a gofmt/toolchain sweep (20).",
+        "Onboarded new engines end-to-end across 6-8 repos each: Aerospike, DocumentDB, Neo4j, HanaDB.",
+        "148 PRs merged in June 2026 at normal review quality."
+      ],
+      "evidence": "kubedb/prompt-library (19 PRs); GitHub PR history",
+      "related_writing": [],
+      "tags": [
+        "AI-assisted Engineering",
+        "Automation",
+        "Scale"
+      ]
+    },
+    {
+      "id": "cs-supplychain",
+      "title": "Hardening the CI supply chain after an incident",
+      "attribution": "TEAM EFFORT - not solo work. The response was driven together with the CEO and senior engineers; Saurov's part was the workflow hardening described below. Any published version must say 'we' and credit the team, never imply he led or owned the response.",
+      "hook": "A CI workflow deleted GitHub organizations. The response was a team one, run with our CEO and senior engineers - this was my part of it.",
+      "body": [
+        "Pinned GitHub Actions to commit SHAs and added explicit least-privilege permissions blocks per job, starting with one repo and then across the fleet.",
+        "Replaced ambient GITHUB_TOKEN usage with scoped GitHub App tokens in release-tracker workflows, and fixed the resulting regressions across 10+ repositories.",
+        "Audited which workflows can write commits into other repos and deliberately scoped those tokens to workflows: write.",
+        "Added merge-automation guards after an accidental direct push to master, and adopted Docker Hardened Images for the PostgreSQL builds."
+      ],
+      "evidence": "appscode-images/builder, kubedb/* workflows, May-Jul 2026",
+      "related_writing": [],
+      "tags": [
+        "Security",
+        "CI/CD",
+        "Supply Chain"
+      ]
+    }
+  ],
+  "skills": {
+    "languages": [
+      "Go",
+      "C++",
+      "Bash",
+      "Python (basic)",
+      "SQL"
+    ],
+    "kubernetes": [
+      "Custom Controllers / Operators",
+      "CRDs",
+      "client-go",
+      "kubebuilder",
+      "Helm",
+      "Open Cluster Management",
+      "Kubeslice",
+      "Istio",
+      "OpenShift",
+      "Rancher / Harvester",
+      "k3s",
+      "TopoLVM",
+      "Longhorn"
+    ],
+    "databases": [
+      "PostgreSQL",
+      "Oracle Data Guard",
+      "pgpool",
+      "WAL archiving / PITR",
+      "wal-g",
+      "InfluxDB",
+      "MySQL / MariaDB / MongoDB (operator-level)"
+    ],
+    "distributed_systems": [
+      "Raft consensus",
+      "Leader election",
+      "Consistent hashing",
+      "Sharding",
+      "Multi-cluster orchestration",
+      "Synchronous replication",
+      "Split-brain avoidance"
+    ],
+    "cloud_devops": [
+      "AWS",
+      "GCP / GKE",
+      "Azure",
+      "Linode",
+      "Terraform",
+      "ArgoCD",
+      "GitOps",
+      "GitHub Actions",
+      "Docker",
+      "CI/CD",
+      "Supply-chain hardening"
+    ],
+    "observability": [
+      "Prometheus",
+      "Grafana",
+      "OpenTelemetry",
+      "kube-rbac-proxy",
+      "Chaos Mesh"
+    ],
+    "protocols_security": [
+      "gRPC",
+      "REST",
+      "TLS / mTLS",
+      "cert-manager",
+      "Vault / KubeVault",
+      "RBAC"
+    ],
+    "practices": [
+      "System design",
+      "Code review at volume",
+      "Release management",
+      "Technical writing",
+      "AI-assisted development",
+      "On-call / incident response",
+      "Mentoring"
+    ]
+  },
+  "writing": {
+    "blogs": [
+      {
+        "date": "2026-04-16",
+        "title": "Chaos Testing KubeDB PostgreSQL: Building Resilience with Chaos Mesh",
+        "url": "https://appscode.com/blog/post/chaos-testing-postgresql/",
+        "type": "deep-dive",
+        "featured": true
+      },
+      {
+        "date": "2025-06-22",
+        "title": "Automating PostgreSQL Operations In Kubernetes Using KubeDB",
+        "url": "https://appscode.com/blog/post/postgres-failover-and-disaster-recovery/",
+        "type": "deep-dive",
+        "featured": true
+      },
+      {
+        "date": "2025-03",
+        "title": "Operator Shard Manager",
+        "url": "https://appscode.com/blog/post/operator-shard-manager-v2025.3.14/",
+        "type": "deep-dive",
+        "featured": true
+      },
+      {
+        "date": "2024-01",
+        "title": "PostgreSQL WAL archiving on NFS",
+        "url": "https://appscode.com/blog/post/postgres-wal-nfs/",
+        "type": "deep-dive",
+        "featured": true
+      },
+      {
+        "date": "2026-07-10",
+        "title": "KubeDB v2026.7.10 release announcement",
+        "url": "https://appscode.com/blog/post/kubedb-v2026.7.10/",
+        "type": "release"
+      },
+      {
+        "date": "2026-06-19",
+        "title": "KubeDB v2026.6.19 release announcement",
+        "url": "https://appscode.com/blog/post/kubedb-v2026.6.19/",
+        "type": "release"
+      },
+      {
+        "date": "2026-04-27",
+        "title": "KubeDB v2026.4.27 release announcement",
+        "url": "https://appscode.com/blog/post/kubedb-v2026.4.27/",
+        "type": "release"
+      },
+      {
+        "date": "2026-02-26",
+        "title": "KubeDB v2026.2.26 release announcement",
+        "url": "https://appscode.com/blog/post/kubedb-v2026.2.26/",
+        "type": "release"
+      },
+      {
+        "date": "2026-01-19",
+        "title": "KubeDB v2026.1.19 release announcement",
+        "url": "https://appscode.com/blog/post/kubedb-v2026.1.19/",
+        "type": "release"
+      },
+      {
+        "date": "2025-05-30",
+        "title": "KubeDB v2025.5.30 release announcement",
+        "url": "https://appscode.com/blog/post/kubedb-v2025.5.30/",
+        "type": "release"
+      },
+      {
+        "date": "2025-03-24",
+        "title": "KubeDB v2025.3.24 release announcement",
+        "url": "https://appscode.com/blog/post/kubedb-v2025.3.24/",
+        "type": "release"
+      },
+      {
+        "date": "2025-02-19",
+        "title": "KubeDB v2025.02.19 release announcement",
+        "url": "https://appscode.com/blog/post/kubedb-v2025.2.19/",
+        "type": "release"
+      },
+      {
+        "date": "2024-08-21",
+        "title": "KubeDB v2024.8.21 release announcement - stable v1 API for kubedb.com",
+        "url": "https://appscode.com/blog/post/kubedb-v2024.8.21/",
+        "type": "release"
+      }
+    ],
+    "blog_count_note": "13 published posts total: 4 engineering deep-dives + 9 release announcements. URL slugs for release posts follow appscode.com/blog/post/kubedb-vYYYY.M.D/ - VERIFY each before publishing links.",
+    "docs": [
+      "Postgres automated failover & disaster recovery",
+      "Distributed Postgres across multiple clusters",
+      "Remote replica for datacenter failover and failback (+1,045 lines, Singapore <-> London validated)",
+      "Zero-data-loss cross-cluster synchronous replication (+810 lines)",
+      "Migration of self-managed Postgres into KubeDB (+490 lines)",
+      "Auto configuration tuning (pgtune)",
+      "PostgreSQL extensions guide + modernized streaming-replication docs",
+      "Postgres archiver concepts",
+      "Arbiter, restart, reconfigure, reconfigure-TLS, autoscaler guides",
+      "Supported-features tables for all KubeDB databases"
+    ],
+    "docs_note": "~2,345 lines across the three DR/migration guides alone - every procedure validated live on real clusters before it was written.",
+    "internal": [
+      "Tiered Rancher/Harvester/Longhorn troubleshooting curriculum (~15 documents, beginner -> senior): events-first triage, timeline correlation, scheduling-vs-mounting, failure signatures, root-cause discipline, Longhorn internals, QEMU/guest-level debugging",
+      "KubeVault deployment guide (YAML -> Vault command mapping), KubeVault mental model, namespace-scoped multi-tenancy with hub-spoke OCM architecture",
+      "Per-repo AGENTS.md / CLAUDE.md engineering context files",
+      "Code reviews: migrator CLI, DocumentDB ops, DC-DR design"
+    ],
+    "speaking": [
+      {
+        "date": "2025-05-21",
+        "event": "KubeDB webinar",
+        "title": "Effortlessly provision KubeDB-managed databases at scale using KubeDB Operator Shard Manager",
+        "video": "https://youtu.be/Jd3uc7t69Ec",
+        "channel": "AppsCode Inc.",
+        "verified": "Title pulled live from the YouTube oEmbed API, 2026-08-06. Date pairing inferred from local webinar/21-05-2025 assets - confirm which video maps to which date.",
+        "relates_to": [
+          "shard-manager",
+          "cs-scale"
+        ]
+      },
+      {
+        "date": "2025-07-02",
+        "event": "KubeDB webinar",
+        "title": "Provision and Manage Oracle Database on Kubernetes using KubeDB",
+        "video": "https://youtu.be/sxhzDyoko7M",
+        "channel": "AppsCode Inc.",
+        "verified": "Title pulled live from the YouTube oEmbed API, 2026-08-06. Matches local webinar/02-07-2025 assets (dataguard.yaml, dg.yaml, oracle-standalone.yaml).",
+        "relates_to": [
+          "oracle-operator"
+        ]
+      }
+    ]
+  },
+  "release_lifecycle": {
+    "summary": "Owns the KubeDB release lifecycle end to end - features, stability, production rollout, and the public announcement. Nine releases shipped, each with an announcement blog authored personally.",
+    "releases": [
+      {
+        "version": "v2026.7.10",
+        "date": "2026-07-10",
+        "blog": "https://appscode.com/blog/post/kubedb-v2026.7.10/"
+      },
+      {
+        "version": "v2026.6.19",
+        "date": "2026-06-19",
+        "blog": "https://appscode.com/blog/post/kubedb-v2026.6.19/"
+      },
+      {
+        "version": "v2026.4.27",
+        "date": "2026-04-27",
+        "blog": "https://appscode.com/blog/post/kubedb-v2026.4.27/"
+      },
+      {
+        "version": "v2026.2.26",
+        "date": "2026-02-26",
+        "blog": "https://appscode.com/blog/post/kubedb-v2026.2.26/"
+      },
+      {
+        "version": "v2026.1.19",
+        "date": "2026-01-19",
+        "blog": "https://appscode.com/blog/post/kubedb-v2026.1.19/"
+      },
+      {
+        "version": "v2025.5.30",
+        "date": "2025-05-30",
+        "blog": "https://appscode.com/blog/post/kubedb-v2025.5.30/"
+      },
+      {
+        "version": "v2025.3.24",
+        "date": "2025-03-24",
+        "blog": "https://appscode.com/blog/post/kubedb-v2025.3.24/"
+      },
+      {
+        "version": "v2025.02.19",
+        "date": "2025-02-19",
+        "blog": "https://appscode.com/blog/post/kubedb-v2025.2.19/"
+      },
+      {
+        "version": "v2024.8.21",
+        "date": "2024-08-21",
+        "blog": "https://appscode.com/blog/post/kubedb-v2024.8.21/",
+        "note": "Introduced the stable v1 API for the kubedb.com resource group, with backward-compatible v1alpha2 conversions."
+      }
+    ],
+    "supporting_work": [
+      "appscodelabs/release-automaton (8 PRs) - added documentdb-coordinator, Aerospike, neo4j-backup-plugin, qdrant-restic-plugin, hanadb-coordinator, migrator CLI tags, and physical-backup image tags to the release process.",
+      "kubedb/installer (63 PRs) - catalog and version publishing, webhook configuration wiring, RBAC, feature gates, fresh-install and catalog-refresh fixes."
+    ],
+    "url_caveat": "Release blog URLs follow the appscode.com/blog/post/kubedb-vYYYY.M.D/ pattern and were derived, not fetched. Verify each resolves before publishing - the v2025.02.19 post in particular may be v2025.2.19."
+  },
+  "photos": {
+    "status": "hero.jpg received. The rest are optional - drop more into portfolio/assets/photos/ any time.",
+    "directory": "/home/saurov/sourav/portfolio/assets/photos/",
+    "received": [
+      {
+        "file": "hero.jpg",
+        "dimensions": "1233 x 1280",
+        "format": "JPEG",
+        "slot": "hero-headshot",
+        "note": "Portrait orientation, comfortably high resolution for a hero. Will need a described crop focus and a compressed WebP derivative at build time."
+      }
+    ],
+    "wanted": [
+      {
+        "slot": "hero-headshot",
+        "need": "A clean headshot, ideally 1000px+ on the short edge, plain or softly blurred background. Landscape or square both work.",
+        "required": true,
+        "satisfied_by": "hero.jpg"
+      },
+      {
+        "slot": "speaking",
+        "need": "A photo from either KubeDB webinar, or any talk/presentation shot. Goes beside the Speaking section - visual proof of the two webinars.",
+        "required": false
+      },
+      {
+        "slot": "icpc-team",
+        "need": "An ICPC contest or team photo - onsite at Dhaka Regional, or with the team. Anchors the competitive-programming section and humanizes it.",
+        "required": false
+      },
+      {
+        "slot": "team-work",
+        "need": "Anything showing the team or the office - a whiteboard session, the KubeDB team. Supports the 'leads 12 engineers' claim.",
+        "required": false
+      },
+      {
+        "slot": "certificates",
+        "need": "Scans or photos of the contest certificates, so they can be self-hosted rather than linked to a personal Google Drive.",
+        "required": false
+      }
+    ]
+  },
+  "enterprise_impact": {
+    "on_call_regions": [
+      "France",
+      "Sweden",
+      "USA",
+      "India",
+      "Vietnam",
+      "Bangladesh"
+    ],
+    "named_customers": [],
+    "naming_decision": "RESOLVED 2026-08-06: NO customer names on the public site at all. Saurov's decision. Do not add Nokia, Orange Telecom, GreenHouse, Coredge, VNPAY, SoftBank or ace-cloud - not in any section, not as a logo, not in a case study. Describe them by sector and geography only.",
+    "anonymized_descriptors": [
+      "a global telecom equipment vendor",
+      "a European carrier",
+      "an agritech company",
+      "a cloud platform provider",
+      "an e-commerce customer"
+    ],
+    "platforms": [
+      "OpenShift",
+      "Rancher / Harvester / Longhorn",
+      "TopoLVM",
+      "GKE",
+      "AWS (IRSA)",
+      "Azure",
+      "Minio",
+      "Linode"
+    ],
+    "representative_escalations": [
+      "restic-plugin nil-pointer crash on credential load - patched master and release-0.29",
+      "pgpool max_pool default 15 -> 4 with validation, fixing connection exhaustion",
+      "pod anti-affinity behaviour change between releases",
+      "replication-slot primary_conninfo missing dbname; hot_standby with ReplicationSlot WAL policy",
+      "timeline divergence and standby init failures",
+      "collation fix for a customer cluster; dedicated Postgres 14.19 build with custom capabilities for a carrier",
+      "volume-expansion API fix for a fintech customer"
+    ]
+  },
+  "education": {
+    "display_note": "Saurov asked for the full academic record including school. Rendered as one tiered list, university first. Presentation caution: on a senior engineer's public portfolio, SSC/JSC/PSC results are unusual in Western and European hiring markets and can read as padding - they are entirely normal on a Bangladeshi CV. Recommend keeping the full list here, and on the public site showing the degree prominently with school results collapsed behind a 'full academic record' toggle. Saurov's call.",
+    "primary": {
+      "degree": "BS in Computer Science and Engineering",
+      "institution": "University of Barishal",
+      "location": "Barishal, Bangladesh",
+      "start": "2017-01",
+      "end": "2023-03",
+      "cgpa": "3.56 / 4.00",
+      "coursework": [
+        "Operating Systems",
+        "Data Structures",
+        "Algorithms",
+        "Computer Networks",
+        "DBMS",
+        "Artificial Intelligence",
+        "Machine Learning",
+        "Software Engineering",
+        "OOP",
+        "Discrete Mathematics"
+      ]
+    },
+    "earlier": [
+      {
+        "level": "HSC (Higher Secondary Certificate)",
+        "institution": "Amrita Lal Dey College",
+        "location": "Barishal-8200, Bangladesh",
+        "result": "GPA 5.00 / 5.00",
+        "distinction": null
+      },
+      {
+        "level": "SSC (Secondary School Certificate)",
+        "institution": "Bakergonj J.S.U Model High School",
+        "location": "Bakergonj, Barishal, Bangladesh",
+        "result": "GPA 5.00 / 5.00",
+        "distinction": null
+      },
+      {
+        "level": "JSC (Junior School Certificate)",
+        "institution": "Bakergonj J.S.U Model High School",
+        "location": "Bakergonj, Barishal, Bangladesh",
+        "result": "GPA 4.50 / 5.00",
+        "distinction": "General Scholarship"
+      },
+      {
+        "level": "PSC (Primary School Certificate)",
+        "institution": "Bakergonj Model Government Primary School",
+        "location": "Bakergonj, Barishal, Bangladesh",
+        "result": null,
+        "distinction": "Talent Pool Scholarship"
+      }
+    ],
+    "leadership": {
+      "role": "President and Problem Setter, Programming Club, CSE - University of Barishal",
+      "period": "May 2022 - Mar 2023",
+      "detail": "Ran multiple programming competitions and bootcamps for junior programmers under their leadership."
+    }
+  },
+  "certifications": [
+    {
+      "name": "EF SET English Certificate - C1 Advanced",
+      "issuer": "EF SET (EF Standard English Test)",
+      "level": "C1 Advanced",
+      "score": "61 / 100",
+      "sections": [
+        "Reading",
+        "Listening"
+      ],
+      "awarded": "2025-04-02",
+      "url": "https://drive.google.com/file/d/1JpllSNliok1F0sHmrKOc0Jv3qR1NULax/view",
+      "verified": "Downloaded and read the PDF directly, 2026-08-06 - issuer, level, score and award date all confirmed from the document itself.",
+      "placement": "A 'Languages' line near Education: 'English - C1 Advanced (EF SET, 2025)'. Worth having, since the site targets European and North American employers. Show the level, not the raw 61/100 - CEFR level is the meaningful unit and a bare score out of 100 reads lower than it is."
+    }
+  ],
+  "competitive_programming": {
+    "positioning_note": "This is a strong differentiator but must not dominate the site. Recommend one compact section, framed as the origin story of the algorithmic instinct, not as the headline.",
+    "verified_on": "2026-08-06",
+    "totals": {
+      "problems_solved": 2950,
+      "contests": 500,
+      "source": "https://github.com/souravbiswassanto/Problem-Solving-Stats"
+    },
+    "profiles": [
+      {
+        "platform": "Codeforces",
+        "handle": "_Dormammu_",
+        "url": "https://codeforces.com/profile/_Dormammu_",
+        "max_rating": 1789,
+        "current_rating": 1649,
+        "rank": "Expert",
+        "solved": 598,
+        "contests": 150,
+        "primary": true,
+        "live_verified": true
+      },
+      {
+        "platform": "CodeChef",
+        "handle": "hiro_hamada2",
+        "url": "https://www.codechef.com/users/hiro_hamada2",
+        "max_rating": 2064,
+        "rank": "5-star / Yellow",
+        "solved": 150,
+        "contests": 28,
+        "primary": true,
+        "live_verified": false
+      },
+      {
+        "platform": "LeetCode",
+        "handle": "Hiro_hamada",
+        "url": "https://leetcode.com/Hiro_hamada/",
+        "max_rating": 1824,
+        "solved": 186,
+        "contests": 5,
+        "primary": true,
+        "live_verified": false
+      },
+      {
+        "platform": "Toph",
+        "handle": "Sourav1234",
+        "url": "https://toph.co/u/Sourav1234",
+        "max_rating": 1888,
+        "solved": 190,
+        "contests": 67,
+        "primary": true,
+        "live_verified": false
+      },
+      {
+        "platform": "AtCoder",
+        "handle": "hiro_hamada",
+        "url": "https://atcoder.jp/users/hiro_hamada",
+        "max_rating": 708,
+        "solved": 70,
+        "contests": 22
+      },
+      {
+        "platform": "Codeforces",
+        "handle": "Monster_Nerd",
+        "url": "https://codeforces.com/profile/Monster_Nerd",
+        "max_rating": 1665,
+        "current_rating": 1562,
+        "rank": "Expert (max)",
+        "live_verified": true
+      },
+      {
+        "platform": "UVA",
+        "handle": "sourav_biswas_santo",
+        "url": "http://uhunt.onlinejudge.org/id/900836",
+        "solved": 134
+      },
+      {
+        "platform": "LightOJ",
+        "handle": "Sourav Biswas",
+        "url": "https://lightoj.com/user/sourav-cse4-",
+        "solved": 67
+      },
+      {
+        "platform": "CSES",
+        "solved": 30
+      },
+      {
+        "platform": "InterviewBit",
+        "solved": 65
+      }
+    ],
+    "profiles_note": "The stats table lists ~30 accounts across 15 judges. For the site, surface only the 4 primary ones (Codeforces, CodeChef, LeetCode, Toph) and the totals; a long list of alt accounts reads as noise.",
+    "divisional_champion_summary": {
+      "claim": "Divisional Champion (Barishal Division) five times across 2021-2022 - ICPC Dhaka Regional 2021 and 2022, and the BUET, RUET and AUST inter-university contests in 2022.",
+      "why_it_matters": "This is the strongest single line in the whole competitive-programming record and it was buried. Best team from an entire administrative division, repeatedly, against the national field - it says more than any individual rating, and it is a title rather than a rank, so it needs no percentile context to land.",
+      "events": [
+        "ICPC Dhaka Regional 2021 - 11th of 165",
+        "ICPC Dhaka Regional 2022 - 13th of 162",
+        "BUET CSE Fest IUPC 2022 - 15th of 110",
+        "RUET CSE Fest IUPC 2022 - rank to confirm",
+        "AUST CodeFiesta IUPC 2022 - 41st of 105"
+      ]
+    },
+    "certificate_caveat": "VERIFIED 2026-08-06: every Drive link below returns HTTP 200 with no sign-in or request-access wall on an unauthenticated fetch, so they are publicly viewable. Remaining consideration is only that a public page linking a personal Drive exposes that Drive's sharing surface - self-hosting the images would avoid that, and would survive any future Drive cleanup. Not blocking.",
+    "icpc": [
+      {
+        "year": 2021,
+        "event": "ACM ICPC Dhaka Regional",
+        "result": "11th of 165 teams from 110 universities - Divisional Champion (Barishal Division)",
+        "certificate": "https://drive.google.com/file/d/1BiC6gUBjqfItzo_bC8dPiIzq6BtwR1Zh/view"
+      },
+      {
+        "year": 2022,
+        "event": "ACM ICPC Dhaka Regional",
+        "result": "13th of 162 teams - Divisional Champion (Barishal Division)"
+      },
+      {
+        "year": 2022,
+        "event": "ICPC Asia West Continent Contest",
+        "result": "Participated"
+      },
+      {
+        "year": 2023,
+        "event": "ICPC Asia West Continent Contest",
+        "result": "Participated"
+      },
+      {
+        "year": 2021,
+        "event": "ICPC Dhaka Regional Preliminary",
+        "result": "17th of 1700+ teams (Team_Robust)",
+        "standings": "https://algo.codemarshal.org/contests/icpc-dhaka-21-preli/standings"
+      },
+      {
+        "year": 2020,
+        "event": "ICPC Dhaka Regional Preliminary",
+        "result": "56th of 1280 teams (top 4.5%)",
+        "certificate": "https://drive.google.com/file/d/1RPbLR8PxKMeRfbHZgd8vZs7SLdftPI1i/view"
+      },
+      {
+        "year": 2019,
+        "event": "ICPC Dhaka Regional Preliminary",
+        "result": "150th of 1708 teams (top 8.7%)",
+        "certificate": "https://drive.google.com/file/d/1RPbLR8PxKMeRfbHZgd8vZs7SLdftPI1i/view"
+      },
+      {
+        "year": 2018,
+        "event": "ACM ICPC Dhaka Regional",
+        "result": "Honorable Mention",
+        "certificate": "https://drive.google.com/file/d/1yq2lUVs24INzDO62DqxIrTCZfIaPa8sJ/view"
+      }
+    ],
+    "global_contests": [
+      {
+        "event": "CodeChef SnackDown 2021",
+        "result": "Top 1% overall; 1012th/36341 qualifiers, 1646th/20429 Round 1A, 429th/3000 pre-elimination, 361st/580 elimination",
+        "award": "T-shirt + certificate",
+        "certificate": "https://drive.google.com/file/d/1GBQT1t8V3Zxjp-logIBaE7qHDqEluykm/view"
+      },
+      {
+        "event": "Meta (Facebook) Hacker Cup 2022",
+        "result": "Top 4.5%",
+        "certificate": "https://drive.google.com/drive/folders/1fx0I3N-UkSr-S1EyjmrSd8pemHvG2Nd_"
+      },
+      {
+        "event": "Meta (Facebook) Hacker Cup 2021",
+        "result": "Top 7.24% qualification, top 8.8% Round 1 (1124th/12692)",
+        "award": "T-shirt for top-2000 finish in Round 2",
+        "certificate": "https://drive.google.com/file/d/1fTawxK80mA1yyRs04cxtG-B4NzyV0pIK/view",
+        "official_certificate": "https://web.facebook.com/codingcompetitions/hacker-cup/2021/certificate/332332974636325"
+      },
+      {
+        "event": "Google Code Jam 2022",
+        "result": "Top 2.7% qualifiers (889th/32750), top 15% Round 1B; top 5.9% overall",
+        "certificate": "https://drive.google.com/drive/folders/1fx0I3N-UkSr-S1EyjmrSd8pemHvG2Nd_"
+      },
+      {
+        "event": "Google Code Jam 2020",
+        "result": "Participated",
+        "certificate": "https://drive.google.com/file/d/1tE74AEbRD8zZnSlSuZmc8jlVLDK5__Ki/view"
+      },
+      {
+        "event": "Google Kick Start 2022",
+        "result": "1842nd/17500 Round A, 1366th/8100 Round D",
+        "certificate": "https://drive.google.com/drive/folders/1fx0I3N-UkSr-S1EyjmrSd8pemHvG2Nd_"
+      },
+      {
+        "event": "Google Kick Start 2021",
+        "result": "Top 15% Round F (1217th/8500), top 16.7% Round G (1589th/9500)",
+        "certificate": "https://drive.google.com/file/d/18q1cbgM3ofohErzq-hK_lihNLxG7jRoO/view"
+      },
+      {
+        "event": "CodeChef UWCOI 2021 (Singapore)",
+        "result": "8th in Bangladesh, 157th/2865 worldwide",
+        "award": "250 CodeChef laddus"
+      },
+      {
+        "event": "International Coding Challenge, CodeChef",
+        "result": "6th of 130, outperforming several 7-star and many 6-star coders"
+      }
+    ],
+    "national_contests": [
+      {
+        "event": "BUET CSE Fest IUPC 2022",
+        "result": "15th of 110 teams - Divisional Champion",
+        "award": "6,000 BDT",
+        "certificate": "https://drive.google.com/file/d/1WE6iY10SMqHm0LP3B_0VJ6yckqXfPdyK/view"
+      },
+      {
+        "event": "RUET CSE Fest IUPC 2022",
+        "result": "32nd of 105 teams - Divisional Champion",
+        "result_uncertain": "Saurov recalls ~29th; the 2023 CV says 32nd. Check the certificate before publishing a number - or just say 'Divisional Champion' and drop the rank, which is the stronger claim anyway.",
+        "certificate": "https://drive.google.com/file/d/1y_C1EcQr3UgCQ7lsLZlRW5BTe0KsvjGd/view"
+      },
+      {
+        "event": "AUST CodeFiesta IUPC 2022",
+        "result": "41st of 105 teams - Divisional Champion",
+        "certificate": "https://drive.google.com/file/d/1KDYgm56R2nHN-qY4wk4gzCU_neExP7JE/view"
+      },
+      {
+        "event": "BRAC University JayJatra'50 individual contest",
+        "result": "14th of 140 (top 10%)",
+        "certificate": "https://drive.google.com/file/d/18gnoUtb7lTvLCQzNvUJa69qXbX5y4c6_/view"
+      },
+      {
+        "event": "MIST NCPC 2020",
+        "result": "Honorable Mention",
+        "certificate": "https://drive.google.com/file/d/1yzZfflXGq5X4XrgwvZmnf0RcGVHj8E0w/view"
+      },
+      {
+        "event": "BUET CSE Fest IUPC 2018",
+        "result": "Honorable Mention",
+        "certificate": "https://drive.google.com/file/d/1z4jNFrZ4x5aD-2X1KRCh_OKKx09ZC_qa/view"
+      }
+    ],
+    "awards": [
+      "5,200 BDT for Divisional Champion, ICPC Dhaka Regional 2021",
+      "6,000 BDT for a top-15 finish, BUET IUPC 2022",
+      "Meta Hacker Cup T-shirt (top 2000, Round 2)",
+      "CodeChef SnackDown 2021 T-shirt and certificate",
+      "250 CodeChef laddus, UWCOI 2021",
+      "Amazon gift cards: 1225th/14285 Grand Coding Contest and 34th of 2171 (top 50 awarded), Newton School 2022"
+    ],
+    "problem_setting": [
+      "Set an algorithmic problem for a public CodeChef contest (ALNALC, difficulty 2745): https://www.codechef.com/SEP221A/problems/ALNALC",
+      "Set 10+ algorithmic problems for intra-department and HackerRank contests"
+    ]
+  },
+  "assets": {
+    "cv_pdf_one_page": "/home/saurov/sourav/cv/versions/v1-onepage-aug2026.pdf",
+    "cv_pdf_two_page": "/home/saurov/sourav/cv/versions/v2-extended-aug2026.pdf",
+    "cv_master_tex": "/home/saurov/sourav/cv/main.tex",
+    "photo": "None found locally. Fallback: GitHub avatar https://avatars.githubusercontent.com/u/48715910?v=4 - low resolution for a hero image. NEED a proper headshot.",
+    "logos_needed": [
+      "Appscode",
+      "KubeDB",
+      "Kubernetes",
+      "PostgreSQL",
+      "Go"
+    ],
+    "diagram_opportunities": [
+      "Raft leader election + LSN propagation over gRPC (failover path)",
+      "Two-tier DR: OCM control plane auto-promotion vs remote replica manual DR",
+      "Read Replica: cost curve of 15 permanent full-size replicas vs minimal-size + burst scale",
+      "Consistent-hashing shard ring distributing clusters across operator replicas",
+      "Multi-cluster PetSet topology across Singapore and London"
+    ]
+  }
+}

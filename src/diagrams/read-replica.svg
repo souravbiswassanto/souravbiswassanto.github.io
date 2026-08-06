@@ -1,0 +1,37 @@
+<svg viewBox="0 0 720 300" role="img" aria-labelledby="rr-title rr-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="rr-title">Provisioned capacity before and after decoupling replica count from replica size</title>
+  <desc id="rr-desc">Before, every read replica ran at full size all year so the fleet could absorb campaign peaks, meaning peak capacity was paid for continuously. After, the same replicas stay attached at minimal CPU and memory and are scaled vertically only during a campaign, so provisioned capacity tracks demand instead of the worst case.</desc>
+
+  <!-- axes -->
+  <line x1="46" y1="222" x2="700" y2="222" class="d-line" stroke-width="1.5"/>
+  <line x1="46" y1="34" x2="46" y2="222" class="d-line" stroke-width="1.5"/>
+  <text x="46" y="248" class="d-text-sm">Jan</text>
+  <text x="240" y="248" class="d-text-sm" text-anchor="middle">campaign</text>
+  <text x="520" y="248" class="d-text-sm" text-anchor="middle">campaign</text>
+  <text x="700" y="248" class="d-text-sm" text-anchor="end">Dec</text>
+  <text x="10" y="42" class="d-text-sm">cost</text>
+
+  <!-- demand curve (what is actually needed) -->
+  <path d="M 46 200 L 170 200 L 200 92 L 280 92 L 310 200 L 450 200 L 480 92 L 560 92 L 590 200 L 700 200"
+        stroke="currentColor" stroke-width="1.5" fill="none" opacity=".38" stroke-dasharray="5 4"/>
+  <text x="332" y="86" class="d-text-sm">actual demand</text>
+
+  <!-- BEFORE: flat provisioned line at peak -->
+  <path d="M 46 74 L 700 74" class="d-line" stroke-width="2.5" stroke-linecap="round"/>
+  <rect x="46" y="74" width="654" height="148" fill="currentColor" opacity=".05"/>
+  <text x="56" y="66" class="d-text" font-size="12" font-weight="600">Before — every replica full-size, all year</text>
+
+  <!-- AFTER: low baseline with two spikes -->
+  <path d="M 46 194 L 176 194 L 196 88 L 284 88 L 304 194 L 456 194 L 476 88 L 564 88 L 584 194 L 700 194"
+        class="d-stroke-accent" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="56" y="212" class="d-accent" font-size="12" font-weight="600" font-family="var(--font-sans)">After — minimal baseline, scaled at peak</text>
+
+  <!-- saved area callout -->
+  <path d="M 330 84 L 372 60" class="d-line" stroke-width="1"/>
+  <text x="378" y="58" class="d-text-sm">capacity paid for but unused</text>
+
+  <!-- annotation: no resync -->
+  <g transform="translate(196,262)">
+    <text x="0" y="0" class="d-text-sm">replicas were already streaming — vertical scale takes minutes, no re-sync</text>
+  </g>
+</svg>
