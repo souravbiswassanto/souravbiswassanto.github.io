@@ -286,11 +286,8 @@ def build_home():
     </div>
     <div class="domains reveal">{DOMAIN_CARDS}</div>
     {LIFECYCLE_FIG}
-    <div class="section-head reveal" style="margin-top:clamp(2.5rem,1.5rem+3vw,4rem)">
-      <h3 style="font-size:var(--step-2)">Losing the primary should be boring</h3>
-      <p>A database that fails over in seconds is not the same product as one that fails over when somebody
-      notices. Much of the work above is the distance between those two sentences.</p>
-    </div>
+    <p class="pull reveal">A database that fails over in seconds is not the same product as one that fails
+    over when somebody notices. Losing the primary should be boring.</p>
     {FAILOVER_FIG}
   </div>
 </section>""")

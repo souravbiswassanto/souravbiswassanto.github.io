@@ -172,11 +172,8 @@
   </g>
 </svg>
 </div><figcaption>The PostgreSQL lifecycle as declarative operations. Provisioning is a custom resource; tuning, scaling, upgrades, credential and certificate rotation, and backup with point-in-time recovery are each an OpsRequest the operator carries out; failover and cross-datacenter recovery fall to Raft and the DR control plane. No stage needs a runbook.</figcaption></figure>
-    <div class="section-head reveal" style="margin-top:clamp(2.5rem,1.5rem+3vw,4rem)">
-      <h3 style="font-size:var(--step-2)">Losing the primary should be boring</h3>
-      <p>A database that fails over in seconds is not the same product as one that fails over when somebody
-      notices. Much of the work above is the distance between those two sentences.</p>
-    </div>
+    <p class="pull reveal">A database that fails over in seconds is not the same product as one that fails
+    over when somebody notices. Losing the primary should be boring.</p>
     <figure class="diagram reveal"><div class="frame"><svg viewBox="0 0 720 320" role="img" aria-labelledby="failover-title failover-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="failover-title">Raft-based PostgreSQL failover</title>
   <desc id="failover-desc">Three Postgres pods form a Raft consensus group. Each standby continuously receives the primary's write-ahead-log position over gRPC. When the primary is lost, the standby holding the highest position is elected and promoted, completing in two to ten seconds.</desc>
