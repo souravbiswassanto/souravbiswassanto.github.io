@@ -759,7 +759,7 @@
   ],
   "skills": {
     "languages": [
-      "Go",
+      "Go (Gin, gRPC, client-go)",
       "C++",
       "Bash",
       "Python (basic)",
@@ -834,6 +834,17 @@
       "AI-assisted development",
       "On-call / incident response",
       "Mentoring"
+    ],
+    "platform_delivery": [
+      "Istio service mesh",
+      "Multi-tenant namespace isolation",
+      "Resource quotas & network policies",
+      "kube-rbac-proxy",
+      "ArgoCD",
+      "GitOps",
+      "Helm",
+      "Terraform",
+      "Go + Gin REST/SSE services"
     ]
   },
   "writing": {
@@ -1440,6 +1451,33 @@
       "Read Replica: cost curve of 15 permanent full-size replicas vs minimal-size + burst scale",
       "Consistent-hashing shard ring distributing clusters across operator replicas",
       "Multi-cluster PetSet topology across Singapore and London"
+    ]
+  },
+  "work_domains": {
+    "intro": "I build the control planes that run databases. Go and Kubernetes at the bottom, PostgreSQL internals at the top, consensus and replication in between — everything between provisioning a cluster and getting it back after a datacenter dies.",
+    "framing_note": "Four areas, one hard number each. Deliberately NOT a keyword list - the Toolkit section carries keywords, and a list of twelve technologies reads identical to every other candidate's. Do not expand this into prose about 'performance tuning' and similar.",
+    "avoid": "Never use the word 'DBA' for Saurov. He builds the automation that replaces routine DBA work, which is the stronger and rarer claim; 'DBA' invites comparison with career DBAs on query-plan depth, a comparison that adds nothing.",
+    "domains": [
+      {
+        "title": "Kubernetes operator engineering",
+        "body": "Go controllers, CRDs and admission webhooks that teach Kubernetes to run stateful workloads it was never designed for — including a fork of the StatefulSet controller that places pods across geo-distributed, multi-cloud clusters.",
+        "proof": "733 PRs across 100+ repositories"
+      },
+      {
+        "title": "PostgreSQL lifecycle ownership",
+        "body": "The whole arc as declarative API calls instead of runbooks: provisioning, configuration tuning, vertical and horizontal scaling, major-version upgrades, TLS and credential rotation, WAL archiving and point-in-time recovery.",
+        "proof": "PostgreSQL 13 → 18 · 8 Day-2 operations"
+      },
+      {
+        "title": "High availability and disaster recovery",
+        "body": "Raft leader election with WAL positions propagated over gRPC, synchronous quorum replication spanning datacenters, and a control plane that promotes a surviving site without waiting for a human to notice the outage.",
+        "proof": "Failover in 2–10 seconds"
+      },
+      {
+        "title": "Operating it at scale",
+        "body": "Consistent-hash sharding so a single control plane reconciles the whole fleet in parallel, verified with bulk-provisioning benchmarks and deliberate fault injection rather than assumed to work.",
+        "proof": "2000+ clusters · 16+ chaos experiments"
+      }
     ]
   }
 }

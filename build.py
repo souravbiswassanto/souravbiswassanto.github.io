@@ -196,9 +196,23 @@ FAILOVER_CAPTION = (
 )
 
 
+LIFECYCLE_CAPTION = (
+    "The PostgreSQL lifecycle as declarative operations. Provisioning is a custom resource; tuning, "
+    "scaling, upgrades, credential and certificate rotation, and backup with point-in-time recovery are "
+    "each an OpsRequest the operator carries out; failover and cross-datacenter recovery fall to Raft and "
+    "the DR control plane. No stage needs a runbook."
+)
+
+
 def build_home():
     ident, contact, g = DATA["identity"], DATA["contact"], DATA["github_metrics"]
     FAILOVER_FIG = diagram("failover", FAILOVER_CAPTION)
+    LIFECYCLE_FIG = diagram("lifecycle", LIFECYCLE_CAPTION)
+    wd = DATA["work_domains"]
+    DOMAIN_CARDS = "".join(
+        f'<div class="domain"><h3>{e(dm["title"])}</h3><p>{e(dm["body"])}</p>'
+        f'<p class="domain-proof">{e(dm["proof"])}</p></div>'
+        for dm in wd["domains"])
     p = []
     a = p.append
 
@@ -267,10 +281,15 @@ def build_home():
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">What I work on</p>
-      <h2>Losing the primary should be boring</h2>
-      <p>A database that fails over in seconds is not the same product as one that fails over when somebody notices.
-      Most of my work is the distance between those two sentences — consensus, replication, and the Day-2 machinery
-      that turns a 3 a.m. page into an event nobody was awake for.</p>
+      <h2>Four things, and the numbers behind them</h2>
+      <p>{e(wd['intro'])}</p>
+    </div>
+    <div class="domains reveal">{DOMAIN_CARDS}</div>
+    {LIFECYCLE_FIG}
+    <div class="section-head reveal" style="margin-top:clamp(2.5rem,1.5rem+3vw,4rem)">
+      <h3 style="font-size:var(--step-2)">Losing the primary should be boring</h3>
+      <p>A database that fails over in seconds is not the same product as one that fails over when somebody
+      notices. Much of the work above is the distance between those two sentences.</p>
     </div>
     {FAILOVER_FIG}
   </div>
@@ -417,7 +436,7 @@ def build_home():
         "languages": "Languages", "kubernetes": "Kubernetes", "databases": "Databases",
         "distributed_systems": "Distributed systems", "cloud_devops": "Cloud &amp; DevOps",
         "observability": "Observability", "protocols_security": "Protocols &amp; security",
-        "practices": "Practices",
+        "platform_delivery": "Platform &amp; delivery", "practices": "Practices",
     }
     groups = "".join(f'<div><h3>{labels.get(k, k)}</h3><p>{e(" · ".join(v))}</p></div>'
                      for k, v in DATA["skills"].items())
