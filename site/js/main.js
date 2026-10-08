@@ -52,7 +52,8 @@
     var target = parseFloat(el.getAttribute("data-count"));
     var prefix = el.getAttribute("data-prefix") || "";
     var suffix = el.getAttribute("data-suffix") || "";
-    if (reduced || !isFinite(target)) { el.textContent = prefix + target + suffix; return; }
+    if (reduced || !isFinite(target)) { el.textContent = prefix + target.toLocaleString("en-US") + suffix; return; }
+    el.textContent = prefix + "0" + suffix;
     var start = performance.now(), dur = 1100;
     function step(now) {
       var p = Math.min((now - start) / dur, 1);

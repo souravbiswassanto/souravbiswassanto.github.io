@@ -56,75 +56,72 @@
     <div class="prose"><p>Built a consistent-hashing shard manager that distributes owned resources across operator replicas, so reconciliation runs in parallel and the ring rebalances when replicas churn.</p><p>Fixed three correctness bugs in the hashing library along the way: a division bug, a panic on a single member, and uneven distribution.</p><p>Rolled out to provisioner, ops-manager, recommender and Postgres OpsRequests, with a ShardConfig CRD and support for multiple shard keys.</p><p>Backed by a large-scale test suite - 8 scripts, 3,557 lines - that bulk-provisions 50 to 1500+ Postgres clusters, benchmarks time-to-Ready, and fires batch OpsRequests across 6 operation types.</p></div>
     <figure class="diagram reveal"><div class="frame"><svg viewBox="0 0 720 330" role="img" aria-labelledby="ring-title ring-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="ring-title">Consistent-hash sharding across operator replicas</title>
-  <desc id="ring-desc">Database clusters are hashed onto a ring. Each operator replica owns the arc that precedes its position, so reconciliation runs in parallel. When a replica leaves, only the clusters on its arc move, and the rest keep their owner.</desc>
+  <desc id="ring-desc">Database clusters are hashed onto a ring, shown as tick marks. Three operator replicas sit at fixed positions on the ring, and each owns the arc that precedes its position, drawn here as three separate segments. Reconciliation therefore runs in parallel. When a replica leaves, only the clusters on its arc are redistributed; every other cluster keeps the owner it already had.</desc>
 
-  <defs>
-    <marker id="rg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" class="d-accent"/>
-    </marker>
-  </defs>
+  <g transform="translate(160,158)">
+    <!-- the ring itself -->
+    <circle cx="0" cy="0" r="88" fill="none" class="d-line" stroke-width="1.5"/>
 
-  <!-- ring -->
-  <g transform="translate(168,166)">
-    <circle cx="0" cy="0" r="104" fill="none" class="d-line" stroke-width="1.5"/>
+    <!-- three owned arcs, separated by gaps so they read as three, not one -->
+    <path d="M 18.3 -86.1 A 88 88 0 0 1 83.7 27.2" fill="none" class="d-stroke-accent"
+          stroke-width="7" opacity=".9" stroke-linecap="round"/>
+    <path d="M 65.4 58.9 A 88 88 0 0 1 -65.4 58.9" fill="none" class="d-stroke-accent"
+          stroke-width="7" opacity=".3" stroke-linecap="round"/>
+    <path d="M -83.7 27.2 A 88 88 0 0 1 -18.3 -86.1" fill="none" class="d-stroke-accent"
+          stroke-width="7" opacity=".58" stroke-linecap="round"/>
 
-    <!-- arcs owned by each replica -->
-    <path d="M 0 -104 A 104 104 0 0 1 90 52" fill="none" class="d-stroke-accent" stroke-width="6" opacity=".85" stroke-linecap="round"/>
-    <path d="M 90 52 A 104 104 0 0 1 -90 52" fill="none" stroke="currentColor" stroke-width="6" opacity=".28" stroke-linecap="round"/>
-    <path d="M -90 52 A 104 104 0 0 1 0 -104" fill="none" stroke="currentColor" stroke-width="6" opacity=".5" stroke-linecap="round"/>
-
-    <!-- replica nodes -->
-    <circle cx="0" cy="-104" r="7" class="d-accent"/>
-    <circle cx="90" cy="52" r="7" class="d-accent"/>
-    <circle cx="-90" cy="52" r="7" class="d-accent"/>
-
-    <text x="0" y="-120" class="d-text-sm" text-anchor="middle">operator-0</text>
-    <text x="112" y="66" class="d-text-sm" text-anchor="start">operator-1</text>
-    <text x="-112" y="66" class="d-text-sm" text-anchor="end">operator-2</text>
-
-    <!-- hashed clusters as ticks -->
+    <!-- hashed clusters -->
     <g class="d-line" stroke-width="1.5">
-      <line x1="36" y1="-97" x2="43" y2="-116"/>
-      <line x1="66" y1="-80" x2="79" y2="-96"/>
-      <line x1="88" y1="-55" x2="105" y2="-66"/>
-      <line x1="101" y1="-25" x2="120" y2="-30"/>
-      <line x1="55" y1="88" x2="66" y2="105"/>
-      <line x1="16" y1="103" x2="19" y2="123"/>
-      <line x1="-30" y1="100" x2="-36" y2="119"/>
-      <line x1="-70" y1="77" x2="-83" y2="92"/>
-      <line x1="-99" y1="32" x2="-118" y2="38"/>
-      <line x1="-104" y1="-8" x2="-124" y2="-9"/>
-      <line x1="-92" y1="-49" x2="-109" y2="-58"/>
-      <line x1="-62" y1="-84" x2="-73" y2="-100"/>
+      <line x1="31" y1="-82" x2="37" y2="-98"/>
+      <line x1="56" y1="-68" x2="67" y2="-81"/>
+      <line x1="75" y1="-46" x2="89" y2="-56"/>
+      <line x1="86" y1="-21" x2="102" y2="-25"/>
+      <line x1="47" y1="74" x2="56" y2="89"/>
+      <line x1="14" y1="87" x2="16" y2="104"/>
+      <line x1="-25" y1="84" x2="-30" y2="100"/>
+      <line x1="-59" y1="65" x2="-70" y2="78"/>
+      <line x1="-84" y1="27" x2="-100" y2="32"/>
+      <line x1="-88" y1="-7" x2="-105" y2="-8"/>
+      <line x1="-78" y1="-41" x2="-92" y2="-49"/>
+      <line x1="-52" y1="-71" x2="-62" y2="-84"/>
     </g>
+
+    <!-- replica positions, drawn over the arcs -->
+    <circle cx="0" cy="-88" r="6.5" class="d-accent"/>
+    <circle cx="76" cy="44" r="6.5" class="d-accent"/>
+    <circle cx="-76" cy="44" r="6.5" class="d-accent"/>
+
+    <text x="0" y="-104" class="d-text-sm" text-anchor="middle">operator-0</text>
+    <text x="111" y="68" class="d-text-sm" text-anchor="middle">operator-1</text>
+    <text x="-111" y="68" class="d-text-sm" text-anchor="middle">operator-2</text>
 
     <text x="0" y="-4" class="d-text" text-anchor="middle" font-size="12" font-weight="600">hash ring</text>
     <text x="0" y="14" class="d-text-sm" text-anchor="middle">2000+ clusters</text>
   </g>
 
-  <!-- right: explanation blocks -->
-  <g transform="translate(330,52)">
-    <rect x="0" y="0" width="360" height="62" rx="8" class="d-box"/>
-    <text x="18" y="26" class="d-text" font-size="12" font-weight="600">Each replica reconciles only its own arc</text>
-    <text x="18" y="46" class="d-text-sm">no shared queue, no coordination on the hot path</text>
+  <g transform="translate(324,44)">
+    <rect x="0" y="0" width="394" height="60" rx="8" class="d-box"/>
+    <text x="16" y="25" class="d-text" font-size="12" font-weight="600">Each replica reconciles only its own arc</text>
+    <text x="16" y="45" class="d-text-sm">no shared queue, no coordination on the hot path</text>
 
-    <rect x="0" y="78" width="360" height="62" rx="8" class="d-box"/>
-    <text x="18" y="104" class="d-text" font-size="12" font-weight="600">A replica leaving moves only its arc</text>
-    <text x="18" y="124" class="d-text-sm">every other cluster keeps the owner it had</text>
+    <rect x="0" y="76" width="394" height="60" rx="8" class="d-box"/>
+    <text x="16" y="101" class="d-text" font-size="12" font-weight="600">A replica leaving moves only its arc</text>
+    <text x="16" y="121" class="d-text-sm">every other cluster keeps the owner it had</text>
 
-    <rect x="0" y="156" width="360" height="80" rx="8" class="d-box-accent"/>
-    <text x="18" y="182" class="d-text" font-size="12" font-weight="600">Three correctness fixes upstream in the library</text>
-    <text x="18" y="202" class="d-text-sm">a division bug, a panic on a single member,</text>
-    <text x="18" y="220" class="d-text-sm">and uneven distribution across the ring</text>
+    <rect x="0" y="152" width="394" height="78" rx="8" class="d-box-accent"/>
+    <text x="16" y="177" class="d-text" font-size="12" font-weight="600">Three correctness fixes in the hash library</text>
+    <text x="16" y="197" class="d-text-sm">a division bug, a panic on a single member,</text>
+    <text x="16" y="215" class="d-text-sm">and uneven distribution across the ring</text>
   </g>
 </svg>
 </div><figcaption>Clusters are hashed onto a ring and each operator replica owns the arc before its position. When a replica leaves, only its arc moves — every other cluster keeps its owner.</figcaption></figure>
     <div class="prose">
+      <h2>What it cost</h2><div class="prose"><p>Sharding buys parallelism and costs certainty. When a replica leaves the ring its arc is redistributed, so those clusters get picked up and re-reconciled by a new owner — cheap, but no longer a system where one process has the whole picture. &quot;Which replica owns this cluster?&quot; became a question you have to ask before debugging anything. The three correctness bugs I had to fix in the hashing library are the honest measure of how much complexity this adds.</p></div>
       <h2>Evidence</h2>
       <p style="color:var(--muted);font-size:var(--step--1)">kubeops/operator-shard-manager; local large-scale-test suite</p>
       <h2>Published alongside this</h2><ul class="writing-list"><li><a href="https://appscode.com/blog/post/operator-shard-manager-v2025.3.14/" rel="noopener"><span class="w-date">2025-03</span><span class="w-title">Operator Shard Manager<small>author</small></span><span class="w-arrow">→</span></a></li><li><a href="https://youtu.be/Jd3uc7t69Ec" rel="noopener"><span class="w-date">2025-05-21</span><span class="w-title">Webinar: Effortlessly provision KubeDB-managed databases at scale using KubeDB Operator Shard Manager<small>presenter</small></span><span class="w-arrow">→</span></a></li></ul>
     </div>
-    <div class="case-nav"><a class="card" href="read-replica.html"><p class="card-meta">Previous</p><h3>The cost of always being ready for peak</h3></a><a class="card" href="chaos.html"><p class="card-meta">Next</p><h3>Breaking PostgreSQL on purpose, 16 different ways</h3></a></div>
+    <div class="case-nav"><a class="card" href="verification-gate.html"><p class="card-meta">Previous</p><h3>The gate that signed off 4,003 tables</h3></a><a class="card" href="zero-data-loss.html"><p class="card-meta">Next</p><h3>Zero data loss across datacenters - proved by destroying the primary</h3></a></div>
   </div>
 </section>
 </main>
@@ -137,14 +134,17 @@
 <li data-search="writing &amp; talks section"><a href="../index.html#writing"><span>Writing &amp; talks</span><span class="p-kind">section</span></a></li>
 <li data-search="release lifecycle section"><a href="../index.html#releases"><span>Release lifecycle</span><span class="p-kind">section</span></a></li>
 <li data-search="experience section"><a href="../index.html#experience"><span>Experience</span><span class="p-kind">section</span></a></li>
+<li data-search="kubernetes depth section"><a href="../index.html#kubernetes"><span>Kubernetes depth</span><span class="p-kind">section</span></a></li>
+<li data-search="how i run the team section"><a href="../index.html#leading"><span>How I run the team</span><span class="p-kind">section</span></a></li>
 <li data-search="toolkit section"><a href="../index.html#toolkit"><span>Toolkit</span><span class="p-kind">section</span></a></li>
 <li data-search="education section"><a href="../index.html#education"><span>Education</span><span class="p-kind">section</span></a></li>
 <li data-search="contact section"><a href="../index.html#contact"><span>Contact</span><span class="p-kind">section</span></a></li>
+<li data-search="moving a bank&#x27;s ledger, and proving it arrived intact case study"><a href="../case/cutover-night.html"><span>Moving a bank&#x27;s ledger, and proving it arrived intact</span><span class="p-kind">case study</span></a></li>
+<li data-search="the gate that signed off 4,003 tables case study"><a href="../case/verification-gate.html"><span>The gate that signed off 4,003 tables</span><span class="p-kind">case study</span></a></li>
+<li data-search="one control plane, 2000+ postgres clusters case study"><a href="../case/scale.html"><span>One control plane, 2000+ Postgres clusters</span><span class="p-kind">case study</span></a></li>
 <li data-search="zero data loss across datacenters - proved by destroying the primary case study"><a href="../case/zero-data-loss.html"><span>Zero data loss across datacenters - proved by destroying the primary</span><span class="p-kind">case study</span></a></li>
 <li data-search="the cost of always being ready for peak case study"><a href="../case/read-replica.html"><span>The cost of always being ready for peak</span><span class="p-kind">case study</span></a></li>
-<li data-search="one control plane, 2000+ postgres clusters case study"><a href="../case/scale.html"><span>One control plane, 2000+ Postgres clusters</span><span class="p-kind">case study</span></a></li>
 <li data-search="breaking postgresql on purpose, 16 different ways case study"><a href="../case/chaos.html"><span>Breaking PostgreSQL on purpose, 16 different ways</span><span class="p-kind">case study</span></a></li>
-<li data-search="migrating self-managed postgres into kubernetes with a 37-second write gap case study"><a href="../case/migration.html"><span>Migrating self-managed Postgres into Kubernetes with a 37-second write gap</span><span class="p-kind">case study</span></a></li>
 <li data-search="closing feature parity across 25+ database engines with an agent loop case study"><a href="../case/ai-parity.html"><span>Closing feature parity across 25+ database engines with an agent loop</span><span class="p-kind">case study</span></a></li>
 <li data-search="hardening the ci supply chain after an incident case study"><a href="../case/supplychain.html"><span>Hardening the CI supply chain after an incident</span><span class="p-kind">case study</span></a></li>
 <li data-search="chaos testing kubedb postgresql: building resilience with chaos mesh article"><a href="https://appscode.com/blog/post/chaos-testing-postgresql/"><span>Chaos Testing KubeDB PostgreSQL: Building Resilience with Chaos Mesh</span><span class="p-kind">article</span></a></li>

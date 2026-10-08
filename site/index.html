@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Saurov Chandra Biswas — Senior Software Engineer, KubeDB Team Lead</title>
-<meta name="description" content="Software Engineer with 3+ years building cloud-native distributed systems in Go, now leading a 12-engineer team. Specialize in Kubernetes operators for stateful workloads - high availability, cross-datacenter disaster recovery, and Day-2 automation at enterprise scale.">
+<meta name="description" content="Senior software engineer and team lead specialising in PostgreSQL on Kubernetes: VM-to-Kubernetes database migration, cross-datacenter HA and disaster recovery, Kubernetes operators in Go, and regulated banking and payments platforms.">
 <link rel="canonical" href="https://souravbiswassanto.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Saurov Chandra Biswas — Senior Software Engineer, KubeDB Team Lead">
-<meta property="og:description" content="Software Engineer with 3+ years building cloud-native distributed systems in Go, now leading a 12-engineer team. Specialize in Kubernetes operators for stateful workloads - high availability, cross-datacenter disaster recovery, and Day-2 automation at enterprise scale.">
+<meta property="og:description" content="Senior software engineer and team lead specialising in PostgreSQL on Kubernetes: VM-to-Kubernetes database migration, cross-datacenter HA and disaster recovery, Kubernetes operators in Go, and regulated banking and payments platforms.">
 <meta property="og:url" content="https://souravbiswassanto.github.io/">
 <meta property="og:image" content="https://souravbiswassanto.github.io/assets/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -47,14 +47,14 @@
     <div>
       <p class="role">Senior Software Engineer, KubeDB Team Lead</p>
       <h1>Saurov Chandra Biswas</h1>
-      <p class="lede">Cloud-native distributed systems in Go - high availability, cross-datacenter DR, and Day-2 automation for stateful workloads.</p>
+      <p class="lede">PostgreSQL on Kubernetes — high availability, cross-datacenter disaster recovery, and migrations off self-managed VMs that keep every row.</p>
       <p class="sub">I lead the KubeDB team at <a href="https://appscode.com/" rel="noopener">Appscode Inc.</a>,
       where I own PostgreSQL on Kubernetes — Raft-based high availability, cross-datacenter disaster recovery,
       and the Day-2 automation that keeps thousands of clusters running without anyone watching them.</p>
       <p class="meta-line">
         <span>Dhaka, Bangladesh</span>
         <span>Go · Kubernetes · PostgreSQL · Distributed Systems</span>
-        <span>3+ (since Apr 2023) years</span>
+        <span>3+ years</span>
       </p>
       <div class="cta-row">
         <a class="btn btn--primary" href="#case-studies">Read the case studies <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -72,16 +72,16 @@
   </div>
 </section>
 <section class="stat-bar" aria-label="Key numbers">
-  <div class="wrap"><div class="stat-grid"><div class="stat"><div class="v"><span class="num" data-count="733" data-suffix="">0</span></div><div class="l">pull requests authored</div><div class="s">583 merged, across 100+ repos</div></div><div class="stat"><div class="v"><span class="num" data-count="542" data-suffix="">0</span></div><div class="l">pull requests reviewed</div><div class="s">for 37 different engineers</div></div><div class="stat"><div class="v"><span class="num" data-count="12" data-suffix="">0</span></div><div class="l">engineers led</div><div class="s">KubeDB team</div></div><div class="stat"><div class="v"><span class="num" data-count="9" data-suffix="">0</span></div><div class="l">product releases shipped</div><div class="s">KubeDB, end to end</div></div><div class="stat"><div class="v"><span class="num">2-10s</span></div><div class="l">database failover</div><div class="s">Raft-based, was minutes of manual work</div></div><div class="stat"><div class="v"><span class="num" data-count="2000" data-suffix="+">0</span></div><div class="l">Postgres clusters</div><div class="s">on one sharded control plane</div></div></div></div>
+  <div class="wrap"><div class="stat-grid"><div class="stat"><div class="v"><span class="num">333 GB</span></div><div class="l">production database migrated</div><div class="s">self-managed VMs onto self-managed Kubernetes, 17 databases</div></div><div class="stat"><div class="v"><span class="num">4,003</span></div><div class="l">tables verified identical</div><div class="s">row counts and content fingerprints, source against target</div></div><div class="stat"><div class="v"><span class="num">1–5s</span></div><div class="l">near-zero-downtime failover</div><div class="s">a PostgreSQL cluster promotes a new primary on its own</div></div><div class="stat"><div class="v"><span class="num" data-count="2000" data-suffix="+">2,000+</span></div><div class="l">PostgreSQL clusters</div><div class="s">all run by one operator, sharded across its replicas</div></div><div class="stat"><div class="v"><span class="num" data-count="733" data-suffix="">733</span></div><div class="l">pull requests authored</div><div class="s">583 merged, across 100+ repositories</div></div><div class="stat"><div class="v"><span class="num" data-count="12" data-suffix="">12</span></div><div class="l">engineers on the team I lead</div><div class="s">the KubeDB team at Appscode</div></div></div></div>
 </section>
 <section class="section">
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">What I work on</p>
-      <h2>Four things, and the numbers behind them</h2>
-      <p>I build the control planes that run databases. Go and Kubernetes at the bottom, PostgreSQL internals at the top, consensus and replication in between — everything between provisioning a cluster and getting it back after a datacenter dies.</p>
+      <h2>Six things, and the numbers behind them</h2>
+      <p>I build and run PostgreSQL on Kubernetes: the operators that manage it, the replication that keeps it alive across datacenters, and the migrations that get it there from self-managed VMs without losing data.</p>
     </div>
-    <div class="domains reveal"><div class="domain"><h3>Kubernetes operator engineering</h3><p>Go controllers, CRDs and admission webhooks that teach Kubernetes to run stateful workloads it was never designed for — including a fork of the StatefulSet controller that places pods across geo-distributed, multi-cloud clusters.</p><p class="domain-proof">733 PRs across 100+ repositories</p></div><div class="domain"><h3>PostgreSQL lifecycle ownership</h3><p>The whole arc as declarative API calls instead of runbooks: provisioning, configuration tuning, vertical and horizontal scaling, major-version upgrades, TLS and credential rotation, WAL archiving and point-in-time recovery.</p><p class="domain-proof">PostgreSQL 13 → 18 · 8 Day-2 operations</p></div><div class="domain"><h3>High availability and disaster recovery</h3><p>Raft leader election with WAL positions propagated over gRPC, synchronous quorum replication spanning datacenters, and a control plane that promotes a surviving site without waiting for a human to notice the outage.</p><p class="domain-proof">Failover in 2–10 seconds</p></div><div class="domain"><h3>Operating it at scale</h3><p>Consistent-hash sharding so a single control plane reconciles the whole fleet in parallel, verified with bulk-provisioning benchmarks and deliberate fault injection rather than assumed to work.</p><p class="domain-proof">2000+ clusters · 16+ chaos experiments</p></div></div>
+    <div class="domains reveal"><div class="domain"><h3>PostgreSQL on Kubernetes</h3><p>Provisioning, configuration tuning, scaling, major-version upgrades, TLS and credential rotation, WAL archiving and point-in-time recovery — the whole lifecycle as declarative API calls instead of runbooks.</p><p class="domain-proof">PostgreSQL 13 → 18 · 8 Day-2 operations</p></div><div class="domain"><h3>VM-to-Kubernetes database migration</h3><p>Moving production PostgreSQL off self-managed VMs onto self-managed Kubernetes by physical replication, so cutover is the promotion of an already-streaming replica rather than a restore — and proving afterwards that the data arrived intact.</p><p class="domain-proof">333 GB · 17 databases · 4,003 tables verified identical</p></div><div class="domain"><h3>High availability and cross-datacenter DR</h3><p>Raft leader election with write-ahead-log positions propagated over gRPC, synchronous quorum replication spanning two datacenters, and an automated promotion path so a surviving site takes over without waiting for someone to notice.</p><p class="domain-proof">Failover in 1–5 seconds · RPO 0 measured</p></div><div class="domain"><h3>Kubernetes operator engineering</h3><p>Go controllers, custom resources and admission webhooks that teach Kubernetes to run stateful workloads it was never designed for, including a StatefulSet fork that places pods across geo-distributed, multi-cloud clusters.</p><p class="domain-proof">733 PRs across 100+ repositories</p></div><div class="domain"><h3>Operating it at scale</h3><p>Consistent-hash sharding so one control plane reconciles the whole fleet in parallel, verified with bulk-provisioning benchmarks and deliberate fault injection rather than assumed to work.</p><p class="domain-proof">2000+ clusters · 16+ chaos experiments</p></div><div class="domain"><h3>Regulated and production-critical platforms</h3><p>Banking and payments workloads where the database configuration has to map to a regulator&#x27;s security guideline clause by clause, audit trails have to survive scrutiny, and recovery has to be drilled and reported to auditor standard.</p><p class="domain-proof">Central-bank-regulated payments platform</p></div></div>
     <figure class="diagram reveal"><div class="frame"><svg viewBox="0 0 720 208" role="img" aria-labelledby="lc-title lc-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="lc-title">The PostgreSQL lifecycle as declarative operations</title>
   <desc id="lc-desc">Seven stages from provisioning to disaster recovery. Provisioning is driven by a custom resource; configuration tuning, scaling, version upgrades, credential and certificate rotation, and backup with point-in-time recovery are each a declarative operations request handled by the operator; failover and cross-datacenter recovery are handled by Raft consensus and an Open Cluster Management control plane. None of the stages requires a runbook.</desc>
@@ -172,103 +172,163 @@
   </g>
 </svg>
 </div><figcaption>The PostgreSQL lifecycle as declarative operations. Provisioning is a custom resource; tuning, scaling, upgrades, credential and certificate rotation, and backup with point-in-time recovery are each an OpsRequest the operator carries out; failover and cross-datacenter recovery fall to Raft and the DR control plane. No stage needs a runbook.</figcaption></figure>
-    <p class="pull reveal">A database that fails over in seconds is not the same product as one that fails
-    over when somebody notices. Losing the primary should be boring.</p>
-    <figure class="diagram reveal"><div class="frame"><svg viewBox="0 0 720 320" role="img" aria-labelledby="failover-title failover-desc" xmlns="http://www.w3.org/2000/svg">
-  <title id="failover-title">Raft-based PostgreSQL failover</title>
-  <desc id="failover-desc">Three Postgres pods form a Raft consensus group. Each standby continuously receives the primary's write-ahead-log position over gRPC. When the primary is lost, the standby holding the highest position is elected and promoted, completing in two to ten seconds.</desc>
+  </div>
+</section>
+<section class="section section--alt" id="kubernetes">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Depth</p>
+      <h2>The Kubernetes surface I actually work on</h2>
+      <p>&quot;Kubernetes&quot; on a CV covers everything from applying a manifest to writing the controllers that make new kinds of workload possible. I work at the second end — I build the controller, and it does the job a person would otherwise do by hand.</p>
+    </div>
+    <figure class="diagram reveal"><div class="frame"><svg viewBox="0 0 720 300" role="img" aria-labelledby="cp-title cp-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="cp-title">What the controller I build actually does</title>
+  <desc id="cp-desc">A user declares the database they want as a custom resource — how many replicas, how much storage, TLS on. The controller checks the request is valid and then builds everything the database needs: pods, storage, services, secrets, configuration and backups. It then keeps reality matching that declaration, handling failover, scaling, version upgrades, credential rotation and point-in-time recovery without a person carrying out steps.</desc>
 
   <defs>
-    <marker id="fo-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <marker id="cp-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" class="d-accent"/>
     </marker>
-    <marker id="fo-arrow-mute" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" opacity=".45"/>
+    <marker id="cp-m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" opacity=".55"/>
     </marker>
   </defs>
 
-  <!-- steady state label -->
-  <text x="0" y="14" class="d-text-sm">STEADY STATE</text>
+  <!-- you declare -->
+  <rect x="0" y="38" width="200" height="70" rx="8" class="d-box"/>
+  <text x="16" y="60" class="d-text" font-size="11.5" font-weight="600">You declare what you want</text>
+  <text x="16" y="80" class="d-text-sm">kind: Postgres</text>
+  <text x="16" y="96" class="d-text-sm">3 replicas · 100Gi · TLS</text>
 
-  <!-- primary -->
-  <g>
-    <rect x="24" y="36" width="170" height="86" rx="8" class="d-box-accent"/>
-    <text x="109" y="64" class="d-text" text-anchor="middle" font-weight="600">primary</text>
-    <text x="109" y="84" class="d-text-sm" text-anchor="middle">accepting writes</text>
-    <text x="109" y="103" class="d-text-sm" text-anchor="middle">LSN 0/3A18F220</text>
+  <path d="M 202 73 L 232 73" class="d-line" stroke-width="1.5" marker-end="url(#cp-m)" fill="none"/>
+
+  <!-- the controller -->
+  <rect x="236" y="28" width="216" height="90" rx="8" class="d-box-accent"/>
+  <text x="252" y="50" class="d-text" font-size="11.5" font-weight="600">The controller I build</text>
+  <text x="252" y="70" class="d-text-sm">rejects what cannot work</text>
+  <text x="252" y="86" class="d-text-sm">builds what it needs</text>
+  <text x="252" y="102" class="d-text-sm">owns it for its lifetime</text>
+
+  <path d="M 454 73 L 484 73" class="d-line" stroke-width="1.5" marker-end="url(#cp-m)" fill="none"/>
+
+  <!-- result -->
+  <rect x="488" y="38" width="230" height="70" rx="8" class="d-box"/>
+  <text x="504" y="60" class="d-text" font-size="11.5" font-weight="600">A database that runs itself</text>
+  <text x="504" y="80" class="d-text-sm">one primary, N standbys</text>
+  <text x="504" y="96" class="d-text-sm">reachable at a stable name</text>
+
+  <!-- what it creates -->
+  <text x="0" y="150" class="d-text-sm">EVERYTHING IT CREATES AND KEEPS IN STEP</text>
+
+  <g class="d-box">
+    <rect x="0" y="160" width="112" height="30" rx="6"/>
+    <rect x="121" y="160" width="112" height="30" rx="6"/>
+    <rect x="242" y="160" width="112" height="30" rx="6"/>
+    <rect x="363" y="160" width="112" height="30" rx="6"/>
+    <rect x="484" y="160" width="112" height="30" rx="6"/>
+    <rect x="605" y="160" width="113" height="30" rx="6"/>
+  </g>
+  <g class="d-text-sm" text-anchor="middle">
+    <text x="56" y="179">pods</text>
+    <text x="177" y="179">storage</text>
+    <text x="298" y="179">services</text>
+    <text x="419" y="179">secrets</text>
+    <text x="540" y="179">config</text>
+    <text x="661" y="179">backups</text>
   </g>
 
-  <!-- standbys -->
-  <g>
-    <rect x="286" y="16" width="170" height="60" rx="8" class="d-box"/>
-    <text x="371" y="40" class="d-text" text-anchor="middle">standby A</text>
-    <text x="371" y="59" class="d-text-sm" text-anchor="middle">LSN 0/3A18F220</text>
-  </g>
-  <g>
-    <rect x="286" y="96" width="170" height="60" rx="8" class="d-box"/>
-    <text x="371" y="120" class="d-text" text-anchor="middle">standby B</text>
-    <text x="371" y="139" class="d-text-sm" text-anchor="middle">LSN 0/3A18E9C0</text>
-  </g>
+  <!-- the ongoing job -->
+  <rect x="0" y="212" width="718" height="58" rx="8" class="d-box-accent"/>
+  <text x="16" y="234" class="d-text" font-size="11.5" font-weight="600">Then it keeps reality matching that declaration — for as long as the cluster exists</text>
+  <text x="16" y="256" class="d-text-sm">failover · scaling · version upgrades · TLS and credential rotation · point-in-time recovery</text>
 
-  <!-- replication arrows -->
-  <path d="M 200 62 L 280 46" class="d-stroke-accent" stroke-width="1.5" marker-end="url(#fo-arrow)"/>
-  <path d="M 200 96 L 280 122" class="d-stroke-accent" stroke-width="1.5" marker-end="url(#fo-arrow)"/>
-  <text x="240" y="96" class="d-text-sm" text-anchor="middle">WAL</text>
+  <path d="M 344 196 L 344 208" class="d-stroke-accent" stroke-width="1.5" marker-end="url(#cp-a)" fill="none"/>
 
-  <!-- raft ring -->
-  <g>
-    <path d="M 500 86 m -6 -46 a 46 46 0 1 1 -0.1 0" class="d-line" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
-    <text x="500" y="82" class="d-text" text-anchor="middle" font-weight="600">Raft</text>
-    <text x="500" y="99" class="d-text-sm" text-anchor="middle">consensus</text>
-    <circle cx="500" cy="40" r="4" class="d-accent"/>
-    <circle cx="540" cy="106" r="4" class="d-accent"/>
-    <circle cx="460" cy="106" r="4" class="d-accent"/>
-  </g>
-  <path d="M 462 86 L 300 60" class="d-line" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
-  <path d="M 462 100 L 300 122" class="d-line" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
-
-  <text x="596" y="70" class="d-text-sm">LSN position</text>
-  <text x="596" y="86" class="d-text-sm">propagated</text>
-  <text x="596" y="102" class="d-text-sm">over gRPC</text>
-
-  <!-- divider -->
-  <line x1="0" y1="180" x2="720" y2="180" class="d-line" stroke-width="1"/>
-
-  <!-- failure sequence -->
-  <text x="0" y="208" class="d-text-sm">ON PRIMARY LOSS</text>
-
-  <g transform="translate(0,224)">
-    <!-- track -->
-    <line x1="24" y1="26" x2="620" y2="26" class="d-line" stroke-width="1.5"/>
-
-    <g>
-      <circle cx="24" cy="26" r="5" fill="currentColor" opacity=".45"/>
-      <text x="24" y="14" class="d-text-sm" text-anchor="start">t=0</text>
-      <text x="24" y="48" class="d-text" text-anchor="start" font-size="12">primary lost</text>
-    </g>
-    <g>
-      <circle cx="222" cy="26" r="5" class="d-accent"/>
-      <text x="222" y="48" class="d-text" text-anchor="middle" font-size="12">election</text>
-      <text x="222" y="64" class="d-text-sm" text-anchor="middle">highest LSN wins</text>
-    </g>
-    <g>
-      <circle cx="420" cy="26" r="5" class="d-accent"/>
-      <text x="420" y="48" class="d-text" text-anchor="middle" font-size="12">standby A promoted</text>
-      <text x="420" y="64" class="d-text-sm" text-anchor="middle">B re-attached via pg_rewind</text>
-    </g>
-    <g>
-      <circle cx="620" cy="26" r="5" class="d-accent"/>
-      <text x="620" y="48" class="d-text" text-anchor="end" font-size="12">writes resume</text>
-    </g>
-
-    <rect x="640" y="8" width="80" height="36" rx="6" class="d-box-accent"/>
-    <text x="680" y="31" class="d-accent" text-anchor="middle" font-family="ui-monospace, monospace" font-size="14" font-weight="700">2–10s</text>
-  </g>
+  <text x="0" y="290" class="d-text-sm">Every one of those is a declaration the controller acts on — not a runbook a person follows.</text>
 </svg>
-</div><figcaption>Three Postgres pods form a Raft group. Each standby continuously receives the primary&#x27;s WAL position over gRPC, so when the primary is lost the election already knows who is furthest ahead. Total time to writes resuming: 2–10 seconds.</figcaption></figure>
+</div><figcaption>One reconcile pass. Defaults and validation happen in admission webhooks before anything is persisted; the operator is leader-elected and owns a shard of the fleet; child objects are tied to the custom resource by ownerReferences with finalizers controlling teardown order; the coordinator sidecar reports through the status subresource, which the informer sees, closing the loop.</figcaption></figure>
+    <div class="section-head reveal" style="margin-top:clamp(2.5rem,1.5rem+3vw,4rem)">
+      <h3 style="font-size:var(--step-2)">When the primary stops answering</h3>
+      <p>A coordinator runs beside every PostgreSQL pod and holds Raft consensus with the others. That is
+      what makes the cluster able to repair itself rather than wait to be repaired.</p>
+    </div>
+    <figure class="diagram reveal"><div class="frame"><svg viewBox="0 0 720 480" role="img" aria-labelledby="sh-title sh-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="sh-title">How a PostgreSQL cluster heals itself</title>
+  <desc id="sh-desc">A coordinator beside every PostgreSQL pod checks the cluster on every tick. While the primary is healthy nothing changes. When it stops answering, Raft elects a new leader among the coordinators. If the old primary comes back healthy the leadership is handed straight back, because a needless failover is still an outage. Otherwise the standby holding the highest write-ahead-log position is promoted, so the least data is lost, and pod labels are rewritten to move client traffic. The node that was left behind rejoins with pg_rewind, or with a full pg_basebackup re-seed when its history has diverged too far, and returns to streaming. The loop then continues.</desc>
+
+  <defs>
+    <marker id="sh-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="d-accent"/>
+    </marker>
+    <marker id="sh-m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" opacity=".55"/>
+    </marker>
+  </defs>
+
+  <!-- spine -->
+  <rect x="86" y="16" width="268" height="44" rx="22" class="d-box"/>
+  <text x="220" y="43" class="d-text" text-anchor="middle" font-size="11.5">every tick · is the primary answering?</text>
+
+  <path d="M 220 62 L 220 84" class="d-line" stroke-width="1.5" marker-end="url(#sh-m)" fill="none"/>
+  <text x="228" y="78" class="d-text-sm">no</text>
+
+  <rect x="86" y="86" width="268" height="44" rx="8" class="d-box-accent"/>
+  <text x="220" y="113" class="d-text" text-anchor="middle" font-size="11.5" font-weight="600">Raft elects a new leader</text>
+
+  <path d="M 220 132 L 220 154" class="d-line" stroke-width="1.5" marker-end="url(#sh-m)" fill="none"/>
+
+  <rect x="86" y="156" width="268" height="44" rx="8" class="d-box"/>
+  <text x="220" y="183" class="d-text" text-anchor="middle" font-size="11.5">did the old primary come back?</text>
+
+  <path d="M 220 202 L 220 224" class="d-line" stroke-width="1.5" marker-end="url(#sh-m)" fill="none"/>
+  <text x="228" y="218" class="d-text-sm">no</text>
+
+  <rect x="86" y="226" width="268" height="56" rx="8" class="d-box-accent"/>
+  <text x="220" y="248" class="d-text" text-anchor="middle" font-size="11.5" font-weight="600">promote the standby that is</text>
+  <text x="220" y="268" class="d-text" text-anchor="middle" font-size="11.5" font-weight="600">furthest ahead in the WAL</text>
+
+  <path d="M 220 284 L 220 306" class="d-line" stroke-width="1.5" marker-end="url(#sh-m)" fill="none"/>
+
+  <rect x="86" y="308" width="268" height="44" rx="8" class="d-box"/>
+  <text x="220" y="335" class="d-text" text-anchor="middle" font-size="11.5">relabel pods · traffic follows</text>
+
+  <path d="M 220 354 L 220 376" class="d-line" stroke-width="1.5" marker-end="url(#sh-m)" fill="none"/>
+
+  <rect x="86" y="378" width="268" height="44" rx="8" class="d-box"/>
+  <text x="220" y="405" class="d-text" text-anchor="middle" font-size="11.5">the old node rejoins: pg_rewind</text>
+
+  <!-- right-hand outcomes -->
+  <path d="M 356 38 L 424 38" class="d-line" stroke-width="1.5" marker-end="url(#sh-m)" fill="none"/>
+  <text x="366" y="30" class="d-text-sm">yes</text>
+  <rect x="428" y="18" width="292" height="40" rx="8" class="d-box"/>
+  <text x="444" y="43" class="d-text-sm">nothing changes — keep watching</text>
+
+  <path d="M 356 178 L 424 178" class="d-line" stroke-width="1.5" marker-end="url(#sh-m)" fill="none"/>
+  <text x="366" y="170" class="d-text-sm">yes</text>
+  <rect x="428" y="150" width="292" height="56" rx="8" class="d-box"/>
+  <text x="444" y="173" class="d-text-sm">hand leadership straight back</text>
+  <text x="444" y="191" class="d-text-sm">a needless failover is still an outage</text>
+
+  <path d="M 356 400 L 424 400" class="d-stroke-accent" stroke-width="1.5" marker-end="url(#sh-a)" fill="none"/>
+  <text x="366" y="392" class="d-text-sm">diverged</text>
+  <rect x="428" y="378" width="292" height="44" rx="8" class="d-box-accent"/>
+  <text x="444" y="405" class="d-text-sm">pg_basebackup · full re-seed</text>
+
+  <!-- back to streaming, and the loop -->
+  <path d="M 86 400 L 40 400 L 40 38 L 82 38"
+        class="d-stroke-accent" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#sh-a)" fill="none"/>
+  <text x="0" y="462" class="d-text-sm">the healed node streams again — and the loop keeps running</text>
+
+  <!-- timing badge -->
+  <rect x="428" y="238" width="292" height="100" rx="8" class="d-box-accent"/>
+  <text x="574" y="272" class="d-accent" text-anchor="middle" font-family="ui-monospace, monospace" font-size="26" font-weight="700">1–5s</text>
+  <text x="574" y="296" class="d-text" text-anchor="middle" font-size="11.5">detection to a writable primary</text>
+  <text x="574" y="318" class="d-text-sm" text-anchor="middle">nobody is paged, nobody runs a step</text>
+</svg>
+</div><figcaption>Raft decides who leads; PostgreSQL decides who deserves to. The coordinator prefers handing leadership back to a recovered primary over promoting anyone, because a needless failover is still an outage — and when it must promote, it picks the standby holding the most WAL. The node left behind rewinds if it can and re-seeds if it cannot.</figcaption></figure>
   </div>
 </section>
-<section class="section section--alt" id="experience">
+<section class="section" id="experience">
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">Experience</p>
@@ -281,7 +341,7 @@
         <p class="org"><a href="https://appscode.com/" rel="noopener">Appscode Inc.</a> · Dhaka, Bangladesh</p>
         <ul class="timeline"><li><span class="t-when">Apr 2023</span>Joined as Software Engineer</li><li><span class="t-when">Apr 2025</span>Promoted to Senior Software Engineer (2 yr)</li><li><span class="t-when">Feb 2026 -</span>De-facto lead of the KubeDB team, 12 engineers</li></ul>
       </div>
-      <div><ul class="bullets"><li>Promoted twice in three years; leads a 12-engineer team and owns the release lifecycle - 9 KubeDB releases shipped.</li><li>Built PostgreSQL HA on Raft leader election with continuous LSN propagation over gRPC, cutting failover to 2-10 seconds.</li><li>Automated cross-datacenter database failover - outage detection and promotion now run unattended, replacing a recovery path that waited on someone noticing the outage before failing over by hand, often out of hours.</li><li>Built Read Replica: standbys stay attached at minimal CPU and memory, so a campaign peak is absorbed by scaling them with one OpsRequest in minutes instead of re-syncing a multi-terabyte dataset over hours or days.</li><li>Automated Day-2 ops - autoscaling, self-healing, upgrades, TLS/credential rotation, and PITR - replacing work that was previously manual and per-cluster.</li><li>Delivered the Oracle Kubernetes operator with a Data Guard coordinator for standby provisioning, replication, and switchover.</li><li>Built an internal AI prompt library (117 prompts), closing long-outstanding feature parity across 25+ database engines.</li><li>Proved resilience with Chaos Mesh - 16+ fault-injection experiments against HA Postgres clusters.</li><li>Sharded operator workloads with consistent hashing to run 2000+ Postgres clusters on one control plane.</li></ul></div>
+      <div><ul class="bullets"><li>Promoted twice in three years; leads a 12-engineer team and owns the release lifecycle - 9 KubeDB releases shipped.</li><li>Built PostgreSQL HA on Raft leader election with continuous LSN propagation over gRPC, cutting failover to 1-5 seconds.</li><li>Automated cross-datacenter database failover - outage detection and promotion now run unattended, replacing a recovery path that waited on someone noticing the outage before failing over by hand, often out of hours.</li><li>Built Read Replica: standbys stay attached at minimal CPU and memory, so a campaign peak is absorbed by scaling them with one OpsRequest in minutes instead of re-syncing a multi-terabyte dataset over hours or days.</li><li>Automated Day-2 ops - autoscaling, self-healing, upgrades, TLS/credential rotation, and PITR - replacing work that was previously manual and per-cluster.</li><li>Delivered the Oracle Kubernetes operator with a Data Guard coordinator for standby provisioning, replication, and switchover.</li><li>Led the database-vendor side of a production migration for a central-bank-regulated payments platform - 333 GB, 17 databases - onto a synchronous multi-datacenter Kubernetes cluster.</li><li>Found and fixed two product defects under that engagement: a shell-injection path in Pgpool user sync, and a broken point-in-time restore for tuned databases.</li><li>Built an internal AI prompt library (117 prompts), closing long-outstanding feature parity across 25+ database engines.</li><li>Proved resilience with Chaos Mesh - 16+ fault-injection experiments against HA Postgres clusters.</li><li>Sharded operator workloads with consistent hashing to run 2000+ Postgres clusters on one control plane.</li></ul></div>
     </div>
     <div class="xp reveal" style="margin-top:3rem">
       <div class="xp-side">
@@ -293,25 +353,35 @@
     </div>
   </div>
 </section>
+<section class="section section--alt" id="leading">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Leading</p>
+      <h2>How I run the team</h2>
+      <p>Leading twelve engineers is mostly three jobs: deciding what good looks like, making that decision reproducible when I am not in the room, and being the person who is calm at 3 a.m.</p>
+    </div>
+    <ol class="practices reveal"><li class="practice"><h3>Review is where standards actually live</h3><p>542 reviews for 37 different engineers. I read for the failure path first — what happens when this call times out, when the pod is killed mid-write, when the field is nil. Style is a linter&#x27;s job and I don&#x27;t spend review cycles on it.</p><p class="practice-proof">542 reviews · 37 engineers · peak 94 in one month</p></li><li class="practice"><h3>Context beats onboarding calls</h3><p>New engineers lose weeks to knowledge that only exists in someone&#x27;s head. I write it down instead: per-repository architecture context files, and a tiered troubleshooting curriculum that walks from events-first triage through timeline correlation to root-cause discipline.</p><p class="practice-proof">~15 onboarding and troubleshooting documents</p></li><li class="practice"><h3>I own the release, including the announcement</h3><p>Features, stability, production rollout, and the public post — one person accountable end to end. Writing the announcement myself is the forcing function: if I can&#x27;t explain what shipped, it wasn&#x27;t ready to ship.</p><p class="practice-proof">9 releases · 9 announcements authored</p></li><li class="practice"><h3>Prove resilience, don&#x27;t assert it</h3><p>I ran fault injection against our own HA Postgres and published what broke, then reviewed the engineers who repeated it for MySQL, MariaDB and Redis. The point wasn&#x27;t my experiment; it was making &#x27;break it on purpose&#x27; a normal thing for the team to do.</p><p class="practice-proof">16+ chaos experiments · seeded a team-wide series</p></li><li class="practice"><h3>On-call is a leadership job, not a rota entry</h3><p>Enterprise escalations across six countries land on me. The first move is always narrowing blast radius and establishing a timeline — a root cause that arrives after the customer has given up is worth very little.</p><p class="practice-proof">Escalations across 6 countries</p></li></ol>
+  </div>
+</section>
 <section class="section" id="case-studies">
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">Case studies</p>
-      <h2>Seven problems, and what it actually took</h2>
+      <h2>Eight problems, and what it actually took</h2>
       <p>Each of these is real work with a measured outcome — the situation, why the obvious fix doesn't hold,
       the design, and how it was proven. Where something was a team effort, it says so.</p>
     </div>
-    <div class="card-grid"><a class="card card--case reveal" href="case/zero-data-loss.html">
+    <div class="card-grid"><a class="card card--case reveal" href="case/cutover-night.html">
   <p class="card-meta">PostgreSQL</p>
-  <h3>Zero data loss across datacenters - proved by destroying the primary</h3>
-  <p class="hook">The test wasn&#x27;t a failover drill. We deleted the primary with its PVCs and checked whether the other continent still had every byte.</p>
-  <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">Disaster Recovery</span><span class="tag">Distributed Systems</span></div>
+  <h3>Moving a bank&#x27;s ledger, and proving it arrived intact</h3>
+  <p class="hook">333 GB of regulated payments data moved onto Kubernetes overnight. The move was the easy part. The job was proving, before the country opened for business, that every cent had arrived.</p>
+  <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">VM to Kubernetes</span><span class="tag">DC/DR</span><span class="tag">Regulated</span><span class="tag">Data Integrity</span></div>
   <span class="more">Read the case study <span class="arrow">→</span></span>
-</a><a class="card card--case reveal" href="case/read-replica.html">
+</a><a class="card card--case reveal" href="case/verification-gate.html">
   <p class="card-meta">PostgreSQL</p>
-  <h3>The cost of always being ready for peak</h3>
-  <p class="hook">Their only way to survive a campaign was to pay for campaign capacity every day of the year.</p>
-  <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">Cost Engineering</span><span class="tag">Scaling</span></div>
+  <h3>The gate that signed off 4,003 tables</h3>
+  <p class="hook">Before a regulated migration can complete, someone has to prove the copy matches the original. Building a check trustworthy enough to carry that signature took two rounds of catching the check itself being wrong.</p>
+  <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">Correctness</span><span class="tag">Tooling</span><span class="tag">Go</span></div>
   <span class="more">Read the case study <span class="arrow">→</span></span>
 </a><a class="card card--case reveal" href="case/scale.html">
   <p class="card-meta">Distributed Systems</p>
@@ -319,31 +389,24 @@
   <p class="hook">A single operator replica reconciling every database in the fleet is a bottleneck with a bad failure mode.</p>
   <div class="tags"><span class="tag">Distributed Systems</span><span class="tag">Scaling</span><span class="tag">Kubernetes</span></div>
   <span class="more">Read the case study <span class="arrow">→</span></span>
-</a><a class="card card--case reveal" href="case/chaos.html">
-  <p class="card-meta">Reliability</p>
-  <h3>Breaking PostgreSQL on purpose, 16 different ways</h3>
-  <p class="hook">High availability is a claim until something kills your primary at 3 a.m. So we killed it ourselves, repeatedly.</p>
-  <div class="tags"><span class="tag">Reliability</span><span class="tag">Chaos Engineering</span><span class="tag">PostgreSQL</span></div>
-  <span class="more">Read the case study <span class="arrow">→</span></span>
-</a><a class="card card--case reveal" href="case/migration.html">
-  <p class="card-meta">PostgreSQL</p>
-  <h3>Migrating self-managed Postgres into Kubernetes with a 37-second write gap</h3>
-  <p class="hook">The cutover budget for a production database is measured in seconds. We measured ours.</p>
-  <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">Migration</span><span class="tag">Kubernetes</span></div>
-  <span class="more">Read the case study <span class="arrow">→</span></span>
-</a><a class="card card--case reveal" href="case/ai-parity.html">
-  <p class="card-meta">AI-assisted Engineering</p>
-  <h3>Closing feature parity across 25+ database engines with an agent loop</h3>
-  <p class="hook">Some gaps stay open for years not because they are hard, but because they are 22 near-identical changes.</p>
-  <div class="tags"><span class="tag">AI-assisted Engineering</span><span class="tag">Automation</span><span class="tag">Scale</span></div>
-  <span class="more">Read the case study <span class="arrow">→</span></span>
-</a><a class="card card--case reveal" href="case/supplychain.html">
-  <p class="card-meta">Security</p>
-  <h3>Hardening the CI supply chain after an incident</h3>
-  <p class="hook">A CI workflow deleted GitHub organizations. The response was a team one, run with our CEO and senior engineers - this was my part of it.</p>
-  <div class="tags"><span class="tag">Security</span><span class="tag">CI/CD</span><span class="tag">Supply Chain</span></div>
-  <span class="more">Read the case study <span class="arrow">→</span></span>
 </a></div>
+    <h3 class="reveal" style="margin:3rem 0 .25rem;font-size:var(--step-1)">And five more</h3>
+    <ul class="writing-list reveal"><li><a href="case/zero-data-loss.html">
+  <span class="w-date">PostgreSQL</span>
+  <span class="w-title">Zero data loss across datacenters - proved by destroying the primary<small>The test wasn&#x27;t a failover drill. We deleted the primary with its PVCs and checked whether the other continent still had every byte.</small></span>
+  <span class="w-arrow">→</span></a></li><li><a href="case/read-replica.html">
+  <span class="w-date">PostgreSQL</span>
+  <span class="w-title">The cost of always being ready for peak<small>Their only way to survive a campaign was to pay for campaign capacity every day of the year.</small></span>
+  <span class="w-arrow">→</span></a></li><li><a href="case/chaos.html">
+  <span class="w-date">Reliability</span>
+  <span class="w-title">Breaking PostgreSQL on purpose, 16 different ways<small>High availability is a claim until something kills your primary at 3 a.m. So we killed it ourselves, repeatedly.</small></span>
+  <span class="w-arrow">→</span></a></li><li><a href="case/ai-parity.html">
+  <span class="w-date">AI-assisted Engineering</span>
+  <span class="w-title">Closing feature parity across 25+ database engines with an agent loop<small>Some gaps stay open for years not because they are hard, but because they are 22 near-identical changes.</small></span>
+  <span class="w-arrow">→</span></a></li><li><a href="case/supplychain.html">
+  <span class="w-date">Security</span>
+  <span class="w-title">Hardening the CI supply chain after an incident<small>A CI workflow deleted GitHub organizations. The response was a team one, run with our CEO and senior engineers - this was my part of it.</small></span>
+  <span class="w-arrow">→</span></a></li></ul>
   </div>
 </section>
 <section class="section section--alt" id="work">
@@ -412,6 +475,18 @@
   <p>Automated multi-tenant deployment and observability on GKE: a Go control-plane service, per-namespace tenant isolation, a GitOps delivery pipeline, and per-tenant metric isolation.</p>
   <div class="tags"><span class="tag">Go</span><span class="tag">Gin</span><span class="tag">SSE</span><span class="tag">GKE</span><span class="tag">Helm</span></div>
   <span class="more"><a href="https://github.com/souravbiswassanto/multi-tenant-monitoring" rel="noopener">Monitoring setup</a></span>
+</div><div class="card reveal">
+  <p class="card-meta">Appscode Inc. · Aug – Sep 2026</p>
+  <h3>Production platform for a regulated payments provider</h3>
+  <p>Migrated a 333 GB payments database off VM-hosted PostgreSQL onto a Kubernetes-managed synchronous three-node cluster across two datacenters, under central-bank regulation — then operated it through the first weeks of production.</p>
+  <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">Kubernetes</span><span class="tag">VM-to-K8s migration</span><span class="tag">DC/DR</span><span class="tag">KubeDB</span></div>
+  
+</div><div class="card reveal">
+  <p class="card-meta">Independent · Sep 2026</p>
+  <h3>pgsanity</h3>
+  <p>A migration verification tool: proves a migrated PostgreSQL target matches its source by schema, row counts and content fingerprints — built after the shell version it replaced taught me the ways such a tool can quietly lie.</p>
+  <div class="tags"><span class="tag">Go</span><span class="tag">PostgreSQL</span><span class="tag">Kubernetes</span></div>
+  
 </div></div>
     <p class="reveal" style="margin-top:1.6rem;color:var(--muted);font-size:var(--step--1)">
       Smaller personal builds: <a href="https://github.com/souravbiswassanto/bit-torrent-client" rel="noopener">bit-torrent-client</a> · <a href="https://github.com/souravbiswassanto/concurrent-file-server" rel="noopener">concurrent-file-server</a> · <a href="https://github.com/souravbiswassanto/high-write-load-client" rel="noopener">high-write-load-client</a> · <a href="https://github.com/souravbiswassanto/web-scraper-colly" rel="noopener">web-scraper-colly</a>.
@@ -483,7 +558,7 @@
       <p class="eyebrow">Toolkit</p>
       <h2>What I reach for</h2>
     </div>
-    <div class="toolkit reveal"><div><h3>Languages</h3><p>Go (Gin, gRPC, client-go) · C++ · Bash · Python (basic) · SQL</p></div><div><h3>Kubernetes</h3><p>Custom Controllers / Operators · CRDs · client-go · kubebuilder · Helm · Open Cluster Management · Kubeslice · Istio · OpenShift · Rancher / Harvester · k3s · TopoLVM · Longhorn</p></div><div><h3>Databases</h3><p>PostgreSQL · Oracle Data Guard · pgpool · WAL archiving / PITR · wal-g · InfluxDB · MySQL / MariaDB / MongoDB (operator-level)</p></div><div><h3>Distributed systems</h3><p>Raft consensus · Leader election · Consistent hashing · Sharding · Multi-cluster orchestration · Synchronous replication · Split-brain avoidance</p></div><div><h3>Cloud &amp; DevOps</h3><p>AWS · GCP / GKE · Azure · Linode · Terraform · ArgoCD · GitOps · GitHub Actions · Docker · CI/CD · Supply-chain hardening</p></div><div><h3>Observability</h3><p>Prometheus · Grafana · OpenTelemetry · kube-rbac-proxy · Chaos Mesh</p></div><div><h3>Protocols &amp; security</h3><p>gRPC · REST · TLS / mTLS · cert-manager · Vault / KubeVault · RBAC</p></div><div><h3>Practices</h3><p>System design · Code review at volume · Release management · Technical writing · AI-assisted development · On-call / incident response · Mentoring</p></div><div><h3>Platform &amp; delivery</h3><p>Istio service mesh · Multi-tenant namespace isolation · Resource quotas &amp; network policies · kube-rbac-proxy · ArgoCD · GitOps · Helm · Terraform · Go + Gin REST/SSE services</p></div></div>
+    <div class="toolkit reveal"><div><h3>Languages</h3><p>Go (Gin, gRPC, client-go) · C++ · Bash · Python (basic) · SQL</p></div><div><h3>Kubernetes</h3><p>Custom Controllers / Operators · CRDs · client-go · kubebuilder · Helm · Open Cluster Management · Kubeslice · Istio · OpenShift · Rancher / Harvester · k3s · TopoLVM · Longhorn</p></div><div><h3>Databases</h3><p>PostgreSQL · Oracle Data Guard · pgpool · WAL archiving / PITR · wal-g · InfluxDB · MySQL / MariaDB / MongoDB (operator-level)</p></div><div><h3>Distributed systems</h3><p>Raft consensus · Leader election · Consistent hashing · Sharding · Multi-cluster orchestration · Synchronous replication · Split-brain avoidance</p></div><div><h3>Cloud &amp; DevOps</h3><p>AWS · GCP / GKE · Azure · Linode · Terraform · ArgoCD · GitOps · GitHub Actions · Docker · CI/CD · Supply-chain hardening</p></div><div><h3>Observability</h3><p>Prometheus · Grafana · OpenTelemetry · kube-rbac-proxy · Chaos Mesh</p></div><div><h3>Protocols &amp; security</h3><p>gRPC · REST · TLS / mTLS · cert-manager · Vault / KubeVault · RBAC</p></div><div><h3>Practices</h3><p>System design · Code review at volume · Release management · Technical writing · AI-assisted development · On-call / incident response · Mentoring</p></div><div><h3>Platform &amp; delivery</h3><p>Istio service mesh · Multi-tenant namespace isolation · Resource quotas &amp; network policies · kube-rbac-proxy · ArgoCD · GitOps · Helm · Terraform · Go + Gin REST/SSE services</p></div><div><h3>Migration, backup &amp; DR</h3><p>VM-to-Kubernetes database migration · pg_basebackup · Streaming replication · Logical vs physical migration · Cutover planning &amp; rollback · Data-integrity verification · DC/DR architecture · Cross-datacenter failover · Point-in-time recovery (PITR) · WAL archiving · Restic / object-storage backup · RPO / RTO drills</p></div><div><h3>Self-managed infrastructure</h3><p>Self-managed Kubernetes (k3s) · Bare-VM cluster bootstrap · TopoLVM node-local storage · LVM thin provisioning · keepalived / VRRP virtual IPs · Pgpool-II connection pooling · MetalLB · cert-manager · On-prem &amp; private cloud</p></div></div>
   </div>
 </section>
 <section class="section section--alt" id="education">
@@ -571,14 +646,17 @@
 <li data-search="writing &amp; talks section"><a href="index.html#writing"><span>Writing &amp; talks</span><span class="p-kind">section</span></a></li>
 <li data-search="release lifecycle section"><a href="index.html#releases"><span>Release lifecycle</span><span class="p-kind">section</span></a></li>
 <li data-search="experience section"><a href="index.html#experience"><span>Experience</span><span class="p-kind">section</span></a></li>
+<li data-search="kubernetes depth section"><a href="index.html#kubernetes"><span>Kubernetes depth</span><span class="p-kind">section</span></a></li>
+<li data-search="how i run the team section"><a href="index.html#leading"><span>How I run the team</span><span class="p-kind">section</span></a></li>
 <li data-search="toolkit section"><a href="index.html#toolkit"><span>Toolkit</span><span class="p-kind">section</span></a></li>
 <li data-search="education section"><a href="index.html#education"><span>Education</span><span class="p-kind">section</span></a></li>
 <li data-search="contact section"><a href="index.html#contact"><span>Contact</span><span class="p-kind">section</span></a></li>
+<li data-search="moving a bank&#x27;s ledger, and proving it arrived intact case study"><a href="case/cutover-night.html"><span>Moving a bank&#x27;s ledger, and proving it arrived intact</span><span class="p-kind">case study</span></a></li>
+<li data-search="the gate that signed off 4,003 tables case study"><a href="case/verification-gate.html"><span>The gate that signed off 4,003 tables</span><span class="p-kind">case study</span></a></li>
+<li data-search="one control plane, 2000+ postgres clusters case study"><a href="case/scale.html"><span>One control plane, 2000+ Postgres clusters</span><span class="p-kind">case study</span></a></li>
 <li data-search="zero data loss across datacenters - proved by destroying the primary case study"><a href="case/zero-data-loss.html"><span>Zero data loss across datacenters - proved by destroying the primary</span><span class="p-kind">case study</span></a></li>
 <li data-search="the cost of always being ready for peak case study"><a href="case/read-replica.html"><span>The cost of always being ready for peak</span><span class="p-kind">case study</span></a></li>
-<li data-search="one control plane, 2000+ postgres clusters case study"><a href="case/scale.html"><span>One control plane, 2000+ Postgres clusters</span><span class="p-kind">case study</span></a></li>
 <li data-search="breaking postgresql on purpose, 16 different ways case study"><a href="case/chaos.html"><span>Breaking PostgreSQL on purpose, 16 different ways</span><span class="p-kind">case study</span></a></li>
-<li data-search="migrating self-managed postgres into kubernetes with a 37-second write gap case study"><a href="case/migration.html"><span>Migrating self-managed Postgres into Kubernetes with a 37-second write gap</span><span class="p-kind">case study</span></a></li>
 <li data-search="closing feature parity across 25+ database engines with an agent loop case study"><a href="case/ai-parity.html"><span>Closing feature parity across 25+ database engines with an agent loop</span><span class="p-kind">case study</span></a></li>
 <li data-search="hardening the ci supply chain after an incident case study"><a href="case/supplychain.html"><span>Hardening the CI supply chain after an incident</span><span class="p-kind">case study</span></a></li>
 <li data-search="chaos testing kubedb postgresql: building resilience with chaos mesh article"><a href="https://appscode.com/blog/post/chaos-testing-postgresql/"><span>Chaos Testing KubeDB PostgreSQL: Building Resilience with Chaos Mesh</span><span class="p-kind">article</span></a></li>

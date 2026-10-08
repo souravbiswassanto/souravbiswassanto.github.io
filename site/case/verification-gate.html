@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Migrating self-managed Postgres into Kubernetes with a 37-second write gap — Saurov Chandra Biswas</title>
-<meta name="description" content="The cutover budget for a production database is measured in seconds. We measured ours.">
-<link rel="canonical" href="https://souravbiswassanto.github.io/case/migration.html">
+<title>The gate that signed off 4,003 tables — Saurov Chandra Biswas</title>
+<meta name="description" content="Before a regulated migration can complete, someone has to prove the copy matches the original. Building a check trustworthy enough to carry that signature took two rounds of catching the check itself being wrong.">
+<link rel="canonical" href="https://souravbiswassanto.github.io/case/verification-gate.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Migrating self-managed Postgres into Kubernetes with a 37-second write gap — Saurov Chandra Biswas">
-<meta property="og:description" content="The cutover budget for a production database is measured in seconds. We measured ours.">
-<meta property="og:url" content="https://souravbiswassanto.github.io/case/migration.html">
+<meta property="og:title" content="The gate that signed off 4,003 tables — Saurov Chandra Biswas">
+<meta property="og:description" content="Before a regulated migration can complete, someone has to prove the copy matches the original. Building a check trustworthy enough to carry that signature took two rounds of catching the check itself being wrong.">
+<meta property="og:url" content="https://souravbiswassanto.github.io/case/verification-gate.html">
 <meta property="og:image" content="https://souravbiswassanto.github.io/assets/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#fdfdfc" media="(prefers-color-scheme: light)">
@@ -46,21 +46,22 @@
   <div class="wrap">
     <a class="back-link" href="../index.html#case-studies">← All case studies</a>
     <p class="eyebrow">Case study</p>
-    <h1>Migrating self-managed Postgres into Kubernetes with a 37-second write gap</h1>
-    <p class="hook">The cutover budget for a production database is measured in seconds. We measured ours.</p>
-    <div class="tags" style="margin-top:1.4rem"><span class="tag">PostgreSQL</span><span class="tag">Migration</span><span class="tag">Kubernetes</span></div>
+    <h1>The gate that signed off 4,003 tables</h1>
+    <p class="hook">Before a regulated migration can complete, someone has to prove the copy matches the original. Building a check trustworthy enough to carry that signature took two rounds of catching the check itself being wrong.</p>
+    <div class="tags" style="margin-top:1.4rem"><span class="tag">PostgreSQL</span><span class="tag">Correctness</span><span class="tag">Tooling</span><span class="tag">Go</span></div>
   </div>
 </section>
 <section class="case-body">
   <div class="wrap">
-    <div class="prose"><p>Built and documented a migration path from self-managed PostgreSQL - bare StatefulSet, remote-datacenter VM, and hardened install - into KubeDB, using the remote-replica mechanism as the transport.</p><p>Measured write gap: 43 s for the bare flavour, 37 s for the hardened one, where the source superuser was never shared.</p><p>libc/collation mismatch on glibc-source to musl-image migrations: why REFRESH COLLATION VERSION fails, the datcollversion = NULL remedy, and a pre-cutover query that counts indexes needing REINDEX.</p><p>Verifiable write-stop procedure: freeze pg_current_wal_lsn() across two samples and catch up on pg_wal_lsn_diff(...) &gt;= 0 rather than equality, because the source still emits checkpoint WAL after quiescing.</p><p>cert-manager CA-rotation trap: still-valid leaf Secrets get reused, so deleting the Certificate alone leaves &#x27;tlsv1 alert unknown ca&#x27; - the Secrets must go too.</p></div>
+    <div class="prose"><p>To sign off a database migration you need to prove the copy matches the original. Row counts are not enough — they miss changed values entirely — so the check was a per-table fingerprint: an order-independent sum of a hash over every column of every row, which catches a single altered byte anywhere in the table.</p><p>Days before cutover it reported a mismatch on the general ledger: identical row counts, completely different fingerprints. The easy response is to believe the tool and go hunting for corruption. The useful one is to ask whether the tool is right.</p><p>It was not. The fingerprint hashed each row&#x27;s *text rendering*, and how PostgreSQL renders a value depends on session settings. The source ran in one timezone, the containers in UTC. Every timestamp rendered differently, so byte-identical data produced entirely different hashes — reproduced deliberately on two servers differing only in that setting.</p><p>The fix pins the rendering settings — timezone, date style, interval style, float digits, byte output, monetary locale — identically on both connections, and reports each server&#x27;s real settings separately so a mismatch is visible rather than silently absorbed.</p><p>The next run surfaced a table with *more* rows on the destination than the source. A replica cannot invent rows, so the source was still being written. That produced the second idea the gate needed: a table whose own fingerprint moves between two samples of the same side is classified as live, not as a mismatch — with a strict mode that turns those into hard failures once writes are quiesced for the real cutover.</p><p>Later, rebuilding this as a standalone Go tool, the question came up of whether sampling could make it faster. The research reversed the recommendation: the established tools in this space do not sample at all, and PostgreSQL&#x27;s own TABLESAMPLE samples physical pages — on two servers with identical contents but different physical layout, the same seed returned different rows. So the tool hashes a logical key instead, and both sides select the same rows reproducibly. It also pushes its session settings in the connection startup packet and reads them back, refusing the connection if any did not apply.</p><p>With both corrections in place the gate did its job: 4,003 tables verified identical across the full staging rehearsal, and the same mechanism carried through the production cutover.</p></div>
     
     <div class="prose">
+      <h2>What it cost</h2><div class="prose"><p>Content comparison is expensive and there is no way around it: a one percent sample and a full scan touched the same 1,248,588 blocks, because the sampling predicate cannot use an index. The honest conclusion was that being both complete and faster than reading every row is impossible for content — only the key set can be verified at full coverage cheaply, via an index-only scan. The tool was built to be correct first and fast second, and says so.</p></div>
       <h2>Evidence</h2>
-      <p style="color:var(--muted);font-size:var(--step--1)">kubedb/docs#1039 (+490 lines), both flavours run end-to-end</p>
+      <p style="color:var(--muted);font-size:var(--step--1)">Shell gate used for the migration (three in-cluster variants); standalone Go rewrite with 18 injected schema mutations all detected, 23/23 subtests passing, verified across a PostgreSQL 14 to 16 pair</p>
       
     </div>
-    <div class="case-nav"><a class="card" href="chaos.html"><p class="card-meta">Previous</p><h3>Breaking PostgreSQL on purpose, 16 different ways</h3></a><a class="card" href="ai-parity.html"><p class="card-meta">Next</p><h3>Closing feature parity across 25+ database engines with an agent loop</h3></a></div>
+    <div class="case-nav"><a class="card" href="cutover-night.html"><p class="card-meta">Previous</p><h3>Moving a bank&#x27;s ledger, and proving it arrived intact</h3></a><a class="card" href="scale.html"><p class="card-meta">Next</p><h3>One control plane, 2000+ Postgres clusters</h3></a></div>
   </div>
 </section>
 </main>
@@ -73,14 +74,17 @@
 <li data-search="writing &amp; talks section"><a href="../index.html#writing"><span>Writing &amp; talks</span><span class="p-kind">section</span></a></li>
 <li data-search="release lifecycle section"><a href="../index.html#releases"><span>Release lifecycle</span><span class="p-kind">section</span></a></li>
 <li data-search="experience section"><a href="../index.html#experience"><span>Experience</span><span class="p-kind">section</span></a></li>
+<li data-search="kubernetes depth section"><a href="../index.html#kubernetes"><span>Kubernetes depth</span><span class="p-kind">section</span></a></li>
+<li data-search="how i run the team section"><a href="../index.html#leading"><span>How I run the team</span><span class="p-kind">section</span></a></li>
 <li data-search="toolkit section"><a href="../index.html#toolkit"><span>Toolkit</span><span class="p-kind">section</span></a></li>
 <li data-search="education section"><a href="../index.html#education"><span>Education</span><span class="p-kind">section</span></a></li>
 <li data-search="contact section"><a href="../index.html#contact"><span>Contact</span><span class="p-kind">section</span></a></li>
+<li data-search="moving a bank&#x27;s ledger, and proving it arrived intact case study"><a href="../case/cutover-night.html"><span>Moving a bank&#x27;s ledger, and proving it arrived intact</span><span class="p-kind">case study</span></a></li>
+<li data-search="the gate that signed off 4,003 tables case study"><a href="../case/verification-gate.html"><span>The gate that signed off 4,003 tables</span><span class="p-kind">case study</span></a></li>
+<li data-search="one control plane, 2000+ postgres clusters case study"><a href="../case/scale.html"><span>One control plane, 2000+ Postgres clusters</span><span class="p-kind">case study</span></a></li>
 <li data-search="zero data loss across datacenters - proved by destroying the primary case study"><a href="../case/zero-data-loss.html"><span>Zero data loss across datacenters - proved by destroying the primary</span><span class="p-kind">case study</span></a></li>
 <li data-search="the cost of always being ready for peak case study"><a href="../case/read-replica.html"><span>The cost of always being ready for peak</span><span class="p-kind">case study</span></a></li>
-<li data-search="one control plane, 2000+ postgres clusters case study"><a href="../case/scale.html"><span>One control plane, 2000+ Postgres clusters</span><span class="p-kind">case study</span></a></li>
 <li data-search="breaking postgresql on purpose, 16 different ways case study"><a href="../case/chaos.html"><span>Breaking PostgreSQL on purpose, 16 different ways</span><span class="p-kind">case study</span></a></li>
-<li data-search="migrating self-managed postgres into kubernetes with a 37-second write gap case study"><a href="../case/migration.html"><span>Migrating self-managed Postgres into Kubernetes with a 37-second write gap</span><span class="p-kind">case study</span></a></li>
 <li data-search="closing feature parity across 25+ database engines with an agent loop case study"><a href="../case/ai-parity.html"><span>Closing feature parity across 25+ database engines with an agent loop</span><span class="p-kind">case study</span></a></li>
 <li data-search="hardening the ci supply chain after an incident case study"><a href="../case/supplychain.html"><span>Hardening the CI supply chain after an incident</span><span class="p-kind">case study</span></a></li>
 <li data-search="chaos testing kubedb postgresql: building resilience with chaos mesh article"><a href="https://appscode.com/blog/post/chaos-testing-postgresql/"><span>Chaos Testing KubeDB PostgreSQL: Building Resilience with Chaos Mesh</span><span class="p-kind">article</span></a></li>

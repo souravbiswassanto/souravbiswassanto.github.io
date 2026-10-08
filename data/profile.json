@@ -18,7 +18,10 @@
       "Do NOT describe the KubeDB/KubeOps/KubeVault repos as 'open source'. They are public on GitHub but not all are OSI-licensed. Say 'repositories in the KubeDB / KubeOps / KubeVault projects'.",
       "Do NOT claim upstream open-source contributions. buraksezer/consistent#28 was CLOSED not merged; the merged consistent-hashing fixes were in gomodules/consistent (AppsCode's own fork). oracle/oracle-db-appdev-monitoring#451 was closed.",
       "Legacy-CV projects deliberately dropped per user instruction: Jackpot (C++ console), Hangman (Java Swing), Object Finder (Java Swing), Boimela.com (PHP C2C site), BU subject-assign tool, 'The Reviver' final-year project. Outdated; do not resurrect.",
-      "PRIVATE REPOS - do not link: kubedb/postgres, kluster-manager/dr-controlplane, souravbiswassanto/skills. Verified private via the GitHub API on 2026-08-06; a visitor would hit a 404. Re-check before adding any repo link."
+      "PRIVATE REPOS - do not link: kubedb/postgres, kluster-manager/dr-controlplane, souravbiswassanto/skills. Verified private via the GitHub API on 2026-08-06; a visitor would hit a 404. Re-check before adding any repo link.",
+      "CLIENT WORK (2026 payments-platform migration): never name the client, the app vendor, or the country's bank by name. Describe only as 'a central-bank-regulated payments platform in South Asia'. Publishing needs Appscode's sign-off first - it is their client engagement under a regulated contract.",
+      "NEVER CLAIM about that migration: '~2 minutes downtime' (never measured), 'zero data loss' unqualified (staging only; production was a health check against a live source), 'audit logs to Loki' (it was OpenTelemetry to ClickHouse), 'VIP failover ~3s' (an unticked checklist target), or 161k TPS as production throughput (that is a pgbench benchmark; production ran ~161 TPS mean).",
+      "PRIVATE REPO (verified 2026-09-30): kubedb/pgpool. PR #148 is real but returns 404 to the public - describe the fix, never link it. kubedb/postgres-init-docker IS public and PR #72 links fine."
     ]
   },
   "identity": {
@@ -27,7 +30,7 @@
     "title": "Senior Software Engineer, KubeDB Team Lead",
     "company": "Appscode Inc.",
     "company_url": "https://appscode.com/",
-    "tagline": "Cloud-native distributed systems in Go - high availability, cross-datacenter DR, and Day-2 automation for stateful workloads.",
+    "tagline": "PostgreSQL on Kubernetes — high availability, cross-datacenter disaster recovery, and migrations off self-managed VMs that keep every row.",
     "tagline_status": "CHOSEN by Saurov, 2026-08-06.",
     "summary": "Software Engineer with 3+ years building cloud-native distributed systems in Go, now leading a 12-engineer team. Specialize in Kubernetes operators for stateful workloads - high availability, cross-datacenter disaster recovery, and Day-2 automation at enterprise scale.",
     "summary_status": "CHOSEN by Saurov, 2026-08-06 (the long version).",
@@ -37,7 +40,9 @@
     "pronouns": "unspecified - use they/them in generated copy unless the user states otherwise",
     "avatar_url": "https://avatars.githubusercontent.com/u/48715910?v=4",
     "github_created": "2019-03-19",
-    "years_experience": "3+ (since Apr 2023)"
+    "years_experience": "3+ (since Apr 2023)",
+    "seo_description": "Senior software engineer and team lead specialising in PostgreSQL on Kubernetes: VM-to-Kubernetes database migration, cross-datacenter HA and disaster recovery, Kubernetes operators in Go, and regulated banking and payments platforms.",
+    "years_display": "3+ years"
   },
   "contact": {
     "email_personal": "sourav.cse4.bu@gmail.com",
@@ -182,34 +187,34 @@
     ],
     "headline_stats_for_site": [
       {
-        "value": "733",
-        "label": "pull requests authored",
-        "sub": "583 merged, across 100+ repos"
+        "value": "333 GB",
+        "label": "production database migrated",
+        "sub": "self-managed VMs onto self-managed Kubernetes, 17 databases"
       },
       {
-        "value": "542",
-        "label": "pull requests reviewed",
-        "sub": "for 37 different engineers"
+        "value": "4,003",
+        "label": "tables verified identical",
+        "sub": "row counts and content fingerprints, source against target"
       },
       {
-        "value": "12",
-        "label": "engineers led",
-        "sub": "KubeDB team"
-      },
-      {
-        "value": "9",
-        "label": "product releases shipped",
-        "sub": "KubeDB, end to end"
-      },
-      {
-        "value": "2-10s",
-        "label": "database failover",
-        "sub": "Raft-based, was minutes of manual work"
+        "value": "1–5s",
+        "label": "near-zero-downtime failover",
+        "sub": "a PostgreSQL cluster promotes a new primary on its own"
       },
       {
         "value": "2000+",
-        "label": "Postgres clusters",
-        "sub": "on one sharded control plane"
+        "label": "PostgreSQL clusters",
+        "sub": "all run by one operator, sharded across its replicas"
+      },
+      {
+        "value": "733",
+        "label": "pull requests authored",
+        "sub": "583 merged, across 100+ repositories"
+      },
+      {
+        "value": "12",
+        "label": "engineers on the team I lead",
+        "sub": "the KubeDB team at Appscode"
       }
     ]
   },
@@ -248,11 +253,13 @@
       ],
       "bullets": [
         "Promoted twice in three years; leads a 12-engineer team and owns the release lifecycle - 9 KubeDB releases shipped.",
-        "Built PostgreSQL HA on Raft leader election with continuous LSN propagation over gRPC, cutting failover to 2-10 seconds.",
+        "Built PostgreSQL HA on Raft leader election with continuous LSN propagation over gRPC, cutting failover to 1-5 seconds.",
         "Automated cross-datacenter database failover - outage detection and promotion now run unattended, replacing a recovery path that waited on someone noticing the outage before failing over by hand, often out of hours.",
         "Built Read Replica: standbys stay attached at minimal CPU and memory, so a campaign peak is absorbed by scaling them with one OpsRequest in minutes instead of re-syncing a multi-terabyte dataset over hours or days.",
         "Automated Day-2 ops - autoscaling, self-healing, upgrades, TLS/credential rotation, and PITR - replacing work that was previously manual and per-cluster.",
         "Delivered the Oracle Kubernetes operator with a Data Guard coordinator for standby provisioning, replication, and switchover.",
+        "Led the database-vendor side of a production migration for a central-bank-regulated payments platform - 333 GB, 17 databases - onto a synchronous multi-datacenter Kubernetes cluster.",
+        "Found and fixed two product defects under that engagement: a shell-injection path in Pgpool user sync, and a broken point-in-time restore for tuned databases.",
         "Built an internal AI prompt library (117 prompts), closing long-outstanding feature parity across 25+ database engines.",
         "Proved resilience with Chaos Mesh - 16+ fault-injection experiments against HA Postgres clusters.",
         "Sharded operator workloads with consistent hashing to run 2000+ Postgres clusters on one control plane."
@@ -321,7 +328,7 @@
       ],
       "summary": "Production-grade Kubernetes operator for PostgreSQL: Raft-based HA and failover, streaming and synchronous replication, WAL archiving with PITR, and the full Day-2 operations surface.",
       "highlights": [
-        "Raft leader election with continuous LSN propagation over gRPC - failover in 2-10 seconds.",
+        "Raft leader election with continuous LSN propagation over gRPC - failover in 1-5 seconds.",
         "Two cross-datacenter DR tiers: an OCM control plane for automatic promotion, plus a remote replica for manual DR.",
         "Remote replica doubles as a live migration path off self-managed Postgres, cutting over with a 37-43 s write gap.",
         "Synchronous replication API (SYNC_REPLICATION_MODE, NUM_SYNC_REPLICAS, SYNC_COMMIT_LEVEL) wired through init scripts for PG v9-v18.",
@@ -572,6 +579,63 @@
       ]
     },
     {
+      "id": "regulated-platform",
+      "name": "Production platform for a regulated payments provider",
+      "role": "Database-vendor lead",
+      "period": "Aug – Sep 2026",
+      "org": "Appscode Inc.",
+      "client_note": "NEVER name the client. 'A central-bank-regulated payments platform in South Asia' only.",
+      "links": [],
+      "stack": [
+        "PostgreSQL",
+        "Kubernetes",
+        "VM-to-K8s migration",
+        "DC/DR",
+        "KubeDB",
+        "Pgpool-II",
+        "TopoLVM",
+        "keepalived",
+        "PITR",
+        "Restic"
+      ],
+      "related_writing": [],
+      "summary": "Migrated a 333 GB payments database off VM-hosted PostgreSQL onto a Kubernetes-managed synchronous three-node cluster across two datacenters, under central-bank regulation — then operated it through the first weeks of production.",
+      "highlights": [
+        "Built both sites from bare cloud VMs on Huawei Cloud - VPC, subnets, security groups and VPN access - for the primary datacenter and again for DR.",
+        "Self-managed k3s per site from five provisioned VMs — three control-plane nodes with embedded etcd and a worker — bootstrapped from scripts rather than by hand.",
+        "TopoLVM node-local storage over LVM thin provisioning, chosen so the database writes to locally attached disk instead of across a network.",
+        "Physical migration via base backup and streaming replication, with the target running as a live replica for days before cutover.",
+        "Content-equality gate of my own design signed the migration off: 4,003 tables verified identical by row count and order-independent fingerprint.",
+        "Point-in-time recovery drilled to auditor standard — recovery point provably exact, 147 ledger accounts compared against production with zero differences.",
+        "Regulatory configuration mapped clause by clause to the national bank's ICT security guideline, including deliberately disabling audit bind-parameter logging so account numbers never reach logs.",
+        "Diagnosed a production commit stall to synchronous commit interacting with recovery conflicts: 32 commits blocked up to 58 seconds, resolved by a config reload — replay lag 17 s to 8 ms.",
+        "Traced a connection-reset storm to a load-balancer idle timer by measuring session age at death (p10 300 s, p90 301 s) and moved database access onto a virtual IP; resets went from 95.9% to zero."
+      ]
+    },
+    {
+      "id": "pgsanity",
+      "name": "pgsanity",
+      "role": "Author",
+      "period": "Sep 2026",
+      "org": null,
+      "links": [],
+      "link_note": "Repo is PRIVATE - do not link it. Describe only.",
+      "stack": [
+        "Go",
+        "PostgreSQL",
+        "Kubernetes"
+      ],
+      "related_writing": [],
+      "summary": "A migration verification tool: proves a migrated PostgreSQL target matches its source by schema, row counts and content fingerprints — built after the shell version it replaced taught me the ways such a tool can quietly lie.",
+      "highlights": [
+        "Rendering settings are pushed in the connection startup packet and read back; the connection is refused if any did not apply, because two servers rendering timestamps differently produce different hashes on identical data.",
+        "Rows are sampled by hashing a logical key, never by TABLESAMPLE — physical sampling picks different rows on servers whose page layout differs, even under the same seed.",
+        "Runs with row-level security off, so a restricted role makes the server raise rather than silently hide rows and let both sides agree on a wrong answer.",
+        "Correctness proven by injecting 18 distinct schema mutations — dropped index, widened column, dropped NOT NULL, redefined view, disabled RLS and more — and requiring every one to be detected.",
+        "Ships as a container with Job and CronJob manifests so it can run as a gate inside the cluster it is checking."
+      ]
+    },
+    {
       "id": "misc-personal",
       "name": "Smaller personal builds",
       "role": "Author",
@@ -598,51 +662,61 @@
       "stack": [
         "Go"
       ],
-      "summary": "A BitTorrent client, a concurrent file server, a Postgres high-write-load generator, a Colly web scraper, and a repo of reusable agent skills and debugging playbooks."
+      "summary": "A BitTorrent client, a concurrent file server, a Postgres high-write-load generator, a Colly web scraper, and a repo of reusable agent skills and debugging playbooks.",
+      "highlights": []
     }
   ],
   "case_studies": [
     {
-      "id": "cs-zero-data-loss",
-      "title": "Zero data loss across datacenters - proved by destroying the primary",
-      "hook": "The test wasn't a failover drill. We deleted the primary with its PVCs and checked whether the other continent still had every byte.",
+      "id": "cs-cutover-night",
+      "title": "Moving a bank's ledger, and proving it arrived intact",
+      "featured": true,
+      "hook": "333 GB of regulated payments data moved onto Kubernetes overnight. The move was the easy part. The job was proving, before the country opened for business, that every cent had arrived.",
       "body": [
-        "Cross-cluster synchronous replication between two KubeDB Postgres clusters, quorum configured as synchronous_standby_names = FIRST 2 (...) so that with a two-replica primary the sync set is always one local standby plus one cross-cluster standby - regardless of which pod currently holds the primary role.",
-        "Verification: destroyed the primary cluster with deletionPolicy: Delete, wiping its PVCs. The DR site's content fingerprint was identical, with no promotion performed - the data was durable at commit time, not recovered afterwards.",
-        "Found and documented a bootstrap deadlock: enabling synchronous replication before the DR replica is streaming blocks every commit, including KubeDB's own bootstrap writes, so the database never reaches Ready."
+        "A central-bank-regulated payments platform, 333 GB across 17 databases, moving off self-managed PostgreSQL on VMs onto self-managed Kubernetes — a three-node synchronous cluster with a second datacenter for disaster recovery. The migration was physical, a base backup plus streaming replication, so the new cluster ran as a live replica of production for days beforehand. That is what keeps the outage short: cutover is the promotion of a replica that is already caught up, not a restore of 333 GB.",
+        "Before any data could move, the platform had to exist — and neither site did yet. Each was built from bare cloud VMs on Huawei Cloud: VPC and subnets, security groups, and VPN access for the engineering team, once for the primary datacenter and again for DR. Five VMs were provisioned per site; four formed a self-managed k3s cluster — three control-plane nodes carrying embedded etcd, plus a worker — and the fifth was held back for separate use. TopoLVM presented node-local LVM volumes so the database writes to disks physically attached to its own node rather than across a network. Backups to object storage and continuous write-ahead-log shipping for point-in-time recovery went in before the first byte of client data arrived.",
+        "The rehearsal came first. A full staging migration, then the content gate across every table — row counts plus an order-independent fingerprint over every column — until 4,003 tables verified identical against the source. Only then was a production date discussed.",
+        "Cutover went to plan. Writes were quiesced, the source's write-ahead-log position frozen and confirmed unchanged across two samples two seconds apart, replay confirmed caught up, and the new primary promoted. Both standbys re-attached within seventy seconds, synchronous replication intact. The old VMs stayed running as the rollback path — nothing is decommissioned on the night.",
+        "Then the part that decides whether a migration is finished. A database that starts is not a migration that worked; the data has to be shown to be right. The gate ran again against the live platform and the ledger tables came back identical — 22,463,214 rows and 493,889 rows, with monetary sums matching to six decimal places, and wallet balances summing identically on both sides. Not a cent had moved.",
+        "The same checks surfaced something the database layer never would have: a second copy of the application's background scheduler, still pointed at the old database through the rollback window. An application-tier detail, invisible to every database-level health check, found because the verification compared content rather than trusting that replication had done its job.",
+        "The platform opened on Kubernetes that morning, with the ledger proven and the rollback path still standing behind it."
       ],
-      "evidence": "kubedb/docs#1038 (+810 lines), validated live on two clusters before the guide was written",
-      "related_writing": [
-        {
-          "title": "Automating PostgreSQL Operations In Kubernetes Using KubeDB",
-          "url": "https://appscode.com/blog/post/postgres-failover-and-disaster-recovery/",
-          "date": "2025-06-22",
-          "role": "author"
-        }
-      ],
-      "tags": [
-        "PostgreSQL",
-        "Disaster Recovery",
-        "Distributed Systems"
-      ]
-    },
-    {
-      "id": "cs-read-replica",
-      "title": "The cost of always being ready for peak",
-      "title_note": "Quantifiers removed from the title per Saurov, 2026-08-06; customer figures genericized in the body for the same reason.",
-      "hook": "Their only way to survive a campaign was to pay for campaign capacity every day of the year.",
-      "body": [
-        "An e-commerce customer held a multi-terabyte PostgreSQL dataset. Load was modest most of the time but spiked hard during campaigns, when they needed many more read replicas.",
-        "Scaling out at that moment meant re-syncing the whole dataset from the primary, per replica - hours to days - so the only safe option was running every replica full-size, permanently.",
-        "The fix was to decouple replica count from replica size: keep the replicas running continuously at minimal CPU and memory, streaming, with pgpool load-balancing reads onto them so the primary is no longer permanently over-provisioned.",
-        "When a campaign starts, one PostgresOpsRequest vertically scales the existing replicas. No re-sync, because they were never behind. Hours or days becomes minutes."
-      ],
-      "evidence": "apimachinery, pg-coordinator, postgres repos, Feb-Mar 2026",
+      "tradeoff": "The clean 4,003-table figure is the rehearsal, where the source could be frozen. On the night the same checks ran against a source deliberately kept live for rollback, so they function as a health check rather than a pass/fail gate — forward drift on a running source reads as a difference by design. The claim that holds is the precise one: the ledger was proven identical, and everything else was identified and accounted for. Running the comparison early against a live source is exactly what exposed the second scheduler.",
+      "tradeoff_needs_confirmation": false,
+      "evidence": "Sanity-gate logs either side of cutover (501/507/504 pass, 12/6/9 fail on the main database; 239/238 pass, 8/9 fail on the core-banking database); ledger comparison captured during the incident",
       "related_writing": [],
       "tags": [
         "PostgreSQL",
-        "Cost Engineering",
-        "Scaling"
+        "VM to Kubernetes",
+        "DC/DR",
+        "Regulated",
+        "Data Integrity"
+      ],
+      "infra_confirmed": "Confirmed by Saurov 2026-10-08: 5 VMs provisioned per site, 4 in the cluster (3 control-plane with embedded etcd + 1 worker), 5th used for a separate purpose. This matches the audited production.conf. Do NOT write '5-node cluster' or '2 workers' - both are false and the real shape reads as deliberate anyway."
+    },
+    {
+      "id": "cs-verification-gate",
+      "title": "The gate that signed off 4,003 tables",
+      "featured": true,
+      "hook": "Before a regulated migration can complete, someone has to prove the copy matches the original. Building a check trustworthy enough to carry that signature took two rounds of catching the check itself being wrong.",
+      "body": [
+        "To sign off a database migration you need to prove the copy matches the original. Row counts are not enough — they miss changed values entirely — so the check was a per-table fingerprint: an order-independent sum of a hash over every column of every row, which catches a single altered byte anywhere in the table.",
+        "Days before cutover it reported a mismatch on the general ledger: identical row counts, completely different fingerprints. The easy response is to believe the tool and go hunting for corruption. The useful one is to ask whether the tool is right.",
+        "It was not. The fingerprint hashed each row's *text rendering*, and how PostgreSQL renders a value depends on session settings. The source ran in one timezone, the containers in UTC. Every timestamp rendered differently, so byte-identical data produced entirely different hashes — reproduced deliberately on two servers differing only in that setting.",
+        "The fix pins the rendering settings — timezone, date style, interval style, float digits, byte output, monetary locale — identically on both connections, and reports each server's real settings separately so a mismatch is visible rather than silently absorbed.",
+        "The next run surfaced a table with *more* rows on the destination than the source. A replica cannot invent rows, so the source was still being written. That produced the second idea the gate needed: a table whose own fingerprint moves between two samples of the same side is classified as live, not as a mismatch — with a strict mode that turns those into hard failures once writes are quiesced for the real cutover.",
+        "Later, rebuilding this as a standalone Go tool, the question came up of whether sampling could make it faster. The research reversed the recommendation: the established tools in this space do not sample at all, and PostgreSQL's own TABLESAMPLE samples physical pages — on two servers with identical contents but different physical layout, the same seed returned different rows. So the tool hashes a logical key instead, and both sides select the same rows reproducibly. It also pushes its session settings in the connection startup packet and reads them back, refusing the connection if any did not apply.",
+        "With both corrections in place the gate did its job: 4,003 tables verified identical across the full staging rehearsal, and the same mechanism carried through the production cutover."
+      ],
+      "tradeoff": "Content comparison is expensive and there is no way around it: a one percent sample and a full scan touched the same 1,248,588 blocks, because the sampling predicate cannot use an index. The honest conclusion was that being both complete and faster than reading every row is impossible for content — only the key set can be verified at full coverage cheaply, via an index-only scan. The tool was built to be correct first and fast second, and says so.",
+      "tradeoff_needs_confirmation": false,
+      "evidence": "Shell gate used for the migration (three in-cluster variants); standalone Go rewrite with 18 injected schema mutations all detected, 23/23 subtests passing, verified across a PostgreSQL 14 to 16 pair",
+      "related_writing": [],
+      "tags": [
+        "PostgreSQL",
+        "Correctness",
+        "Tooling",
+        "Go"
       ]
     },
     {
@@ -674,7 +748,59 @@
         "Distributed Systems",
         "Scaling",
         "Kubernetes"
-      ]
+      ],
+      "tradeoff": "Sharding buys parallelism and costs certainty. When a replica leaves the ring its arc is redistributed, so those clusters get picked up and re-reconciled by a new owner — cheap, but no longer a system where one process has the whole picture. \"Which replica owns this cluster?\" became a question you have to ask before debugging anything. The three correctness bugs I had to fix in the hashing library are the honest measure of how much complexity this adds.",
+      "tradeoff_needs_confirmation": true,
+      "featured": true
+    },
+    {
+      "id": "cs-zero-data-loss",
+      "title": "Zero data loss across datacenters - proved by destroying the primary",
+      "hook": "The test wasn't a failover drill. We deleted the primary with its PVCs and checked whether the other continent still had every byte.",
+      "body": [
+        "Cross-cluster synchronous replication between two KubeDB Postgres clusters, quorum configured as synchronous_standby_names = FIRST 2 (...) so that with a two-replica primary the sync set is always one local standby plus one cross-cluster standby - regardless of which pod currently holds the primary role.",
+        "Verification: destroyed the primary cluster with deletionPolicy: Delete, wiping its PVCs. The DR site's content fingerprint was identical, with no promotion performed - the data was durable at commit time, not recovered afterwards.",
+        "Found and documented a bootstrap deadlock: enabling synchronous replication before the DR replica is streaming blocks every commit, including KubeDB's own bootstrap writes, so the database never reaches Ready."
+      ],
+      "evidence": "kubedb/docs#1038 (+810 lines), validated live on two clusters before the guide was written",
+      "related_writing": [
+        {
+          "title": "Automating PostgreSQL Operations In Kubernetes Using KubeDB",
+          "url": "https://appscode.com/blog/post/postgres-failover-and-disaster-recovery/",
+          "date": "2025-06-22",
+          "role": "author"
+        }
+      ],
+      "tags": [
+        "PostgreSQL",
+        "Disaster Recovery",
+        "Distributed Systems"
+      ],
+      "tradeoff": "Synchronous replication across datacenters is not free: with the quorum set to always include a cross-cluster standby, every commit waits on a wide-area round trip. That is the right trade for data that must not be lost and the wrong one for peak write throughput, so this is a tier users choose deliberately, not a default. The bootstrap deadlock was the sharpest edge — turning on synchronous replication before the DR replica is streaming blocks every commit, including the operator's own bootstrap writes, and the cluster never reaches Ready. Documenting that ordering constraint mattered more than the feature.",
+      "tradeoff_needs_confirmation": true,
+      "featured": false
+    },
+    {
+      "id": "cs-read-replica",
+      "title": "The cost of always being ready for peak",
+      "title_note": "Quantifiers removed from the title per Saurov, 2026-08-06; customer figures genericized in the body for the same reason.",
+      "hook": "Their only way to survive a campaign was to pay for campaign capacity every day of the year.",
+      "body": [
+        "An e-commerce customer held a multi-terabyte PostgreSQL dataset. Load was modest most of the time but spiked hard during campaigns, when they needed many more read replicas.",
+        "Scaling out at that moment meant re-syncing the whole dataset from the primary, per replica - hours to days - so the only safe option was running every replica full-size, permanently.",
+        "The fix was to decouple replica count from replica size: keep the replicas running continuously at minimal CPU and memory, streaming, with pgpool load-balancing reads onto them so the primary is no longer permanently over-provisioned.",
+        "When a campaign starts, one PostgresOpsRequest vertically scales the existing replicas. No re-sync, because they were never behind. Hours or days becomes minutes."
+      ],
+      "evidence": "apimachinery, pg-coordinator, postgres repos, Feb-Mar 2026",
+      "related_writing": [],
+      "tags": [
+        "PostgreSQL",
+        "Cost Engineering",
+        "Scaling"
+      ],
+      "tradeoff": "This moves cost rather than removing it. Replicas held at minimal CPU and memory can fall behind under heavy write load, so the design assumes read traffic tolerates some lag. Scaling is a vertical operation, which means a restart per replica — fine with minutes of warning, not something to start when the campaign is already live. And pgpool becomes one more component to run and tune; the connection-exhaustion escalation we later hit traced back to its default pool size.",
+      "tradeoff_needs_confirmation": true,
+      "featured": false
     },
     {
       "id": "cs-chaos",
@@ -697,26 +823,8 @@
         "Reliability",
         "Chaos Engineering",
         "PostgreSQL"
-      ]
-    },
-    {
-      "id": "cs-migration",
-      "title": "Migrating self-managed Postgres into Kubernetes with a 37-second write gap",
-      "hook": "The cutover budget for a production database is measured in seconds. We measured ours.",
-      "body": [
-        "Built and documented a migration path from self-managed PostgreSQL - bare StatefulSet, remote-datacenter VM, and hardened install - into KubeDB, using the remote-replica mechanism as the transport.",
-        "Measured write gap: 43 s for the bare flavour, 37 s for the hardened one, where the source superuser was never shared.",
-        "libc/collation mismatch on glibc-source to musl-image migrations: why REFRESH COLLATION VERSION fails, the datcollversion = NULL remedy, and a pre-cutover query that counts indexes needing REINDEX.",
-        "Verifiable write-stop procedure: freeze pg_current_wal_lsn() across two samples and catch up on pg_wal_lsn_diff(...) >= 0 rather than equality, because the source still emits checkpoint WAL after quiescing.",
-        "cert-manager CA-rotation trap: still-valid leaf Secrets get reused, so deleting the Certificate alone leaves 'tlsv1 alert unknown ca' - the Secrets must go too."
       ],
-      "evidence": "kubedb/docs#1039 (+490 lines), both flavours run end-to-end",
-      "related_writing": [],
-      "tags": [
-        "PostgreSQL",
-        "Migration",
-        "Kubernetes"
-      ]
+      "featured": false
     },
     {
       "id": "cs-ai-parity",
@@ -735,7 +843,8 @@
         "AI-assisted Engineering",
         "Automation",
         "Scale"
-      ]
+      ],
+      "featured": false
     },
     {
       "id": "cs-supplychain",
@@ -754,7 +863,8 @@
         "Security",
         "CI/CD",
         "Supply Chain"
-      ]
+      ],
+      "featured": false
     }
   ],
   "skills": {
@@ -845,6 +955,31 @@
       "Helm",
       "Terraform",
       "Go + Gin REST/SSE services"
+    ],
+    "migration_dr": [
+      "VM-to-Kubernetes database migration",
+      "pg_basebackup",
+      "Streaming replication",
+      "Logical vs physical migration",
+      "Cutover planning & rollback",
+      "Data-integrity verification",
+      "DC/DR architecture",
+      "Cross-datacenter failover",
+      "Point-in-time recovery (PITR)",
+      "WAL archiving",
+      "Restic / object-storage backup",
+      "RPO / RTO drills"
+    ],
+    "self_managed_infra": [
+      "Self-managed Kubernetes (k3s)",
+      "Bare-VM cluster bootstrap",
+      "TopoLVM node-local storage",
+      "LVM thin provisioning",
+      "keepalived / VRRP virtual IPs",
+      "Pgpool-II connection pooling",
+      "MetalLB",
+      "cert-manager",
+      "On-prem & private cloud"
     ]
   },
   "writing": {
@@ -1454,30 +1589,95 @@
     ]
   },
   "work_domains": {
-    "intro": "I build the control planes that run databases. Go and Kubernetes at the bottom, PostgreSQL internals at the top, consensus and replication in between — everything between provisioning a cluster and getting it back after a datacenter dies.",
+    "intro": "I build and run PostgreSQL on Kubernetes: the operators that manage it, the replication that keeps it alive across datacenters, and the migrations that get it there from self-managed VMs without losing data.",
     "framing_note": "Four areas, one hard number each. Deliberately NOT a keyword list - the Toolkit section carries keywords, and a list of twelve technologies reads identical to every other candidate's. Do not expand this into prose about 'performance tuning' and similar.",
     "avoid": "Never use the word 'DBA' for Saurov. He builds the automation that replaces routine DBA work, which is the stronger and rarer claim; 'DBA' invites comparison with career DBAs on query-plan depth, a comparison that adds nothing.",
     "domains": [
       {
-        "title": "Kubernetes operator engineering",
-        "body": "Go controllers, CRDs and admission webhooks that teach Kubernetes to run stateful workloads it was never designed for — including a fork of the StatefulSet controller that places pods across geo-distributed, multi-cloud clusters.",
-        "proof": "733 PRs across 100+ repositories"
-      },
-      {
-        "title": "PostgreSQL lifecycle ownership",
-        "body": "The whole arc as declarative API calls instead of runbooks: provisioning, configuration tuning, vertical and horizontal scaling, major-version upgrades, TLS and credential rotation, WAL archiving and point-in-time recovery.",
+        "title": "PostgreSQL on Kubernetes",
+        "body": "Provisioning, configuration tuning, scaling, major-version upgrades, TLS and credential rotation, WAL archiving and point-in-time recovery — the whole lifecycle as declarative API calls instead of runbooks.",
         "proof": "PostgreSQL 13 → 18 · 8 Day-2 operations"
       },
       {
-        "title": "High availability and disaster recovery",
-        "body": "Raft leader election with WAL positions propagated over gRPC, synchronous quorum replication spanning datacenters, and a control plane that promotes a surviving site without waiting for a human to notice the outage.",
-        "proof": "Failover in 2–10 seconds"
+        "title": "VM-to-Kubernetes database migration",
+        "body": "Moving production PostgreSQL off self-managed VMs onto self-managed Kubernetes by physical replication, so cutover is the promotion of an already-streaming replica rather than a restore — and proving afterwards that the data arrived intact.",
+        "proof": "333 GB · 17 databases · 4,003 tables verified identical"
+      },
+      {
+        "title": "High availability and cross-datacenter DR",
+        "body": "Raft leader election with write-ahead-log positions propagated over gRPC, synchronous quorum replication spanning two datacenters, and an automated promotion path so a surviving site takes over without waiting for someone to notice.",
+        "proof": "Failover in 1–5 seconds · RPO 0 measured"
+      },
+      {
+        "title": "Kubernetes operator engineering",
+        "body": "Go controllers, custom resources and admission webhooks that teach Kubernetes to run stateful workloads it was never designed for, including a StatefulSet fork that places pods across geo-distributed, multi-cloud clusters.",
+        "proof": "733 PRs across 100+ repositories"
       },
       {
         "title": "Operating it at scale",
-        "body": "Consistent-hash sharding so a single control plane reconciles the whole fleet in parallel, verified with bulk-provisioning benchmarks and deliberate fault injection rather than assumed to work.",
+        "body": "Consistent-hash sharding so one control plane reconciles the whole fleet in parallel, verified with bulk-provisioning benchmarks and deliberate fault injection rather than assumed to work.",
         "proof": "2000+ clusters · 16+ chaos experiments"
+      },
+      {
+        "title": "Regulated and production-critical platforms",
+        "body": "Banking and payments workloads where the database configuration has to map to a regulator's security guideline clause by clause, audit trails have to survive scrutiny, and recovery has to be drilled and reported to auditor standard.",
+        "proof": "Central-bank-regulated payments platform"
       }
     ]
+  },
+  "leadership_practice": {
+    "intro": "Leading twelve engineers is mostly three jobs: deciding what good looks like, making that decision reproducible when I am not in the room, and being the person who is calm at 3 a.m.",
+    "needs_confirmation": "The five practices below are DRAFTED from evidence in achievements.md - review counts, the iteration board, release ownership, the onboarding docs and the chaos series. The *philosophy* in each one (what he blocks a PR for, what he does first in an incident) is my inference from the documents he wrote, not something he stated. Saurov must confirm or reword these before publishing.",
+    "practices": [
+      {
+        "title": "Review is where standards actually live",
+        "body": "542 reviews for 37 different engineers. I read for the failure path first — what happens when this call times out, when the pod is killed mid-write, when the field is nil. Style is a linter's job and I don't spend review cycles on it.",
+        "proof": "542 reviews · 37 engineers · peak 94 in one month"
+      },
+      {
+        "title": "Context beats onboarding calls",
+        "body": "New engineers lose weeks to knowledge that only exists in someone's head. I write it down instead: per-repository architecture context files, and a tiered troubleshooting curriculum that walks from events-first triage through timeline correlation to root-cause discipline.",
+        "proof": "~15 onboarding and troubleshooting documents"
+      },
+      {
+        "title": "I own the release, including the announcement",
+        "body": "Features, stability, production rollout, and the public post — one person accountable end to end. Writing the announcement myself is the forcing function: if I can't explain what shipped, it wasn't ready to ship.",
+        "proof": "9 releases · 9 announcements authored"
+      },
+      {
+        "title": "Prove resilience, don't assert it",
+        "body": "I ran fault injection against our own HA Postgres and published what broke, then reviewed the engineers who repeated it for MySQL, MariaDB and Redis. The point wasn't my experiment; it was making 'break it on purpose' a normal thing for the team to do.",
+        "proof": "16+ chaos experiments · seeded a team-wide series"
+      },
+      {
+        "title": "On-call is a leadership job, not a rota entry",
+        "body": "Enterprise escalations across six countries land on me. The first move is always narrowing blast radius and establishing a timeline — a root cause that arrives after the customer has given up is worth very little.",
+        "proof": "Escalations across 6 countries"
+      }
+    ]
+  },
+  "k8s_surface": {
+    "intro": "\"Kubernetes\" on a CV covers everything from applying a manifest to writing the controllers that make new kinds of workload possible. I work at the second end — I build the controller, and it does the job a person would otherwise do by hand.",
+    "note": "Kept deliberately high-level per Saurov, 2026-08-07: no informer/workqueue internals, no OCM or ManifestWork. The point is what the controller DOES, in terms a hiring manager understands, while still naming enough real Kubernetes machinery to be credible."
+  },
+  "upstream_defects": {
+    "intro": "Two defects found while running the product against a regulated production workload, fixed upstream rather than worked around locally.",
+    "items": [
+      {
+        "title": "Command injection in Pgpool user synchronisation",
+        "ref": "Pgpool operator, fixed upstream",
+        "body": "The operator interpolated a secret's password into a double-quoted shell string, so a password containing shell syntax was truncated — and a crafted one executed. Anyone able to create a Secret with two labels in the namespace got command execution in every Pgpool pod. Fixed by passing credentials as positional arguments.",
+        "found_how": "Started as 'why didn't this one user sync?' — the failing password ended in a dollar sign.",
+        "ref_note": "kubedb/pgpool is a PRIVATE repo - never link PR #148. Describe only."
+      },
+      {
+        "title": "Point-in-time restore broken for any tuned database",
+        "ref": "kubedb/postgres-init-docker#72",
+        "url": "https://github.com/kubedb/postgres-init-docker/pull/72",
+        "body": "The WAL-restore sidekick receives no config mount, so every setting from the config secret silently vanishes during replay and recovery aborts on the standby parameter check. Pods report healthy throughout; the only evidence is in one container's log. Fixed by reading the values from the control file instead.",
+        "found_how": "Hit during a point-in-time recovery drill, where it is guaranteed to trigger on any cluster with raised connection or worker limits."
+      }
+    ],
+    "render": "NOT RENDERED - Saurov removed the standalone section 2026-10-08. The credit survives as an Appscode experience bullet. Data kept here so the detail is not lost if it is ever wanted back."
   }
 }

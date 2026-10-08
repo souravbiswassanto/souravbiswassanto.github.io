@@ -322,7 +322,8 @@ a.card:hover .more .arrow { transform: translateX(3px); }
   display: grid; gap: 1px; background: var(--line);
   border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
 }
-@media (min-width: 760px) { .domains { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 760px)  { .domains { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .domains { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .domain {
   background: var(--surface); padding: 1.6rem 1.7rem;
   counter-increment: domain; position: relative;
@@ -342,6 +343,37 @@ a.card:hover .more .arrow { transform: translateX(3px); }
   color: var(--fg); padding-top: .8rem; border-top: 1px solid var(--line);
 }
 .domains { counter-reset: domain; }
+
+/* ------------------------------------------------------------- leadership */
+/* Numbered practices. Deliberately a list, not cards: these are habits in sequence,
+   and a reader should be able to run down them without choosing where to look. */
+.practices { list-style: none; margin: 0; padding: 0; counter-reset: practice; }
+.practice {
+  counter-increment: practice;
+  display: grid; gap: .2rem 1.6rem; padding: 1.6rem 0;
+  border-top: 1px solid var(--line);
+  grid-template-columns: minmax(0, 1fr);
+}
+.practice:last-child { border-bottom: 1px solid var(--line); }
+@media (min-width: 820px) {
+  .practice { grid-template-columns: 2.5rem minmax(0, 1fr) 15rem; align-items: start; }
+  .practice::before {
+    content: "0" counter(practice);
+    font-family: var(--font-mono); font-size: .74rem; color: var(--accent);
+    grid-row: span 2; padding-top: .4em;
+  }
+}
+.practice h3 { font-size: var(--step-1); margin-bottom: .45rem; }
+.practice p { color: var(--fg-soft); font-size: var(--step--1); line-height: 1.65; margin: 0; }
+.practice .practice-proof {
+  font-family: var(--font-mono); font-size: .74rem; color: var(--muted);
+  padding-top: .3rem;
+}
+@media (min-width: 820px) {
+  .practice h3 { grid-column: 2; }
+  .practice > p:not(.practice-proof) { grid-column: 2; }
+  .practice .practice-proof { grid-column: 3; grid-row: 1 / span 2; padding-top: .45em; text-align: right; }
+}
 
 /* ---------------------------------------------------------------- lists */
 .bullets { list-style: none; margin: 0; padding: 0; }
@@ -565,3 +597,18 @@ figure.diagram figcaption {
   a { color: #000; text-decoration: underline; }
   .card { break-inside: avoid; border-color: #ccc; }
 }
+
+/* ------------------------------------------------------------- upstream defects */
+.defects { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.15rem; }
+@media (min-width: 820px) { .defects { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.defect {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 1.5rem 1.6rem;
+}
+.defect h3 { font-size: var(--step-1); margin-bottom: .6rem; }
+.defect p { color: var(--fg-soft); font-size: var(--step--1); line-height: 1.65; }
+.defect .defect-found {
+  color: var(--muted); border-left: 2px solid var(--line-strong);
+  padding-left: .9rem; margin: .9rem 0;
+}
+.defect .defect-ref { margin: 0; font-family: var(--font-mono); font-size: .74rem; }
