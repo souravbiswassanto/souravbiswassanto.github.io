@@ -1,0 +1,73 @@
+<svg viewBox="0 0 720 480" role="img" aria-labelledby="sh-title sh-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="sh-title">How a PostgreSQL cluster heals itself</title>
+  <desc id="sh-desc">A coordinator beside every PostgreSQL pod checks the cluster on every tick. While the primary is healthy nothing changes. When it stops answering, Raft elects a new leader among the coordinators. If the old primary comes back healthy the leadership is handed straight back, because a needless failover is still an outage. Otherwise the standby holding the highest write-ahead-log position is promoted, so the least data is lost, and pod labels are rewritten to move client traffic. The node that was left behind rejoins with pg_rewind, or with a full pg_basebackup re-seed when its history has diverged too far, and returns to streaming. The loop then continues.</desc>
+
+  <defs>
+    <marker id="sh-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="d-accent"/>
+    </marker>
+    <marker id="sh-m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" opacity=".55"/>
+    </marker>
+  </defs>
+
+  <!-- spine -->
+  <rect x="86" y="16" width="268" height="44" rx="22" class="d-box"/>
+  <text x="220" y="43" class="d-text" text-anchor="middle" font-size="11.5">every tick · is the primary answering?</text>
+
+  <path d="M 220 62 L 220 84" class="d-line" stroke-width="1.5" marker-end="url(#sh-m)" fill="none"/>
+  <text x="228" y="78" class="d-text-sm">no</text>
+
+  <rect x="86" y="86" width="268" height="44" rx="8" class="d-box-accent"/>
+  <text x="220" y="113" class="d-text" text-anchor="middle" font-size="11.5" font-weight="600">Raft elects a new leader</text>
+
+  <path d="M 220 132 L 220 154" class="d-line" stroke-width="1.5" marker-end="url(#sh-m)" fill="none"/>
+
+  <rect x="86" y="156" width="268" height="44" rx="8" class="d-box"/>
+  <text x="220" y="183" class="d-text" text-anchor="middle" font-size="11.5">did the old primary come back?</text>
+
+  <path d="M 220 202 L 220 224" class="d-line" stroke-width="1.5" marker-end="url(#sh-m)" fill="none"/>
+  <text x="228" y="218" class="d-text-sm">no</text>
+
+  <rect x="86" y="226" width="268" height="56" rx="8" class="d-box-accent"/>
+  <text x="220" y="248" class="d-text" text-anchor="middle" font-size="11.5" font-weight="600">promote the standby that is</text>
+  <text x="220" y="268" class="d-text" text-anchor="middle" font-size="11.5" font-weight="600">furthest ahead in the WAL</text>
+
+  <path d="M 220 284 L 220 306" class="d-line" stroke-width="1.5" marker-end="url(#sh-m)" fill="none"/>
+
+  <rect x="86" y="308" width="268" height="44" rx="8" class="d-box"/>
+  <text x="220" y="335" class="d-text" text-anchor="middle" font-size="11.5">relabel pods · traffic follows</text>
+
+  <path d="M 220 354 L 220 376" class="d-line" stroke-width="1.5" marker-end="url(#sh-m)" fill="none"/>
+
+  <rect x="86" y="378" width="268" height="44" rx="8" class="d-box"/>
+  <text x="220" y="405" class="d-text" text-anchor="middle" font-size="11.5">the old node rejoins: pg_rewind</text>
+
+  <!-- right-hand outcomes -->
+  <path d="M 356 38 L 424 38" class="d-line" stroke-width="1.5" marker-end="url(#sh-m)" fill="none"/>
+  <text x="366" y="30" class="d-text-sm">yes</text>
+  <rect x="428" y="18" width="292" height="40" rx="8" class="d-box"/>
+  <text x="444" y="43" class="d-text-sm">nothing changes — keep watching</text>
+
+  <path d="M 356 178 L 424 178" class="d-line" stroke-width="1.5" marker-end="url(#sh-m)" fill="none"/>
+  <text x="366" y="170" class="d-text-sm">yes</text>
+  <rect x="428" y="150" width="292" height="56" rx="8" class="d-box"/>
+  <text x="444" y="173" class="d-text-sm">hand leadership straight back</text>
+  <text x="444" y="191" class="d-text-sm">a needless failover is still an outage</text>
+
+  <path d="M 356 400 L 424 400" class="d-stroke-accent" stroke-width="1.5" marker-end="url(#sh-a)" fill="none"/>
+  <text x="366" y="392" class="d-text-sm">diverged</text>
+  <rect x="428" y="378" width="292" height="44" rx="8" class="d-box-accent"/>
+  <text x="444" y="405" class="d-text-sm">pg_basebackup · full re-seed</text>
+
+  <!-- back to streaming, and the loop -->
+  <path d="M 86 400 L 40 400 L 40 38 L 82 38"
+        class="d-stroke-accent" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#sh-a)" fill="none"/>
+  <text x="0" y="462" class="d-text-sm">the healed node streams again — and the loop keeps running</text>
+
+  <!-- timing badge -->
+  <rect x="428" y="238" width="292" height="100" rx="8" class="d-box-accent"/>
+  <text x="574" y="272" class="d-accent" text-anchor="middle" font-family="ui-monospace, monospace" font-size="26" font-weight="700">1–5s</text>
+  <text x="574" y="296" class="d-text" text-anchor="middle" font-size="11.5">detection to a writable primary</text>
+  <text x="574" y="318" class="d-text-sm" text-anchor="middle">nobody is paged, nobody runs a step</text>
+</svg>

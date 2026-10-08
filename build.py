@@ -37,6 +37,9 @@ FORBIDDEN = [
     "1841-978367", "1841978367", "8801881178367",
     "open source", "open-source",
     "Jackpot", "Hangman", "Object Finder", "Boimela", "The Reviver",
+    # The 2026 regulated-payments client and everyone identifiable around that engagement.
+    "TeleCash", "Telecash", "RedDot", "Red Dot Digital", "AxEnTec", "Fineract",
+    "Bangladesh Bank", "Bangladeshi", "Dhaka Bank",
 ]
 
 # --------------------------------------------------------------------------- helpers
@@ -62,9 +65,105 @@ ICONS = {
 }
 
 
+WORDS = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Seven",
+         8: "Eight", 9: "Nine", 10: "Ten", 11: "Eleven", 12: "Twelve"}
+
+
+def word(n):
+    """Spell a count so headings cannot drift out of step with the data behind them."""
+    return WORDS.get(n, str(n))
+
+
+def check_svg_text(name, svg):
+    """Flag <text> that will render outside the viewBox, and boxes it likely overflows.
+
+    I cannot see the rendered page, so overflowing labels are invisible to me until
+    someone reports them. Widths are estimated: .d-text-sm renders in the mono stack
+    (~0.60em per character), .d-text in the sans stack (~0.52em). Advisory only - it
+    warns, it does not fail the build.
+    """
+    import xml.etree.ElementTree as ET
+
+    m = re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', svg)
+    if not m:
+        return []
+    vw = float(m.group(1))
+    root = ET.fromstring(svg)
+    boxes, texts, circles = [], [], []
+
+    def walk(node, dx, dy, inherited):
+        t = re.match(r"translate\(\s*([-\d.]+)[ ,]+([-\d.]+)\s*\)", node.get("transform", "") or "")
+        if t:
+            dx += float(t.group(1))
+            dy += float(t.group(2))
+        own = {k: node.get(k) for k in ("class", "text-anchor", "font-size", "font-family")
+               if node.get(k) is not None}
+        ctx = {**inherited, **own}
+        tag = node.tag.rsplit("}", 1)[-1]
+        if tag == "rect" and node.get("width"):
+            boxes.append((float(node.get("x", 0)) + dx, float(node.get("y", 0)) + dy,
+                          float(node.get("width")), float(node.get("height", 0))))
+        elif tag == "circle" and float(node.get("r", 0)) > 20:
+            circles.append((float(node.get("cx", 0)) + dx, float(node.get("cy", 0)) + dy,
+                            float(node.get("r"))))
+        elif tag == "text" and (node.text or "").strip():
+            # Rotated text runs along another axis, so a horizontal span check is meaningless.
+            if "rotate" not in (node.get("transform") or ""):
+                texts.append((node.text.strip(), float(node.get("x", 0)) + dx,
+                              float(node.get("y", 0)) + dy, ctx))
+        for kid in node:
+            walk(kid, dx, dy, ctx)
+
+    for kid in root:
+        walk(kid, 0.0, 0.0, {})
+
+    warns = []
+    for body, x, y, ctx in texts:
+        cls = ctx.get("class", "") or ""
+        mono = "d-text-sm" in cls or "mono" in (ctx.get("font-family") or "")
+        size = float(ctx.get("font-size") or (11 if "d-text-sm" in cls else 13))
+        w = len(body) * size * (0.60 if mono else 0.52)
+        anchor = ctx.get("text-anchor", "start")
+        left = x - w / 2 if anchor == "middle" else (x - w if anchor == "end" else x)
+        right = left + w
+        if left < -1 or right > vw + 1:
+            warns.append(f"{name}: {body[:44]!r} spans {left:.0f}..{right:.0f}, viewBox 0..{vw:.0f}")
+            continue
+        # a large circle's stroke crossing this baseline, running through the text
+        for cx, cy, r in circles:
+            if abs(y - cy) >= r:
+                continue
+            import math
+            off = math.sqrt(r * r - (y - cy) ** 2)
+            for hit in (cx - off, cx + off):
+                if left - 2 < hit < right + 2:
+                    warns.append(f"{name}: {body[:44]!r} spans {left:.0f}..{right:.0f}, "
+                                 f"circle stroke crosses at x={hit:.0f}")
+                    break
+
+        # rects whose vertical band contains this baseline
+        band = [b for b in boxes if b[1] - 4 <= y <= b[1] + b[3]]
+        holders = [b for b in band if b[0] <= x <= b[0] + b[2]]
+        if holders:
+            bx, _, bw, _ = min(holders, key=lambda b: b[2])
+            if left < bx + 1 or right > bx + bw - 1:
+                warns.append(f"{name}: {body[:44]!r} spans {left:.0f}..{right:.0f}, "
+                             f"box {bx:.0f}..{bx + bw:.0f}")
+        else:
+            # not inside any box on this line: does it collide with one it isn't in?
+            hits = [b for b in band if left < b[0] + b[2] - 1 and right > b[0] + 1]
+            if hits:
+                bx, _, bw, _ = hits[0]
+                warns.append(f"{name}: {body[:44]!r} spans {left:.0f}..{right:.0f}, "
+                             f"collides with box {bx:.0f}..{bx + bw:.0f}")
+    return warns
+
+
 def diagram(name, caption):
     svg = (SRC / "diagrams" / f"{name}.svg").read_text()
     svg = re.sub(r"<\?xml.*?\?>\s*", "", svg)
+    for w in check_svg_text(name, svg):
+        print(f"  warn  {w}")
     return (f'<figure class="diagram reveal"><div class="frame">{svg}</div>'
             f'<figcaption>{e(caption)}</figcaption></figure>')
 
@@ -72,6 +171,7 @@ def diagram(name, caption):
 DIAGRAM_FOR_CASE = {
     "cs-zero-data-loss": ("dc-dr", "Two tiers of cross-datacenter DR. Tier one is a remote replica promoted by hand; tier two adds a control plane that detects the loss of a whole datacenter and promotes the survivor on its own — with leadership semantics that let exactly one site win."),
     "cs-read-replica": ("read-replica", "Provisioned capacity before and after. The dashed line is what the workload actually needed; the flat line above it is what was being paid for every day of the year."),
+    "cs-cutover-night": ("migration-cutover", "The outage is the length of a promotion, not of a restore: the new cluster streams from the source for days, a rehearsal verifies every table, and on the night the write-ahead-log position is frozen and confirmed before the replica is promoted. The original VMs stay warm behind it."),
     "cs-scale": ("shard-ring", "Clusters are hashed onto a ring and each operator replica owns the arc before its position. When a replica leaves, only its arc moves — every other cluster keeps its owner."),
 }
 
@@ -151,6 +251,8 @@ def palette(prefix=""):
                ("Writing & talks", f"{prefix}index.html#writing", "section"),
                ("Release lifecycle", f"{prefix}index.html#releases", "section"),
                ("Experience", f"{prefix}index.html#experience", "section"),
+               ("Kubernetes depth", f"{prefix}index.html#kubernetes", "section"),
+               ("How I run the team", f"{prefix}index.html#leading", "section"),
                ("Toolkit", f"{prefix}index.html#toolkit", "section"),
                ("Education", f"{prefix}index.html#education", "section"),
                ("Contact", f"{prefix}index.html#contact", "section")]
@@ -189,10 +291,11 @@ def tail(prefix=""):
 
 HAS_PUBLIC_CV = (ROOT / "assets" / "cv-public.pdf").exists()
 
-FAILOVER_CAPTION = (
-    "Three Postgres pods form a Raft group. Each standby continuously receives the primary's WAL "
-    "position over gRPC, so when the primary is lost the election already knows who is furthest "
-    "ahead. Total time to writes resuming: 2–10 seconds."
+HEALING_CAPTION = (
+    "Raft decides who leads; PostgreSQL decides who deserves to. The coordinator prefers handing "
+    "leadership back to a recovered primary over promoting anyone, because a needless failover is "
+    "still an outage — and when it must promote, it picks the standby holding the most WAL. The node "
+    "left behind rewinds if it can and re-seeds if it cannot."
 )
 
 
@@ -204,10 +307,19 @@ LIFECYCLE_CAPTION = (
 )
 
 
+K8S_CAPTION = (
+    "One reconcile pass. Defaults and validation happen in admission webhooks before anything is "
+    "persisted; the operator is leader-elected and owns a shard of the fleet; child objects are tied to the "
+    "custom resource by ownerReferences with finalizers controlling teardown order; the coordinator "
+    "sidecar reports through the status subresource, which the informer sees, closing the loop."
+)
+
+
 def build_home():
     ident, contact, g = DATA["identity"], DATA["contact"], DATA["github_metrics"]
-    FAILOVER_FIG = diagram("failover", FAILOVER_CAPTION)
+    HEALING_FIG = diagram("self-healing", HEALING_CAPTION)
     LIFECYCLE_FIG = diagram("lifecycle", LIFECYCLE_CAPTION)
+    K8S_FIG = diagram("k8s-controlplane", K8S_CAPTION)
     wd = DATA["work_domains"]
     DOMAIN_CARDS = "".join(
         f'<div class="domain"><h3>{e(dm["title"])}</h3><p>{e(dm["body"])}</p>'
@@ -227,7 +339,7 @@ def build_home():
         "alumniOf": {"@type": "CollegeOrUniversity", "name": DATA["education"]["primary"]["institution"]},
         "knowsAbout": ["Kubernetes", "Go", "PostgreSQL", "Distributed Systems", "Site Reliability Engineering"],
     }
-    a(head(f"{ident['name']} — {ident['title']}", ident["summary"], f"{SITE_URL}/",
+    a(head(f"{ident['name']} — {ident['title']}", ident["seo_description"], f"{SITE_URL}/",
            extra=f'<script type="application/ld+json">{json.dumps(ld)}</script>'))
     a(site_header())
     a('<main id="main">')
@@ -245,7 +357,7 @@ def build_home():
       <p class="meta-line">
         <span>{e(ident['location'])}</span>
         <span>Go · Kubernetes · PostgreSQL · Distributed Systems</span>
-        <span>{e(ident['years_experience'])} years</span>
+        <span>{e(ident['years_display'])}</span>
       </p>
       <div class="cta-row">
         <a class="btn btn--primary" href="#case-studies">Read the case studies {ICONS['arrow']}</a>
@@ -268,7 +380,8 @@ def build_home():
     for s in g["headline_stats_for_site"]:
         v = s["value"]
         m = re.fullmatch(r"(\d+)(\+?)", v)
-        val = (f'<span class="num" data-count="{m.group(1)}" data-suffix="{m.group(2)}">0</span>'
+        val = (f'<span class="num" data-count="{m.group(1)}" data-suffix="{m.group(2)}">'
+               f'{int(m.group(1)):,}{m.group(2)}</span>'
                if m else f'<span class="num">{e(v)}</span>')
         tiles.append(f'<div class="stat"><div class="v">{val}</div>'
                      f'<div class="l">{e(s["label"])}</div><div class="s">{e(s["sub"])}</div></div>')
@@ -281,14 +394,30 @@ def build_home():
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">What I work on</p>
-      <h2>Four things, and the numbers behind them</h2>
+      <h2>{word(len(wd["domains"]))} things, and the numbers behind them</h2>
       <p>{e(wd['intro'])}</p>
     </div>
     <div class="domains reveal">{DOMAIN_CARDS}</div>
     {LIFECYCLE_FIG}
-    <p class="pull reveal">A database that fails over in seconds is not the same product as one that fails
-    over when somebody notices. Losing the primary should be boring.</p>
-    {FAILOVER_FIG}
+  </div>
+</section>""")
+
+    # ---------------------------------------------------------------- kubernetes depth
+    ks = DATA["k8s_surface"]
+    a(f"""<section class="section" id="kubernetes">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Depth</p>
+      <h2>The Kubernetes surface I actually work on</h2>
+      <p>{e(ks['intro'])}</p>
+    </div>
+    {K8S_FIG}
+    <div class="section-head reveal" style="margin-top:clamp(2.5rem,1.5rem+3vw,4rem)">
+      <h3 style="font-size:var(--step-2)">When the primary stops answering</h3>
+      <p>A coordinator runs beside every PostgreSQL pod and holds Raft consensus with the others. That is
+      what makes the cluster able to repair itself rather than wait to be repaired.</p>
+    </div>
+    {HEALING_FIG}
   </div>
 </section>""")
 
@@ -325,26 +454,52 @@ def build_home():
   </div>
 </section>""")
 
+    # ---------------------------------------------------------------- leadership
+    lp = DATA["leadership_practice"]
+    practices = "".join(
+        f'<li class="practice"><h3>{e(x["title"])}</h3><p>{e(x["body"])}</p>'
+        f'<p class="practice-proof">{e(x["proof"])}</p></li>' for x in lp["practices"])
+    a(f"""<section class="section" id="leading">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Leading</p>
+      <h2>How I run the team</h2>
+      <p>{e(lp['intro'])}</p>
+    </div>
+    <ol class="practices reveal">{practices}</ol>
+  </div>
+</section>""")
+
     # ---------------------------------------------------------------- case studies
-    cards = []
+    # Three featured with real weight; the rest as a compact list. Eight equal cards
+    # means a reader opens none of them.
+    cards, rest = [], []
     for c in DATA["case_studies"]:
         tags = "".join(f'<span class="tag">{e(t)}</span>' for t in c["tags"])
-        cards.append(f"""<a class="card card--case reveal" href="case/{slug(c['id'])}.html">
+        if c.get("featured"):
+            cards.append(f"""<a class="card card--case reveal" href="case/{slug(c['id'])}.html">
   <p class="card-meta">{e(c['tags'][0])}</p>
   <h3>{e(c['title'])}</h3>
   <p class="hook">{e(c['hook'])}</p>
   <div class="tags">{tags}</div>
   <span class="more">Read the case study <span class="arrow">→</span></span>
 </a>""")
+        else:
+            rest.append(f"""<li><a href="case/{slug(c['id'])}.html">
+  <span class="w-date">{e(c['tags'][0])}</span>
+  <span class="w-title">{e(c['title'])}<small>{e(c['hook'])}</small></span>
+  <span class="w-arrow">→</span></a></li>""")
     a(f"""<section class="section" id="case-studies">
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">Case studies</p>
-      <h2>Seven problems, and what it actually took</h2>
+      <h2>{word(len(DATA["case_studies"]))} problems, and what it actually took</h2>
       <p>Each of these is real work with a measured outcome — the situation, why the obvious fix doesn't hold,
       the design, and how it was proven. Where something was a team effort, it says so.</p>
     </div>
     <div class="card-grid">{''.join(cards)}</div>
+    <h3 class="reveal" style="margin:3rem 0 .25rem;font-size:var(--step-1)">And {word(len(rest)).lower()} more</h3>
+    <ul class="writing-list reveal">{''.join(rest)}</ul>
   </div>
 </section>""")
 
@@ -417,7 +572,7 @@ def build_home():
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">Release lifecycle</p>
-      <h2>Nine releases, shipped end to end</h2>
+      <h2>{word(len(rl["releases"]))} releases, shipped end to end</h2>
       <p>{e(rl['summary'])}</p>
     </div>
     <div class="table-wrap reveal">
@@ -434,6 +589,7 @@ def build_home():
         "distributed_systems": "Distributed systems", "cloud_devops": "Cloud &amp; DevOps",
         "observability": "Observability", "protocols_security": "Protocols &amp; security",
         "platform_delivery": "Platform &amp; delivery", "practices": "Practices",
+        "migration_dr": "Migration, backup &amp; DR", "self_managed_infra": "Self-managed infrastructure",
     }
     groups = "".join(f'<div><h3>{labels.get(k, k)}</h3><p>{e(" · ".join(v))}</p></div>'
                      for k, v in DATA["skills"].items())
@@ -539,7 +695,23 @@ def build_home():
 
     a("</main>")
     a(tail())
-    return "\n".join(p)
+    return alternate_sections("\n".join(p))
+
+
+def alternate_sections(page):
+    """Tint every other <section class="section">.
+
+    Doing this in a post-pass means inserting or reordering a section can't leave two
+    tinted blocks adjacent — a class of bug I hit twice while hand-managing it.
+    """
+    state = {"n": 0}
+
+    def swap(_m):
+        state["n"] += 1
+        cls = "section section--alt" if state["n"] % 2 == 0 else "section"
+        return f'<section class="{cls}"'
+
+    return re.sub(r'<section class="section(?: section--alt)?"', swap, page)
 
 
 # --------------------------------------------------------------------------- case pages
@@ -561,6 +733,10 @@ def build_case(case, prev_case, next_case):
     if case.get("attribution"):
         team = ('<div class="callout"><b>This was a team effort.</b> The response was run together with our CEO '
                 'and senior engineers. What follows is my part of it.</div>')
+
+    tradeoff = ""
+    if case.get("tradeoff"):
+        tradeoff = (f'<h2>What it cost</h2><div class="prose"><p>{e(case["tradeoff"])}</p></div>')
 
     writing = ""
     if case.get("related_writing"):
@@ -594,6 +770,7 @@ def build_case(case, prev_case, next_case):
     <div class="prose">{team}{body}</div>
     {fig}
     <div class="prose">
+      {tradeoff}
       <h2>Evidence</h2>
       <p style="color:var(--muted);font-size:var(--step--1)">{e(case['evidence'])}</p>
       {writing}

@@ -93,11 +93,12 @@
 </svg>
 </div><figcaption>Provisioned capacity before and after. The dashed line is what the workload actually needed; the flat line above it is what was being paid for every day of the year.</figcaption></figure>
     <div class="prose">
+      <h2>What it cost</h2><div class="prose"><p>This moves cost rather than removing it. Replicas held at minimal CPU and memory can fall behind under heavy write load, so the design assumes read traffic tolerates some lag. Scaling is a vertical operation, which means a restart per replica — fine with minutes of warning, not something to start when the campaign is already live. And pgpool becomes one more component to run and tune; the connection-exhaustion escalation we later hit traced back to its default pool size.</p></div>
       <h2>Evidence</h2>
       <p style="color:var(--muted);font-size:var(--step--1)">apimachinery, pg-coordinator, postgres repos, Feb-Mar 2026</p>
       
     </div>
-    <div class="case-nav"><a class="card" href="zero-data-loss.html"><p class="card-meta">Previous</p><h3>Zero data loss across datacenters - proved by destroying the primary</h3></a><a class="card" href="scale.html"><p class="card-meta">Next</p><h3>One control plane, 2000+ Postgres clusters</h3></a></div>
+    <div class="case-nav"><a class="card" href="zero-data-loss.html"><p class="card-meta">Previous</p><h3>Zero data loss across datacenters - proved by destroying the primary</h3></a><a class="card" href="chaos.html"><p class="card-meta">Next</p><h3>Breaking PostgreSQL on purpose, 16 different ways</h3></a></div>
   </div>
 </section>
 </main>
@@ -110,14 +111,17 @@
 <li data-search="writing &amp; talks section"><a href="../index.html#writing"><span>Writing &amp; talks</span><span class="p-kind">section</span></a></li>
 <li data-search="release lifecycle section"><a href="../index.html#releases"><span>Release lifecycle</span><span class="p-kind">section</span></a></li>
 <li data-search="experience section"><a href="../index.html#experience"><span>Experience</span><span class="p-kind">section</span></a></li>
+<li data-search="kubernetes depth section"><a href="../index.html#kubernetes"><span>Kubernetes depth</span><span class="p-kind">section</span></a></li>
+<li data-search="how i run the team section"><a href="../index.html#leading"><span>How I run the team</span><span class="p-kind">section</span></a></li>
 <li data-search="toolkit section"><a href="../index.html#toolkit"><span>Toolkit</span><span class="p-kind">section</span></a></li>
 <li data-search="education section"><a href="../index.html#education"><span>Education</span><span class="p-kind">section</span></a></li>
 <li data-search="contact section"><a href="../index.html#contact"><span>Contact</span><span class="p-kind">section</span></a></li>
+<li data-search="moving a bank&#x27;s ledger, and proving it arrived intact case study"><a href="../case/cutover-night.html"><span>Moving a bank&#x27;s ledger, and proving it arrived intact</span><span class="p-kind">case study</span></a></li>
+<li data-search="the gate that signed off 4,003 tables case study"><a href="../case/verification-gate.html"><span>The gate that signed off 4,003 tables</span><span class="p-kind">case study</span></a></li>
+<li data-search="one control plane, 2000+ postgres clusters case study"><a href="../case/scale.html"><span>One control plane, 2000+ Postgres clusters</span><span class="p-kind">case study</span></a></li>
 <li data-search="zero data loss across datacenters - proved by destroying the primary case study"><a href="../case/zero-data-loss.html"><span>Zero data loss across datacenters - proved by destroying the primary</span><span class="p-kind">case study</span></a></li>
 <li data-search="the cost of always being ready for peak case study"><a href="../case/read-replica.html"><span>The cost of always being ready for peak</span><span class="p-kind">case study</span></a></li>
-<li data-search="one control plane, 2000+ postgres clusters case study"><a href="../case/scale.html"><span>One control plane, 2000+ Postgres clusters</span><span class="p-kind">case study</span></a></li>
 <li data-search="breaking postgresql on purpose, 16 different ways case study"><a href="../case/chaos.html"><span>Breaking PostgreSQL on purpose, 16 different ways</span><span class="p-kind">case study</span></a></li>
-<li data-search="migrating self-managed postgres into kubernetes with a 37-second write gap case study"><a href="../case/migration.html"><span>Migrating self-managed Postgres into Kubernetes with a 37-second write gap</span><span class="p-kind">case study</span></a></li>
 <li data-search="closing feature parity across 25+ database engines with an agent loop case study"><a href="../case/ai-parity.html"><span>Closing feature parity across 25+ database engines with an agent loop</span><span class="p-kind">case study</span></a></li>
 <li data-search="hardening the ci supply chain after an incident case study"><a href="../case/supplychain.html"><span>Hardening the CI supply chain after an incident</span><span class="p-kind">case study</span></a></li>
 <li data-search="chaos testing kubedb postgresql: building resilience with chaos mesh article"><a href="https://appscode.com/blog/post/chaos-testing-postgresql/"><span>Chaos Testing KubeDB PostgreSQL: Building Resilience with Chaos Mesh</span><span class="p-kind">article</span></a></li>

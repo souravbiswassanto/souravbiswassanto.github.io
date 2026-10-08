@@ -1,0 +1,65 @@
+<svg viewBox="0 0 720 300" role="img" aria-labelledby="cp-title cp-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="cp-title">What the controller I build actually does</title>
+  <desc id="cp-desc">A user declares the database they want as a custom resource — how many replicas, how much storage, TLS on. The controller checks the request is valid and then builds everything the database needs: pods, storage, services, secrets, configuration and backups. It then keeps reality matching that declaration, handling failover, scaling, version upgrades, credential rotation and point-in-time recovery without a person carrying out steps.</desc>
+
+  <defs>
+    <marker id="cp-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="d-accent"/>
+    </marker>
+    <marker id="cp-m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" opacity=".55"/>
+    </marker>
+  </defs>
+
+  <!-- you declare -->
+  <rect x="0" y="38" width="200" height="70" rx="8" class="d-box"/>
+  <text x="16" y="60" class="d-text" font-size="11.5" font-weight="600">You declare what you want</text>
+  <text x="16" y="80" class="d-text-sm">kind: Postgres</text>
+  <text x="16" y="96" class="d-text-sm">3 replicas · 100Gi · TLS</text>
+
+  <path d="M 202 73 L 232 73" class="d-line" stroke-width="1.5" marker-end="url(#cp-m)" fill="none"/>
+
+  <!-- the controller -->
+  <rect x="236" y="28" width="216" height="90" rx="8" class="d-box-accent"/>
+  <text x="252" y="50" class="d-text" font-size="11.5" font-weight="600">The controller I build</text>
+  <text x="252" y="70" class="d-text-sm">rejects what cannot work</text>
+  <text x="252" y="86" class="d-text-sm">builds what it needs</text>
+  <text x="252" y="102" class="d-text-sm">owns it for its lifetime</text>
+
+  <path d="M 454 73 L 484 73" class="d-line" stroke-width="1.5" marker-end="url(#cp-m)" fill="none"/>
+
+  <!-- result -->
+  <rect x="488" y="38" width="230" height="70" rx="8" class="d-box"/>
+  <text x="504" y="60" class="d-text" font-size="11.5" font-weight="600">A database that runs itself</text>
+  <text x="504" y="80" class="d-text-sm">one primary, N standbys</text>
+  <text x="504" y="96" class="d-text-sm">reachable at a stable name</text>
+
+  <!-- what it creates -->
+  <text x="0" y="150" class="d-text-sm">EVERYTHING IT CREATES AND KEEPS IN STEP</text>
+
+  <g class="d-box">
+    <rect x="0" y="160" width="112" height="30" rx="6"/>
+    <rect x="121" y="160" width="112" height="30" rx="6"/>
+    <rect x="242" y="160" width="112" height="30" rx="6"/>
+    <rect x="363" y="160" width="112" height="30" rx="6"/>
+    <rect x="484" y="160" width="112" height="30" rx="6"/>
+    <rect x="605" y="160" width="113" height="30" rx="6"/>
+  </g>
+  <g class="d-text-sm" text-anchor="middle">
+    <text x="56" y="179">pods</text>
+    <text x="177" y="179">storage</text>
+    <text x="298" y="179">services</text>
+    <text x="419" y="179">secrets</text>
+    <text x="540" y="179">config</text>
+    <text x="661" y="179">backups</text>
+  </g>
+
+  <!-- the ongoing job -->
+  <rect x="0" y="212" width="718" height="58" rx="8" class="d-box-accent"/>
+  <text x="16" y="234" class="d-text" font-size="11.5" font-weight="600">Then it keeps reality matching that declaration — for as long as the cluster exists</text>
+  <text x="16" y="256" class="d-text-sm">failover · scaling · version upgrades · TLS and credential rotation · point-in-time recovery</text>
+
+  <path d="M 344 196 L 344 208" class="d-stroke-accent" stroke-width="1.5" marker-end="url(#cp-a)" fill="none"/>
+
+  <text x="0" y="290" class="d-text-sm">Every one of those is a declaration the controller acts on — not a runbook a person follows.</text>
+</svg>
